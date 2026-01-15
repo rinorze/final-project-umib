@@ -962,6 +962,14 @@
   .resume-builder-content h2 {
     font-size: 28px;
   }
+
+  .faq-content {
+    text-align: center;
+  }
+
+  .faq .accordion {
+    width: 90%;
+  }
 }
 
 @media (max-width: 575px) {
