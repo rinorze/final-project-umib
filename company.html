@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Company Profile - JobPortal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/jobs.css" />
+    <link rel="stylesheet" href="/style/company.css" />
+  </head>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="/index.html"
+          ><img src="/images/job-logo.png" alt="Job Portal Logo"
+        /></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/jobs.html">Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #b71c1c" href="/companies.html">Companies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact.html">Contact</a>
+            </li>
+            <li id="navAuth"></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main">
+      <section class="home-jobs" style="padding: 60px 0">
+        <div class="container">
+          <a href="/companies.html" class="btn btn-outline-red mb-4">
+            <i class="fa-solid fa-arrow-left"></i> Back to Companies
+          </a>
+
+          <div id="companyProfile"></div>
+
+          <div id="companyJobs" class="mt-5">
+            <h3 class="mb-4" style="font-weight: 700">Open Positions</h3>
+            <div id="jobsList" class="row g-4"></div>
+            <div id="noJobs" class="d-none p-4 rounded-4" style="background: #f5f5f5">
+              <h5 class="mb-2" style="font-weight: 700">No open positions</h5>
+              <p class="mb-0">This company has no job openings at the moment.</p>
+            </div>
+          </div>
+
+          <!-- Company Reviews Section -->
+          <div id="companyReviews" class="mt-5">
+            <h3 class="mb-4" style="font-weight: 700">Employee Reviews</h3>
+            
+            <!-- Rating Summary -->
+            <div class="review-summary p-4 rounded-4 mb-4" style="background: #f9f9f9">
+              <div class="d-flex align-items-center gap-4 flex-wrap">
+                <div class="text-center">
+                  <div id="avgRating" class="display-4 fw-bold" style="color: #b71c1c">0.0</div>
+                  <div id="starDisplay" class="mb-2"></div>
+                  <small id="reviewCount" class="text-muted">0 reviews</small>
+                </div>
+                <div class="rating-bars flex-grow-1" id="ratingBars"></div>
+              </div>
+            </div>
+
+            <!-- Add Review Form -->
+            <div id="addReviewSection" class="p-4 rounded-4 mb-4" style="background: #fff; border: 1px solid #eee;">
+              <h5 class="mb-3" style="font-weight: 600">Write a Review</h5>
+              <div id="reviewLoginPrompt" class="text-center py-3 d-none">
+                <p class="mb-2">Sign in to share your experience</p>
+                <a href="/signin.html" class="btn btn-signup">Sign In</a>
+              </div>
+              <div id="alreadyReviewed" class="text-center py-3 d-none">
+                <i class="fa-solid fa-check-circle text-success" style="font-size: 2rem"></i>
+                <p class="mt-2 mb-0">You have already reviewed this company</p>
+              </div>
+              <form id="reviewForm" class="d-none">
+                <div class="mb-3">
+                  <label class="form-label">Rating</label>
+                  <div class="star-rating" id="starRating">
+                    <i class="fa-regular fa-star" data-rating="1"></i>
+                    <i class="fa-regular fa-star" data-rating="2"></i>
+                    <i class="fa-regular fa-star" data-rating="3"></i>
+                    <i class="fa-regular fa-star" data-rating="4"></i>
+                    <i class="fa-regular fa-star" data-rating="5"></i>
+                  </div>
+                  <input type="hidden" id="ratingInput" value="0">
+                </div>
+                <div class="mb-3">
+                  <label for="reviewTitle" class="form-label">Review Title</label>
+                  <input type="text" class="form-control" id="reviewTitle" placeholder="Sum up your experience" required>
+                </div>
+                <div class="mb-3">
+                  <label for="reviewPros" class="form-label">Pros</label>
+                  <textarea class="form-control" id="reviewPros" rows="2" placeholder="What did you like about working here?"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="reviewCons" class="form-label">Cons</label>
+                  <textarea class="form-control" id="reviewCons" rows="2" placeholder="What could be improved?"></textarea>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="recommendCheck">
+                  <label class="form-check-label" for="recommendCheck">I would recommend this company to a friend</label>
+                </div>
+                <button type="submit" class="btn btn-signup">Submit Review</button>
+              </form>
+            </div>
+
+            <!-- Reviews List -->
+            <div id="reviewsList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="custom-footer mt-5">
+      <div class="container py-5">
+        <div class="row text-center text-md-start">
+          <div class="col-md-6 mb-4">
+            <a href="/index.html" class="footer-logo d-block mb-3">
+              <img src="/images/job-logo.png" alt="Job Portal Logo" />
+            </a>
+
+            <p class="footer-desc mb-3">
+              JobPortal connects you with your dream career. Browse jobs, save
+              positions, and apply easily.
+            </p>
+
+            <div
+              class="footer-social d-flex gap-3 mt-3 justify-content-center justify-content-md-start">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <h5 class="footer-title mb-3">Quick Links</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/jobs.html">Jobs</a></li>
+              <li><a href="/companies.html">Companies</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <h5 class="footer-title mb-3">Company</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="/about.html">About Us</a></li>
+              <li><a href="/careers.html">Careers</a></li>
+              <li><a href="/contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="footer-divider" />
+
+        <div class="footer-bottom">
+          <p class="footer-copy">&copy; 2026 JobPortal. All rights reserved.</p>
+          <p class="footer-terms">
+            <a href="/terms.html">Terms of Service</a> |
+            <a href="/privacy.html">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
+    <script type="module" src="/js/nav-auth.js"></script>
+    <script type="module" src="/js/company.js"></script>
+    <script type="module">
+      import { 
+        isAuthenticated, 
+        getCompanyReviews, 
+        addCompanyReview, 
+        getCompanyAverageRating, 
+        hasUserReviewedCompany,
+        buildSignInUrlWithNext
+      } from "/js/auth.js";
+
+      const params = new URLSearchParams(window.location.search);
+      const companyId = params.get("id");
+      
+      if (companyId) {
+        initReviews(companyId);
+      }
+
+      function initReviews(companyId) {
+        renderReviewsSummary(companyId);
+        renderReviewForm(companyId);
+        renderReviewsList(companyId);
+        setupStarRating();
+        setupReviewForm(companyId);
+      }
+
+      function renderReviewsSummary(companyId) {
+        const { average, count } = getCompanyAverageRating(companyId);
+        document.getElementById("avgRating").textContent = average.toFixed(1);
+        document.getElementById("reviewCount").textContent = `${count} review${count !== 1 ? "s" : ""}`;
+        
+        // Render stars
+        const starDisplay = document.getElementById("starDisplay");
+        let starsHtml = "";
+        for (let i = 1; i <= 5; i++) {
+          if (i <= Math.round(average)) {
+            starsHtml += '<i class="fa-solid fa-star"></i>';
+          } else {
+            starsHtml += '<i class="fa-solid fa-star empty"></i>';
+          }
+        }
+        starDisplay.innerHTML = `<div class="star-display">${starsHtml}</div>`;
+
+        // Render rating bars
+        const reviews = getCompanyReviews(companyId);
+        const ratingCounts = [0, 0, 0, 0, 0];
+        reviews.forEach(r => {
+          if (r.rating >= 1 && r.rating <= 5) {
+            ratingCounts[r.rating - 1]++;
+          }
+        });
+        
+        const maxCount = Math.max(...ratingCounts, 1);
+        const barsHtml = [5, 4, 3, 2, 1].map(star => {
+          const count = ratingCounts[star - 1];
+          const width = Math.round((count / maxCount) * 100);
+          return `
+            <div class="rating-bar-row">
+              <span>${star}</span>
+              <div class="rating-bar-bg">
+                <div class="rating-bar-fill" style="width: ${width}%"></div>
+              </div>
+              <span>${count}</span>
+            </div>
+          `;
+        }).join("");
+        
+        document.getElementById("ratingBars").innerHTML = barsHtml;
+      }
+
+      function renderReviewForm(companyId) {
+        const loginPrompt = document.getElementById("reviewLoginPrompt");
+        const alreadyReviewed = document.getElementById("alreadyReviewed");
+        const reviewForm = document.getElementById("reviewForm");
+
+        if (!isAuthenticated()) {
+          loginPrompt.classList.remove("d-none");
+          loginPrompt.querySelector("a").href = buildSignInUrlWithNext(window.location.pathname + window.location.search);
+        } else if (hasUserReviewedCompany(companyId)) {
+          alreadyReviewed.classList.remove("d-none");
+        } else {
+          reviewForm.classList.remove("d-none");
+        }
+      }
+
+      function setupStarRating() {
+        const container = document.getElementById("starRating");
+        const stars = container.querySelectorAll("i");
+        const input = document.getElementById("ratingInput");
+
+        stars.forEach(star => {
+          star.addEventListener("click", () => {
+            const rating = parseInt(star.dataset.rating);
+            input.value = rating;
+            updateStars(rating);
+          });
+
+          star.addEventListener("mouseenter", () => {
+            const rating = parseInt(star.dataset.rating);
+            highlightStars(rating);
+          });
+        });
+
+        container.addEventListener("mouseleave", () => {
+          highlightStars(parseInt(input.value));
+        });
+
+        function updateStars(rating) {
+          stars.forEach(s => {
+            const r = parseInt(s.dataset.rating);
+            s.classList.toggle("fa-solid", r <= rating);
+            s.classList.toggle("fa-regular", r > rating);
+            s.classList.toggle("active", r <= rating);
+          });
+        }
+
+        function highlightStars(rating) {
+          stars.forEach(s => {
+            const r = parseInt(s.dataset.rating);
+            s.classList.toggle("fa-solid", r <= rating);
+            s.classList.toggle("fa-regular", r > rating);
+          });
+        }
+      }
+
+      function setupReviewForm(companyId) {
+        const form = document.getElementById("reviewForm");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          
+          const rating = parseInt(document.getElementById("ratingInput").value);
+          if (rating < 1 || rating > 5) {
+            alert("Please select a rating");
+            return;
+          }
+
+          const result = addCompanyReview({
+            companyId,
+            rating,
+            title: document.getElementById("reviewTitle").value,
+            pros: document.getElementById("reviewPros").value,
+            cons: document.getElementById("reviewCons").value,
+            recommend: document.getElementById("recommendCheck").checked
+          });
+
+          if (result.ok) {
+            renderReviewsSummary(companyId);
+            renderReviewsList(companyId);
+            form.classList.add("d-none");
+            document.getElementById("alreadyReviewed").classList.remove("d-none");
+          } else {
+            alert(result.message);
+          }
+        });
+      }
+
+      function renderReviewsList(companyId) {
+        const reviews = getCompanyReviews(companyId);
+        const container = document.getElementById("reviewsList");
+
+        if (!reviews.length) {
+          container.innerHTML = `
+            <div class="p-4 rounded-4 text-center" style="background: #f5f5f5">
+              <i class="fa-solid fa-comments" style="font-size: 2rem; color: #ccc"></i>
+              <p class="mt-2 mb-0">No reviews yet. Be the first to share your experience!</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = reviews.map(review => {
+          const date = new Date(review.createdAt).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+          });
+
+          let starsHtml = "";
+          for (let i = 1; i <= 5; i++) {
+            starsHtml += `<i class="fa-solid fa-star" style="color: ${i <= review.rating ? "#f59e0b" : "#ddd"}"></i>`;
+          }
+
+          return `
+            <div class="review-card">
+              <div class="review-header">
+                <div>
+                  <div class="review-author">${review.userName || "Anonymous"}</div>
+                  <div class="review-date">${date}</div>
+                </div>
+                <div class="star-display">${starsHtml}</div>
+              </div>
+              <div class="review-title">${review.title}</div>
+              ${review.pros ? `
+                <div class="review-section">
+                  <div class="review-section-label">Pros</div>
+                  <p class="mb-0">${review.pros}</p>
+                </div>
+              ` : ""}
+              ${review.cons ? `
+                <div class="review-section">
+                  <div class="review-section-label">Cons</div>
+                  <p class="mb-0">${review.cons}</p>
+                </div>
+              ` : ""}
+              <div class="review-recommend ${review.recommend ? "" : "no"}">
+                <i class="fa-solid fa-${review.recommend ? "thumbs-up" : "thumbs-down"}"></i>
+                ${review.recommend ? "Recommends this company" : "Does not recommend"}
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+    </script>
+  </body>
+</html>

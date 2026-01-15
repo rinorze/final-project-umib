@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/dashboard.css" />
+    <link rel="stylesheet" href="/style/profile.css" />
+  </head>
+  <body class="dashboard-body">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <a href="/index.html" class="dashboard-brand">
+            <img src="/images/job-logo.png" alt="Job Portal Logo" />
+          </a>
+          <button class="mobile-toggle d-lg-none" id="closeSidebar">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="dashboard-nav">
+          <a class="dashboard-link" href="/dashboard/index.html">
+            <i class="fa-solid fa-house"></i> Dashboard
+          </a>
+          <a class="dashboard-link" href="/dashboard/saved.html">
+            <i class="fa-solid fa-bookmark"></i> Saved Jobs
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
+            <i class="fa-solid fa-paper-plane"></i> Applied
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
+            <i class="fa-solid fa-plus"></i> Post Job
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applications.html"
+            id="nav-applications">
+            <i class="fa-solid fa-users"></i> Applications
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/documents.html"
+            id="nav-documents">
+            <i class="fa-solid fa-folder-open"></i> Documents
+          </a>
+          <a class="dashboard-link" href="/dashboard/analytics.html">
+            <i class="fa-solid fa-chart-line"></i> Analytics
+          </a>
+          <a class="dashboard-link active" href="/dashboard/profile.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a class="dashboard-link" href="/dashboard/settings.html">
+            <i class="fa-solid fa-gear"></i> Settings
+          </a>
+        </nav>
+
+        <div class="dashboard-actions">
+          <button id="logoutBtn" class="btn btn-signup w-100">Logout</button>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="container-fluid" style="max-width: 1100px">
+          <div class="dashboard-top">
+            <div class="d-flex align-items-center gap-3">
+              <button class="mobile-toggle" id="openSidebar">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div>
+                <h1 class="dashboard-title">Profile</h1>
+                <p class="dashboard-subtitle">
+                  Manage your personal information
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="formAlert" class="alert d-none" role="alert"></div>
+
+          <div class="profile-completeness mb-4" id="profileCompleteness">
+            <div class="profile-completeness-header">
+              <span class="profile-completeness-label"
+                >Profile Completeness</span
+              >
+              <span
+                class="profile-completeness-percent"
+                id="completenessPercent"
+                >0%</span
+              >
+            </div>
+            <div class="profile-completeness-bar">
+              <div
+                class="profile-completeness-fill"
+                id="completenessFill"
+                style="width: 0%"></div>
+            </div>
+            <p class="profile-completeness-hint" id="completenessHint">
+              Complete your profile to attract more employers
+            </p>
+          </div>
+
+          <div class="profile-section">
+            <div class="profile-section-body">
+              <div class="profile-header">
+                <div class="profile-avatar-wrapper">
+                  <div class="profile-avatar-large" id="profileAvatar">
+                    <span id="avatarInitial">U</span>
+                    <img
+                      id="avatarImage"
+                      class="avatar-image d-none"
+                      alt="Profile Photo" />
+                  </div>
+                  <label class="profile-avatar-upload" for="photoUpload">
+                    <i class="fa-solid fa-camera"></i>
+                    <input
+                      type="file"
+                      id="photoUpload"
+                      accept="image/*"
+                      class="d-none" />
+                  </label>
+                </div>
+                <div class="profile-info">
+                  <h2 id="profileName">User Name</h2>
+                  <p id="profileEmail">user@example.com</p>
+                  <div class="profile-stats">
+                    <div class="profile-stat">
+                      <div class="profile-stat-value" id="statApplied">0</div>
+                      <div class="profile-stat-label">Applied</div>
+                    </div>
+                    <div class="profile-stat">
+                      <div class="profile-stat-value" id="statSaved">0</div>
+                      <div class="profile-stat-label">Saved</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section" id="resumeSection">
+            <div class="profile-section-header">
+              <h3 class="profile-section-title">
+                <i class="fa-solid fa-file-pdf me-2"></i>Resume / CV
+              </h3>
+            </div>
+            <div class="profile-section-body">
+              <div class="resume-upload-area" id="resumeUploadArea">
+                <div id="resumeEmpty">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <p>Drag & drop your resume here or click to upload</p>
+                  <small>PDF, DOC, DOCX (Max 5MB)</small>
+                  <input
+                    type="file"
+                    id="resumeUpload"
+                    accept=".pdf,.doc,.docx"
+                    class="d-none" />
+                </div>
+                <div id="resumeUploaded" class="d-none">
+                  <div class="resume-file-info">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <div>
+                      <strong id="resumeFileName">resume.pdf</strong>
+                      <small id="resumeFileDate">Uploaded today</small>
+                    </div>
+                  </div>
+                  <div class="resume-actions">
+                    <button class="btn btn-sm btn-outline-red" id="viewResume">
+                      View
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-red"
+                      id="removeResume">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-2 text-muted" style="font-size: 13px">
+                <i class="fa-solid fa-lightbulb me-1"></i>
+                Having a resume on file lets you apply to jobs faster with one
+                click!
+              </p>
+            </div>
+          </div>
+
+          <div class="profile-section">
+            <div class="profile-section-header">
+              <h3 class="profile-section-title">Personal Information</h3>
+            </div>
+            <div class="profile-section-body">
+              <form id="profileForm">
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="profile-field">
+                      <div class="profile-field-label">Full Name</div>
+                      <input
+                        id="fullName"
+                        class="form-control"
+                        placeholder="Enter your full name"
+                        required />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="profile-field">
+                      <div class="profile-field-label">Email Address</div>
+                      <input id="email" class="form-control" disabled />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="profile-field">
+                      <div class="profile-field-label">Phone Number</div>
+                      <input
+                        id="phone"
+                        class="form-control"
+                        placeholder="+383 44 xxx xxx" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="profile-field">
+                      <div class="profile-field-label">Location</div>
+                      <input
+                        id="location"
+                        class="form-control"
+                        placeholder="Prishtina, Kosovo" />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="profile-field">
+                      <div class="profile-field-label">Bio</div>
+                      <textarea
+                        id="bio"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="profile-section" id="professionalSection">
+            <div class="profile-section-header">
+              <h3 class="profile-section-title">Professional Information</h3>
+            </div>
+            <div class="profile-section-body">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="profile-field">
+                    <div class="profile-field-label">Job Title</div>
+                    <input
+                      id="jobTitle"
+                      class="form-control"
+                      placeholder="Software Developer" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="profile-field">
+                    <div class="profile-field-label">Experience</div>
+                    <select id="experience" class="form-select">
+                      <option value="">Select experience</option>
+                      <option value="0-1">0-1 years</option>
+                      <option value="1-3">1-3 years</option>
+                      <option value="3-5">3-5 years</option>
+                      <option value="5-10">5-10 years</option>
+                      <option value="10+">10+ years</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="profile-field">
+                    <div class="profile-field-label">Skills</div>
+                    <div class="profile-skills" id="skillsContainer"></div>
+                    <div class="input-group mt-2">
+                      <input
+                        id="newSkill"
+                        class="form-control"
+                        placeholder="Add a skill (e.g. JavaScript)" />
+                      <button
+                        class="btn btn-outline-red"
+                        type="button"
+                        id="addSkillBtn">
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section">
+            <div class="profile-section-header">
+              <h3 class="profile-section-title">Social Links</h3>
+            </div>
+            <div class="profile-section-body">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="profile-field">
+                    <div class="profile-field-label">LinkedIn</div>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="fa-brands fa-linkedin"></i
+                      ></span>
+                      <input
+                        id="linkedin"
+                        class="form-control"
+                        placeholder="linkedin.com/in/username" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="profile-field">
+                    <div class="profile-field-label">GitHub</div>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="fa-brands fa-github"></i
+                      ></span>
+                      <input
+                        id="github"
+                        class="form-control"
+                        placeholder="github.com/username" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="profile-field">
+                    <div class="profile-field-label">Portfolio</div>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="fa-solid fa-globe"></i
+                      ></span>
+                      <input
+                        id="portfolio"
+                        class="form-control"
+                        placeholder="yourportfolio.com" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section" id="experienceSection">
+            <div
+              class="profile-section-header d-flex justify-content-between align-items-center">
+              <h3 class="profile-section-title">
+                <i class="fa-solid fa-briefcase me-2"></i>Work Experience
+              </h3>
+              <button class="btn btn-sm btn-signup" id="addExperienceBtn">
+                <i class="fa-solid fa-plus me-1"></i> Add
+              </button>
+            </div>
+            <div class="profile-section-body">
+              <div id="experienceList"></div>
+              <div id="experienceEmpty" class="text-center py-4 text-muted">
+                <i
+                  class="fa-solid fa-briefcase mb-2"
+                  style="font-size: 2rem; opacity: 0.3"></i>
+                <p class="mb-0">No work experience added yet</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-section" id="educationSection">
+            <div
+              class="profile-section-header d-flex justify-content-between align-items-center">
+              <h3 class="profile-section-title">
+                <i class="fa-solid fa-graduation-cap me-2"></i>Education
+              </h3>
+              <button class="btn btn-sm btn-signup" id="addEducationBtn">
+                <i class="fa-solid fa-plus me-1"></i> Add
+              </button>
+            </div>
+            <div class="profile-section-body">
+              <div id="educationList"></div>
+              <div id="educationEmpty" class="text-center py-4 text-muted">
+                <i
+                  class="fa-solid fa-graduation-cap mb-2"
+                  style="font-size: 2rem; opacity: 0.3"></i>
+                <p class="mb-0">No education added yet</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end gap-3 mt-4">
+            <a href="/dashboard/index.html" class="btn btn-outline-red"
+              >Cancel</a
+            >
+            <button class="btn btn-signup" id="saveProfileBtn">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
+
+    <script type="module">
+      import {
+        getCurrentUser,
+        getUsers,
+        getSavedJobs,
+        getAppliedJobs,
+        requireAuth,
+        signOut,
+        getProfile,
+        saveProfile,
+        setProfilePhoto,
+        getProfilePhotoUrl,
+        setResume,
+        getResume,
+        getWorkExperience,
+        addWorkExperience,
+        removeWorkExperience,
+        getEducation,
+        addEducation,
+        removeEducation,
+        setupRoleBasedSidebar,
+        getUserRole,
+        USER_ROLES,
+        getCustomJobs
+      } from "/js/auth.js";
+
+      requireAuth({ redirectTo: "/signin.html" });
+      setupRoleBasedSidebar();
+
+      const user = getCurrentUser();
+      const userRole = getUserRole(user);
+      const isEmployer = userRole === USER_ROLES.EMPLOYER;
+
+      if (isEmployer) {
+        document.getElementById("resumeSection")?.classList.add("d-none");
+        document.getElementById("professionalSection")?.classList.add("d-none");
+        document.getElementById("experienceSection")?.classList.add("d-none");
+        document.getElementById("educationSection")?.classList.add("d-none");
+        document.getElementById("completenessHint").textContent =
+          "Complete your profile to build trust with job seekers";
+
+        document.querySelector("#statApplied").nextElementSibling.textContent =
+          "Posted";
+      }
+      const alertBox = document.getElementById("formAlert");
+
+      function showAlert(type, message) {
+        alertBox.classList.remove("d-none", "alert-danger", "alert-success");
+        alertBox.classList.add(
+          type === "success" ? "alert-success" : "alert-danger"
+        );
+        alertBox.innerHTML = message;
+        setTimeout(() => alertBox.classList.add("d-none"), 4000);
+      }
+
+      function calculateCompleteness(profile) {
+        let fields;
+
+        if (isEmployer) {
+          fields = [
+            { key: "fullName", weight: 20 },
+            { key: "phone", weight: 15 },
+            { key: "location", weight: 15 },
+            { key: "bio", weight: 20 },
+            { key: "linkedin", weight: 10 },
+            { key: "portfolio", weight: 10 },
+            { key: "photoUrl", weight: 10 }
+          ];
+        } else {
+          fields = [
+            { key: "fullName", weight: 10 },
+            { key: "phone", weight: 8 },
+            { key: "location", weight: 8 },
+            { key: "bio", weight: 10 },
+            { key: "jobTitle", weight: 10 },
+            { key: "experience", weight: 8 },
+            { key: "skills", weight: 12, isArray: true },
+            { key: "linkedin", weight: 5 },
+            { key: "github", weight: 5 },
+            { key: "photoUrl", weight: 8 },
+            { key: "resumeFile", weight: 8 },
+            { key: "workExperience", weight: 8, isArray: true },
+            { key: "education", weight: 8, isArray: true }
+          ];
+        }
+
+        let total = 0;
+        let completed = 0;
+
+        fields.forEach((field) => {
+          total += field.weight;
+          const value = profile[field.key];
+          if (field.isArray) {
+            if (Array.isArray(value) && value.length > 0)
+              completed += field.weight;
+          } else {
+            if (value && String(value).trim()) completed += field.weight;
+          }
+        });
+
+        return Math.round((completed / total) * 100);
+      }
+
+      function updateCompletenessUI(profile) {
+        const percent = calculateCompleteness(profile);
+        document.getElementById(
+          "completenessPercent"
+        ).textContent = `${percent}%`;
+        document.getElementById("completenessFill").style.width = `${percent}%`;
+
+        let hint;
+        if (isEmployer) {
+          hint = "Complete your profile to build trust with job seekers";
+          if (percent === 100) {
+            hint = "🎉 Your company profile is complete!";
+          } else if (percent >= 75) {
+            hint = "Almost there! Add a few more company details.";
+          } else if (percent >= 50) {
+            hint = "Good progress! Keep adding company information.";
+          }
+        } else {
+          hint = "Complete your profile to attract more employers";
+          if (percent === 100) {
+            hint = "🎉 Your profile is complete!";
+          } else if (percent >= 75) {
+            hint = "Almost there! Add a few more details.";
+          } else if (percent >= 50) {
+            hint = "Good progress! Keep adding information.";
+          }
+        }
+        document.getElementById("completenessHint").textContent = hint;
+      }
+
+      document.getElementById("photoUpload").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 2 * 1024 * 1024) {
+          showAlert("error", "Photo must be less than 2MB");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const base64 = event.target.result;
+          setProfilePhoto(base64);
+          displayProfilePhoto(base64);
+          updateCompletenessUI(getProfile());
+          showAlert("success", "Profile photo updated!");
+        };
+        reader.readAsDataURL(file);
+      });
+
+      function displayProfilePhoto(url) {
+        const avatarImg = document.getElementById("avatarImage");
+        const avatarInitial = document.getElementById("avatarInitial");
+
+        if (url) {
+          avatarImg.src = url;
+          avatarImg.classList.remove("d-none");
+          avatarInitial.classList.add("d-none");
+        } else {
+          avatarImg.classList.add("d-none");
+          avatarInitial.classList.remove("d-none");
+        }
+      }
+
+      const resumeUploadArea = document.getElementById("resumeUploadArea");
+      const resumeUpload = document.getElementById("resumeUpload");
+      const resumeEmpty = document.getElementById("resumeEmpty");
+      const resumeUploaded = document.getElementById("resumeUploaded");
+
+      resumeUploadArea.addEventListener("click", (e) => {
+        if (!e.target.closest("button")) {
+          resumeUpload.click();
+        }
+      });
+
+      resumeUploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        resumeUploadArea.classList.add("dragover");
+      });
+
+      resumeUploadArea.addEventListener("dragleave", () => {
+        resumeUploadArea.classList.remove("dragover");
+      });
+
+      resumeUploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        resumeUploadArea.classList.remove("dragover");
+        const file = e.dataTransfer.files[0];
+        if (file) handleResumeUpload(file);
+      });
+
+      resumeUpload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) handleResumeUpload(file);
+      });
+
+      function handleResumeUpload(file) {
+        if (file.size > 5 * 1024 * 1024) {
+          showAlert("error", "Resume must be less than 5MB");
+          return;
+        }
+
+        const validTypes = [".pdf", ".doc", ".docx"];
+        const ext = "." + file.name.split(".").pop().toLowerCase();
+        if (!validTypes.includes(ext)) {
+          showAlert("error", "Please upload a PDF or Word document");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const resumeData = {
+            name: file.name,
+            data: event.target.result,
+            uploadedAt: new Date().toISOString()
+          };
+          setResume(resumeData);
+          displayResume(resumeData);
+          updateCompletenessUI(getProfile());
+          showAlert("success", "Resume uploaded successfully!");
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function displayResume(resumeData) {
+        if (resumeData) {
+          resumeEmpty.classList.add("d-none");
+          resumeUploaded.classList.remove("d-none");
+          document.getElementById("resumeFileName").textContent =
+            resumeData.name;
+          document.getElementById("resumeFileDate").textContent =
+            "Uploaded " + new Date(resumeData.uploadedAt).toLocaleDateString();
+        } else {
+          resumeEmpty.classList.remove("d-none");
+          resumeUploaded.classList.add("d-none");
+        }
+      }
+
+      document.getElementById("viewResume")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const resume = getResume();
+        if (resume?.data) {
+          const win = window.open();
+          win.document.write(
+            `<iframe src="${resume.data}" style="width:100%;height:100%;border:none;"></iframe>`
+          );
+        }
+      });
+
+      document
+        .getElementById("removeResume")
+        ?.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setResume(null);
+          displayResume(null);
+          updateCompletenessUI(getProfile());
+          showAlert("success", "Resume removed");
+        });
+
+      function renderWorkExperience() {
+        const experiences = getWorkExperience();
+        const list = document.getElementById("experienceList");
+        const empty = document.getElementById("experienceEmpty");
+
+        if (!experiences.length) {
+          list.innerHTML = "";
+          empty.classList.remove("d-none");
+          return;
+        }
+
+        empty.classList.add("d-none");
+        list.innerHTML = experiences
+          .map(
+            (exp) => `
+          <div class="experience-item" data-id="${exp.id}">
+            <div class="experience-header">
+              <div>
+                <h5 class="experience-title">${exp.title}</h5>
+                <p class="experience-company">${exp.company} ${
+              exp.location ? "• " + exp.location : ""
+            }</p>
+                <p class="experience-dates">${exp.startDate} - ${
+              exp.current ? "Present" : exp.endDate || ""
+            }</p>
+              </div>
+              <button class="btn btn-sm btn-outline-red remove-experience" data-id="${
+                exp.id
+              }">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+            ${
+              exp.description
+                ? `<p class="experience-desc">${exp.description}</p>`
+                : ""
+            }
+          </div>
+        `
+          )
+          .join("");
+
+        list.querySelectorAll(".remove-experience").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            removeWorkExperience(btn.dataset.id);
+            renderWorkExperience();
+            updateCompletenessUI(getProfile());
+          });
+        });
+      }
+
+      document
+        .getElementById("addExperienceBtn")
+        .addEventListener("click", () => {
+          const modal = new bootstrap.Modal(
+            document.getElementById("experienceModal")
+          );
+          document.getElementById("experienceForm").reset();
+          modal.show();
+        });
+
+      document
+        .getElementById("saveExperienceBtn")
+        ?.addEventListener("click", () => {
+          const form = document.getElementById("experienceForm");
+          const exp = {
+            title: document.getElementById("expTitle").value.trim(),
+            company: document.getElementById("expCompany").value.trim(),
+            location: document.getElementById("expLocation").value.trim(),
+            startDate: document.getElementById("expStartDate").value,
+            endDate: document.getElementById("expEndDate").value,
+            current: document.getElementById("expCurrent").checked,
+            description: document.getElementById("expDescription").value.trim()
+          };
+
+          if (!exp.title || !exp.company) {
+            showAlert("error", "Title and company are required");
+            return;
+          }
+
+          addWorkExperience(exp);
+          renderWorkExperience();
+          updateCompletenessUI(getProfile());
+          bootstrap.Modal.getInstance(
+            document.getElementById("experienceModal")
+          ).hide();
+          showAlert("success", "Work experience added!");
+        });
+
+      function renderEducation() {
+        const educations = getEducation();
+        const list = document.getElementById("educationList");
+        const empty = document.getElementById("educationEmpty");
+
+        if (!educations.length) {
+          list.innerHTML = "";
+          empty.classList.remove("d-none");
+          return;
+        }
+
+        empty.classList.add("d-none");
+        list.innerHTML = educations
+          .map(
+            (edu) => `
+          <div class="education-item" data-id="${edu.id}">
+            <div class="education-header">
+              <div>
+                <h5 class="education-title">${edu.degree} ${
+              edu.field ? "in " + edu.field : ""
+            }</h5>
+                <p class="education-school">${edu.school}</p>
+                <p class="education-dates">${edu.startYear} - ${
+              edu.current ? "Present" : edu.endYear || ""
+            }</p>
+              </div>
+              <button class="btn btn-sm btn-outline-red remove-education" data-id="${
+                edu.id
+              }">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+            ${
+              edu.description
+                ? `<p class="education-desc">${edu.description}</p>`
+                : ""
+            }
+          </div>
+        `
+          )
+          .join("");
+
+        list.querySelectorAll(".remove-education").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            removeEducation(btn.dataset.id);
+            renderEducation();
+            updateCompletenessUI(getProfile());
+          });
+        });
+      }
+
+      document
+        .getElementById("addEducationBtn")
+        .addEventListener("click", () => {
+          const modal = new bootstrap.Modal(
+            document.getElementById("educationModal")
+          );
+          document.getElementById("educationForm").reset();
+          modal.show();
+        });
+
+      document
+        .getElementById("saveEducationBtn")
+        ?.addEventListener("click", () => {
+          const edu = {
+            degree: document.getElementById("eduDegree").value.trim(),
+            field: document.getElementById("eduField").value.trim(),
+            school: document.getElementById("eduSchool").value.trim(),
+            startYear: document.getElementById("eduStartYear").value,
+            endYear: document.getElementById("eduEndYear").value,
+            current: document.getElementById("eduCurrent").checked,
+            description: document.getElementById("eduDescription").value.trim()
+          };
+
+          if (!edu.degree || !edu.school) {
+            showAlert("error", "Degree and school are required");
+            return;
+          }
+
+          addEducation(edu);
+          renderEducation();
+          updateCompletenessUI(getProfile());
+          bootstrap.Modal.getInstance(
+            document.getElementById("educationModal")
+          ).hide();
+          showAlert("success", "Education added!");
+        });
+
+      function loadProfile() {
+        const profile = getProfile();
+        const fullName = profile.fullName || user?.fullName || "";
+
+        document.getElementById("profileName").textContent = fullName || "User";
+        document.getElementById("profileEmail").textContent = user?.email || "";
+        document.getElementById("avatarInitial").textContent = fullName
+          ? fullName.charAt(0).toUpperCase()
+          : "U";
+
+        displayProfilePhoto(profile.photoUrl);
+
+        displayResume(profile.resumeFile);
+
+        if (isEmployer) {
+          const postedJobs = getCustomJobs().filter(
+            (j) => j.postedBy === user?.id
+          );
+          document.getElementById("statApplied").textContent =
+            postedJobs.length;
+        } else {
+          document.getElementById("statApplied").textContent =
+            getAppliedJobs().length;
+        }
+        document.getElementById("statSaved").textContent =
+          getSavedJobs().length;
+
+        document.getElementById("fullName").value = fullName;
+        document.getElementById("email").value = user?.email || "";
+        document.getElementById("phone").value = profile.phone || "";
+        document.getElementById("location").value = profile.location || "";
+        document.getElementById("bio").value = profile.bio || "";
+
+        document.getElementById("jobTitle").value = profile.jobTitle || "";
+        document.getElementById("experience").value = profile.experience || "";
+
+        renderSkills(profile.skills || []);
+
+        document.getElementById("linkedin").value = profile.linkedin || "";
+        document.getElementById("github").value = profile.github || "";
+        document.getElementById("portfolio").value = profile.portfolio || "";
+
+        renderWorkExperience();
+        renderEducation();
+
+        updateCompletenessUI(profile);
+      }
+
+      function renderSkills(skills) {
+        const container = document.getElementById("skillsContainer");
+        container.innerHTML = skills
+          .map(
+            (skill) => `
+          <span class="profile-skill-tag">
+            ${skill}
+            <button type="button" class="profile-skill-remove" data-skill="${skill}">&times;</button>
+          </span>
+        `
+          )
+          .join("");
+
+        container.querySelectorAll(".profile-skill-remove").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const skillToRemove = btn.getAttribute("data-skill");
+            const profile = getProfile();
+            profile.skills = (profile.skills || []).filter(
+              (s) => s !== skillToRemove
+            );
+            saveProfile(profile);
+            renderSkills(profile.skills);
+            updateCompletenessUI(profile);
+          });
+        });
+      }
+
+      function addSkill() {
+        const input = document.getElementById("newSkill");
+        const skill = input.value.trim();
+        if (skill) {
+          const profile = getProfile();
+          if (!profile.skills) profile.skills = [];
+          if (!profile.skills.includes(skill)) {
+            profile.skills.push(skill);
+            saveProfile(profile);
+            renderSkills(profile.skills);
+            updateCompletenessUI(profile);
+          }
+          input.value = "";
+        }
+      }
+
+      document
+        .getElementById("addSkillBtn")
+        .addEventListener("click", addSkill);
+      document.getElementById("newSkill").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          addSkill();
+        }
+      });
+
+      document
+        .getElementById("saveProfileBtn")
+        .addEventListener("click", () => {
+          const fullName = document.getElementById("fullName").value.trim();
+          if (!fullName) {
+            showAlert("error", "Full name is required.");
+            return;
+          }
+
+          const profile = getProfile();
+
+          profile.fullName = fullName;
+          profile.phone = document.getElementById("phone").value.trim();
+          profile.location = document.getElementById("location").value.trim();
+          profile.bio = document.getElementById("bio").value.trim();
+          profile.jobTitle = document.getElementById("jobTitle").value.trim();
+          profile.experience = document.getElementById("experience").value;
+          profile.linkedin = document.getElementById("linkedin").value.trim();
+          profile.github = document.getElementById("github").value.trim();
+          profile.portfolio = document.getElementById("portfolio").value.trim();
+
+          saveProfile(profile);
+
+          const users = getUsers();
+          const idx = users.findIndex((u) => u.id === user.id);
+          if (idx !== -1) {
+            users[idx].fullName = fullName;
+            localStorage.setItem("jp_users", JSON.stringify(users));
+          }
+
+          document.getElementById("profileName").textContent = fullName;
+          document.getElementById("avatarInitial").textContent = fullName
+            .charAt(0)
+            .toUpperCase();
+
+          updateCompletenessUI(profile);
+
+          showAlert(
+            "success",
+            '<i class="fa-solid fa-check-circle me-2"></i>Profile saved successfully!'
+          );
+        });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut();
+        window.location.href = "/signin.html";
+      });
+
+      const sidebar = document.getElementById("dashboardSidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const openBtn = document.getElementById("openSidebar");
+      const closeBtn = document.getElementById("closeSidebar");
+
+      function openSidebar() {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      openBtn?.addEventListener("click", openSidebar);
+      closeBtn?.addEventListener("click", closeSidebar);
+      overlay?.addEventListener("click", closeSidebar);
+
+      loadProfile();
+    </script>
+
+    <div class="modal fade" id="experienceModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Work Experience</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form id="experienceForm">
+              <div class="mb-3">
+                <label class="form-label">Job Title *</label>
+                <input
+                  id="expTitle"
+                  class="form-control"
+                  placeholder="e.g. Software Developer"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Company *</label>
+                <input
+                  id="expCompany"
+                  class="form-control"
+                  placeholder="e.g. Gjirafa"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Location</label>
+                <input
+                  id="expLocation"
+                  class="form-control"
+                  placeholder="e.g. Prishtina, Kosovo" />
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label class="form-label">Start Date</label>
+                  <input id="expStartDate" type="month" class="form-control" />
+                </div>
+                <div class="col-6">
+                  <label class="form-label">End Date</label>
+                  <input id="expEndDate" type="month" class="form-control" />
+                </div>
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  id="expCurrent"
+                  type="checkbox"
+                  class="form-check-input" />
+                <label class="form-check-label" for="expCurrent"
+                  >I currently work here</label
+                >
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea
+                  id="expDescription"
+                  class="form-control"
+                  rows="3"
+                  placeholder="Describe your responsibilities..."></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-red"
+              data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-signup" id="saveExperienceBtn">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="educationModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Education</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form id="educationForm">
+              <div class="mb-3">
+                <label class="form-label">Degree *</label>
+                <input
+                  id="eduDegree"
+                  class="form-control"
+                  placeholder="e.g. Bachelor's Degree"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Field of Study</label>
+                <input
+                  id="eduField"
+                  class="form-control"
+                  placeholder="e.g. Computer Science" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">School / University *</label>
+                <input
+                  id="eduSchool"
+                  class="form-control"
+                  placeholder="e.g. University of Prishtina"
+                  required />
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label class="form-label">Start Year</label>
+                  <input
+                    id="eduStartYear"
+                    type="number"
+                    class="form-control"
+                    placeholder="2020"
+                    min="1950"
+                    max="2030" />
+                </div>
+                <div class="col-6">
+                  <label class="form-label">End Year</label>
+                  <input
+                    id="eduEndYear"
+                    type="number"
+                    class="form-control"
+                    placeholder="2024"
+                    min="1950"
+                    max="2030" />
+                </div>
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  id="eduCurrent"
+                  type="checkbox"
+                  class="form-check-input" />
+                <label class="form-check-label" for="eduCurrent"
+                  >I'm currently studying here</label
+                >
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea
+                  id="eduDescription"
+                  class="form-control"
+                  rows="3"
+                  placeholder="Activities, achievements..."></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-red"
+              data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-signup" id="saveEducationBtn">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

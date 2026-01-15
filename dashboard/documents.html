@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documents - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/dashboard.css" />
+    <link rel="stylesheet" href="/style/resume-builder.css" />
+    <link rel="stylesheet" href="/style/documents.css" />
+  </head>
+  <body class="dashboard-body">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <a href="/index.html" class="dashboard-brand">
+            <img src="/images/job-logo.png" alt="Job Portal Logo" />
+          </a>
+          <button class="mobile-toggle d-lg-none" id="closeSidebar">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="dashboard-nav">
+          <a class="dashboard-link" href="/dashboard/index.html">
+            <i class="fa-solid fa-house"></i> Dashboard
+          </a>
+          <a class="dashboard-link" href="/dashboard/saved.html">
+            <i class="fa-solid fa-bookmark"></i> Saved Jobs
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
+            <i class="fa-solid fa-paper-plane"></i> Applied
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
+            <i class="fa-solid fa-plus"></i> Post Job
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applications.html"
+            id="nav-applications">
+            <i class="fa-solid fa-users"></i> Applications
+          </a>
+          <a
+            class="dashboard-link active"
+            href="/dashboard/documents.html"
+            id="nav-documents">
+            <i class="fa-solid fa-folder-open"></i> Documents
+          </a>
+          <a class="dashboard-link" href="/dashboard/analytics.html">
+            <i class="fa-solid fa-chart-line"></i> Analytics
+          </a>
+          <a class="dashboard-link" href="/dashboard/profile.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a class="dashboard-link" href="/dashboard/settings.html">
+            <i class="fa-solid fa-gear"></i> Settings
+          </a>
+        </nav>
+
+        <div class="dashboard-actions">
+          <button id="logoutBtn" class="btn btn-md btn-signup w-100">
+            Logout
+          </button>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="container-fluid" style="max-width: 1100px">
+          <div class="dashboard-top mb-4">
+            <div class="d-flex align-items-center gap-3">
+              <button class="mobile-toggle" id="openSidebar">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div>
+                <h1 class="dashboard-title">Documents</h1>
+                <p class="dashboard-subtitle">
+                  Manage your resume and cover letters
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="documents-tabs mb-4">
+            <button class="documents-tab active" data-tab="resume">
+              <i class="fa-solid fa-file-lines me-2"></i>Resume Builder
+            </button>
+            <button class="documents-tab" data-tab="cover-letters">
+              <i class="fa-solid fa-envelope-open-text me-2"></i>Cover Letters
+            </button>
+          </div>
+
+          <div id="resumeTab" class="tab-content">
+            <div class="d-flex justify-content-end gap-2 mb-4">
+              <button id="previewBtn" class="btn btn-outline-red">
+                Preview
+              </button>
+              <button id="downloadBtn" class="btn btn-signup">
+                Download PDF
+              </button>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="resume-section mb-4">
+                  <h5 class="resume-section-title">Personal Information</h5>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Full Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        placeholder="John Doe" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Job Title</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="jobTitle"
+                        placeholder="Software Developer" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="john@example.com" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Phone</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        placeholder="+383 44 123 456" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Location</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="location"
+                        placeholder="Prishtina, Kosovo" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">LinkedIn (optional)</label>
+                      <input
+                        type="url"
+                        class="form-control"
+                        id="linkedin"
+                        placeholder="linkedin.com/in/johndoe" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="resume-section mb-4">
+                  <h5 class="resume-section-title">Professional Summary</h5>
+                  <textarea
+                    class="form-control"
+                    id="summary"
+                    rows="4"
+                    placeholder="Write a brief summary of your professional background and career goals..."></textarea>
+                </div>
+
+                <div class="resume-section mb-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="resume-section-title mb-0">Work Experience</h5>
+                    <button
+                      class="btn btn-sm btn-outline-red"
+                      id="addExperience">
+                      + Add Experience
+                    </button>
+                  </div>
+                  <div id="experienceList"></div>
+                </div>
+
+                <div class="resume-section mb-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="resume-section-title mb-0">Education</h5>
+                    <button
+                      class="btn btn-sm btn-outline-red"
+                      id="addEducation">
+                      + Add Education
+                    </button>
+                  </div>
+                  <div id="educationList"></div>
+                </div>
+
+                <div class="resume-section mb-4">
+                  <h5 class="resume-section-title">Skills</h5>
+                  <div class="mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="skillInput"
+                      placeholder="Type a skill and press Enter" />
+                  </div>
+                  <div id="skillsList" class="d-flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="resume-section">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="resume-section-title mb-0">Languages</h5>
+                    <button class="btn btn-sm btn-outline-red" id="addLanguage">
+                      + Add Language
+                    </button>
+                  </div>
+                  <div id="languagesList"></div>
+                </div>
+              </div>
+
+              <div class="col-lg-5">
+                <div class="resume-preview-container">
+                  <p class="resume-preview-label">Live Preview</p>
+                  <div class="resume-preview" id="resumePreview">
+                    <div class="resume-preview-header">
+                      <h2 class="resume-preview-name" id="previewName">
+                        Your Name
+                      </h2>
+                      <p class="resume-preview-title" id="previewTitle">
+                        Job Title
+                      </p>
+                      <div
+                        class="resume-preview-contact"
+                        id="previewContact"></div>
+                    </div>
+                    <div
+                      class="resume-preview-section"
+                      id="previewSummarySection"
+                      style="display: none">
+                      <h6 class="resume-preview-section-title">
+                        Professional Summary
+                      </h6>
+                      <p id="previewSummary"></p>
+                    </div>
+                    <div
+                      class="resume-preview-section"
+                      id="previewExperienceSection"
+                      style="display: none">
+                      <h6 class="resume-preview-section-title">
+                        Work Experience
+                      </h6>
+                      <div id="previewExperience"></div>
+                    </div>
+                    <div
+                      class="resume-preview-section"
+                      id="previewEducationSection"
+                      style="display: none">
+                      <h6 class="resume-preview-section-title">Education</h6>
+                      <div id="previewEducation"></div>
+                    </div>
+                    <div
+                      class="resume-preview-section"
+                      id="previewSkillsSection"
+                      style="display: none">
+                      <h6 class="resume-preview-section-title">Skills</h6>
+                      <div id="previewSkills"></div>
+                    </div>
+                    <div
+                      class="resume-preview-section"
+                      id="previewLanguagesSection"
+                      style="display: none">
+                      <h6 class="resume-preview-section-title">Languages</h6>
+                      <div id="previewLanguages"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="coverLettersTab" class="tab-content d-none">
+            <div class="row g-4 mb-4" id="templatesGrid"></div>
+
+            <div class="cover-letter-editor" id="editorSection">
+              <div class="editor-header">
+                <h3>
+                  <i class="fa-solid fa-pen-to-square me-2"></i>Cover Letter
+                  Editor
+                </h3>
+                <div class="editor-actions">
+                  <button class="btn btn-outline-red btn-sm" id="clearEditor">
+                    <i class="fa-solid fa-eraser me-1"></i> Clear
+                  </button>
+                  <button class="btn btn-signup btn-sm" id="copyLetter">
+                    <i class="fa-solid fa-copy me-1"></i> Copy
+                  </button>
+                </div>
+              </div>
+              <div class="editor-body">
+                <div class="editor-tips">
+                  <h6>
+                    <i class="fa-solid fa-lightbulb me-1"></i> Tips for
+                    customizing:
+                  </h6>
+                  <ul>
+                    <li>
+                      Replace all text in [BRACKETS] with your information
+                    </li>
+                    <li>Keep your cover letter to one page (300-400 words)</li>
+                    <li>Customize for each job application</li>
+                    <li>Match keywords from the job description</li>
+                  </ul>
+                </div>
+                <textarea
+                  id="coverLetterText"
+                  class="form-control"
+                  rows="20"
+                  placeholder="Select a template above to get started, or write your own cover letter here..."></textarea>
+              </div>
+            </div>
+
+            <div class="saved-letters-section mt-4">
+              <div
+                class="section-header d-flex justify-content-between align-items-center mb-3">
+                <h4>
+                  <i class="fa-solid fa-bookmark me-2"></i>Saved Cover Letters
+                </h4>
+                <button class="btn btn-signup btn-sm" id="saveLetter">
+                  <i class="fa-solid fa-plus me-1"></i> Save Current
+                </button>
+              </div>
+              <div id="savedLettersEmpty" class="text-center py-4 text-muted">
+                <i
+                  class="fa-solid fa-folder-open mb-2"
+                  style="font-size: 2rem; opacity: 0.3"></i>
+                <p class="mb-0">No saved cover letters yet</p>
+              </div>
+              <div id="savedLettersList" class="d-none"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal fade" id="previewModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Resume Preview</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div id="modalPreview" class="resume-preview"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-red"
+              data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-signup" id="modalDownloadBtn">
+              Download PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script type="module">
+      import {
+        requireAuth,
+        signOut,
+        getCurrentUser,
+        setupRoleBasedSidebar,
+        getUserRole,
+        USER_ROLES,
+        getCoverLetterTemplates
+      } from "/js/auth.js";
+
+      requireAuth({ redirectTo: "/signin.html" });
+      setupRoleBasedSidebar();
+
+      const user = getCurrentUser();
+
+      const role = getUserRole(user);
+      if (role === USER_ROLES.EMPLOYER) {
+        alert("This page is for job seekers only.");
+        window.location.href = "/dashboard/index.html";
+      }
+
+      const tabs = document.querySelectorAll(".documents-tab");
+      const resumeTab = document.getElementById("resumeTab");
+      const coverLettersTab = document.getElementById("coverLettersTab");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          const tabName = tab.dataset.tab;
+          if (tabName === "resume") {
+            resumeTab.classList.remove("d-none");
+            coverLettersTab.classList.add("d-none");
+          } else {
+            resumeTab.classList.add("d-none");
+            coverLettersTab.classList.remove("d-none");
+          }
+        });
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get("tab");
+      if (tabParam === "cover-letters") {
+        document.querySelector('[data-tab="cover-letters"]').click();
+      }
+
+      let resumeData = {
+        fullName: user?.fullName || "",
+        jobTitle: "",
+        email: user?.email || "",
+        phone: "",
+        location: "",
+        linkedin: "",
+        summary: "",
+        experience: [],
+        education: [],
+        skills: [],
+        languages: []
+      };
+
+      const saved = localStorage.getItem("resumeData");
+      if (saved) {
+        try {
+          resumeData = { ...resumeData, ...JSON.parse(saved) };
+        } catch (e) {}
+      }
+
+      const fullNameInput = document.getElementById("fullName");
+      const jobTitleInput = document.getElementById("jobTitle");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const locationInput = document.getElementById("location");
+      const linkedinInput = document.getElementById("linkedin");
+      const summaryInput = document.getElementById("summary");
+      const skillInput = document.getElementById("skillInput");
+      const experienceList = document.getElementById("experienceList");
+      const educationList = document.getElementById("educationList");
+      const skillsList = document.getElementById("skillsList");
+      const languagesList = document.getElementById("languagesList");
+
+      fullNameInput.value = resumeData.fullName;
+      jobTitleInput.value = resumeData.jobTitle;
+      emailInput.value = resumeData.email;
+      phoneInput.value = resumeData.phone;
+      locationInput.value = resumeData.location;
+      linkedinInput.value = resumeData.linkedin;
+      summaryInput.value = resumeData.summary;
+
+      function saveData() {
+        localStorage.setItem("resumeData", JSON.stringify(resumeData));
+      }
+
+      function updatePreview() {
+        document.getElementById("previewName").textContent =
+          resumeData.fullName || "Your Name";
+        document.getElementById("previewTitle").textContent =
+          resumeData.jobTitle || "Job Title";
+
+        const contactParts = [];
+        if (resumeData.email) contactParts.push(resumeData.email);
+        if (resumeData.phone) contactParts.push(resumeData.phone);
+        if (resumeData.location) contactParts.push(resumeData.location);
+        if (resumeData.linkedin) contactParts.push(resumeData.linkedin);
+        document.getElementById("previewContact").textContent =
+          contactParts.join(" • ");
+
+        const summarySection = document.getElementById("previewSummarySection");
+        if (resumeData.summary) {
+          summarySection.style.display = "block";
+          document.getElementById("previewSummary").textContent =
+            resumeData.summary;
+        } else {
+          summarySection.style.display = "none";
+        }
+
+        const expSection = document.getElementById("previewExperienceSection");
+        if (resumeData.experience.length) {
+          expSection.style.display = "block";
+          document.getElementById("previewExperience").innerHTML =
+            resumeData.experience
+              .map(
+                (exp) => `
+              <div class="resume-preview-item">
+                <div class="resume-preview-item-header">
+                  <strong>${exp.title}</strong>
+                  <span>${exp.startDate} - ${
+                  exp.current ? "Present" : exp.endDate
+                }</span>
+                </div>
+                <div class="resume-preview-item-subtitle">${exp.company}${
+                  exp.location ? " • " + exp.location : ""
+                }</div>
+                ${
+                  exp.description
+                    ? `<p class="resume-preview-item-desc">${exp.description}</p>`
+                    : ""
+                }
+              </div>
+            `
+              )
+              .join("");
+        } else {
+          expSection.style.display = "none";
+        }
+
+        const eduSection = document.getElementById("previewEducationSection");
+        if (resumeData.education.length) {
+          eduSection.style.display = "block";
+          document.getElementById("previewEducation").innerHTML =
+            resumeData.education
+              .map(
+                (edu) => `
+              <div class="resume-preview-item">
+                <div class="resume-preview-item-header">
+                  <strong>${edu.degree}</strong>
+                  <span>${edu.startDate} - ${
+                  edu.current ? "Present" : edu.endDate
+                }</span>
+                </div>
+                <div class="resume-preview-item-subtitle">${edu.school}${
+                  edu.location ? " • " + edu.location : ""
+                }</div>
+              </div>
+            `
+              )
+              .join("");
+        } else {
+          eduSection.style.display = "none";
+        }
+
+        const skillsSection = document.getElementById("previewSkillsSection");
+        if (resumeData.skills.length) {
+          skillsSection.style.display = "block";
+          document.getElementById("previewSkills").innerHTML = resumeData.skills
+            .map(
+              (skill) => `<span class="resume-preview-skill">${skill}</span>`
+            )
+            .join("");
+        } else {
+          skillsSection.style.display = "none";
+        }
+
+        const langSection = document.getElementById("previewLanguagesSection");
+        if (resumeData.languages.length) {
+          langSection.style.display = "block";
+          document.getElementById("previewLanguages").innerHTML =
+            resumeData.languages
+              .map(
+                (lang) =>
+                  `<span class="resume-preview-lang">${lang.name} - ${lang.level}</span>`
+              )
+              .join("");
+        } else {
+          langSection.style.display = "none";
+        }
+
+        saveData();
+      }
+
+      function renderExperience() {
+        experienceList.innerHTML =
+          resumeData.experience
+            .map(
+              (exp, i) => `
+            <div class="resume-item mb-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <strong>${exp.title}</strong> at ${exp.company}
+                  <div class="text-muted" style="font-size: 13px">${
+                    exp.startDate
+                  } - ${exp.current ? "Present" : exp.endDate}</div>
+                </div>
+                <button class="btn btn-sm btn-outline-danger remove-exp" data-index="${i}">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          `
+            )
+            .join("") || '<p class="text-muted">No experience added yet</p>';
+
+        experienceList.querySelectorAll(".remove-exp").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            resumeData.experience.splice(parseInt(btn.dataset.index), 1);
+            renderExperience();
+            updatePreview();
+          });
+        });
+      }
+
+      function renderEducation() {
+        educationList.innerHTML =
+          resumeData.education
+            .map(
+              (edu, i) => `
+            <div class="resume-item mb-3">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <strong>${edu.degree}</strong> at ${edu.school}
+                  <div class="text-muted" style="font-size: 13px">${
+                    edu.startDate
+                  } - ${edu.current ? "Present" : edu.endDate}</div>
+                </div>
+                <button class="btn btn-sm btn-outline-danger remove-edu" data-index="${i}">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          `
+            )
+            .join("") || '<p class="text-muted">No education added yet</p>';
+
+        educationList.querySelectorAll(".remove-edu").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            resumeData.education.splice(parseInt(btn.dataset.index), 1);
+            renderEducation();
+            updatePreview();
+          });
+        });
+      }
+
+      function renderSkills() {
+        skillsList.innerHTML = resumeData.skills
+          .map(
+            (skill, i) => `
+            <span class="badge bg-light text-dark" style="font-size: 14px; padding: 8px 12px;">
+              ${skill}
+              <button class="btn btn-sm p-0 ms-2 remove-skill" data-index="${i}" style="line-height: 1;">
+                <i class="fa-solid fa-times" style="font-size: 10px;"></i>
+              </button>
+            </span>
+          `
+          )
+          .join("");
+
+        skillsList.querySelectorAll(".remove-skill").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            resumeData.skills.splice(parseInt(btn.dataset.index), 1);
+            renderSkills();
+            updatePreview();
+          });
+        });
+      }
+
+      function renderLanguages() {
+        languagesList.innerHTML =
+          resumeData.languages
+            .map(
+              (lang, i) => `
+            <div class="resume-item mb-2 d-flex justify-content-between align-items-center">
+              <span>${lang.name} - ${lang.level}</span>
+              <button class="btn btn-sm btn-outline-danger remove-lang" data-index="${i}">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          `
+            )
+            .join("") || '<p class="text-muted">No languages added yet</p>';
+
+        languagesList.querySelectorAll(".remove-lang").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            resumeData.languages.splice(parseInt(btn.dataset.index), 1);
+            renderLanguages();
+            updatePreview();
+          });
+        });
+      }
+
+      [
+        fullNameInput,
+        jobTitleInput,
+        emailInput,
+        phoneInput,
+        locationInput,
+        linkedinInput,
+        summaryInput
+      ].forEach((input) => {
+        input.addEventListener("input", () => {
+          resumeData[input.id] = input.value;
+          updatePreview();
+        });
+      });
+
+      skillInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && skillInput.value.trim()) {
+          e.preventDefault();
+          resumeData.skills.push(skillInput.value.trim());
+          skillInput.value = "";
+          renderSkills();
+          updatePreview();
+        }
+      });
+
+      document.getElementById("addExperience").addEventListener("click", () => {
+        const title = prompt("Job Title:");
+        if (!title) return;
+        const company = prompt("Company:");
+        if (!company) return;
+        const startDate = prompt("Start Date (e.g., Jan 2020):");
+        const endDate = prompt("End Date (e.g., Present):");
+
+        resumeData.experience.push({
+          title,
+          company,
+          startDate,
+          endDate: endDate || "",
+          current: endDate?.toLowerCase() === "present",
+          location: "",
+          description: ""
+        });
+        renderExperience();
+        updatePreview();
+      });
+
+      document.getElementById("addEducation").addEventListener("click", () => {
+        const degree = prompt("Degree:");
+        if (!degree) return;
+        const school = prompt("School/University:");
+        if (!school) return;
+        const startDate = prompt("Start Date (e.g., 2018):");
+        const endDate = prompt("End Date (e.g., 2022):");
+
+        resumeData.education.push({
+          degree,
+          school,
+          startDate,
+          endDate: endDate || "",
+          current: endDate?.toLowerCase() === "present",
+          location: ""
+        });
+        renderEducation();
+        updatePreview();
+      });
+
+      document.getElementById("addLanguage").addEventListener("click", () => {
+        const name = prompt("Language:");
+        if (!name) return;
+        const level = prompt(
+          "Level (e.g., Native, Fluent, Intermediate, Basic):"
+        );
+        if (!level) return;
+
+        resumeData.languages.push({ name, level });
+        renderLanguages();
+        updatePreview();
+      });
+
+      document.getElementById("previewBtn").addEventListener("click", () => {
+        document.getElementById("modalPreview").innerHTML =
+          document.getElementById("resumePreview").innerHTML;
+        new bootstrap.Modal(document.getElementById("previewModal")).show();
+      });
+
+      function downloadPDF() {
+        const element = document
+          .getElementById("resumePreview")
+          .cloneNode(true);
+        element.style.padding = "40px";
+        element.style.background = "white";
+
+        const opt = {
+          margin: 0,
+          filename: `${resumeData.fullName || "resume"}.pdf`,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+        };
+
+        html2pdf().set(opt).from(element).save();
+      }
+
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", downloadPDF);
+      document
+        .getElementById("modalDownloadBtn")
+        ?.addEventListener("click", downloadPDF);
+
+      renderExperience();
+      renderEducation();
+      renderSkills();
+      renderLanguages();
+      updatePreview();
+
+      const templates = getCoverLetterTemplates();
+      const templatesGrid = document.getElementById("templatesGrid");
+      const coverLetterText = document.getElementById("coverLetterText");
+      let savedLetters = JSON.parse(
+        localStorage.getItem("jp_saved_cover_letters") || "[]"
+      );
+
+      function renderTemplates() {
+        templatesGrid.innerHTML = templates
+          .map(
+            (t, i) => `
+          <div class="col-md-6 col-lg-4">
+            <div class="template-card" data-index="${i}">
+              <div class="template-icon">
+                <i class="fa-solid ${t.icon}"></i>
+              </div>
+              <h5 class="template-title">${t.name}</h5>
+              <p class="template-desc">${t.description}</p>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+
+        templatesGrid.querySelectorAll(".template-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            templatesGrid
+              .querySelectorAll(".template-card")
+              .forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+            coverLetterText.value =
+              templates[parseInt(card.dataset.index)].content;
+          });
+        });
+      }
+
+      function renderSavedLetters() {
+        const empty = document.getElementById("savedLettersEmpty");
+        const list = document.getElementById("savedLettersList");
+
+        if (savedLetters.length === 0) {
+          empty.classList.remove("d-none");
+          list.classList.add("d-none");
+          return;
+        }
+
+        empty.classList.add("d-none");
+        list.classList.remove("d-none");
+        list.innerHTML = savedLetters
+          .map(
+            (letter, i) => `
+          <div class="saved-letter-item">
+            <div class="saved-letter-header">
+              <span class="saved-letter-title">${letter.title}</span>
+              <span class="saved-letter-date">${new Date(
+                letter.savedAt
+              ).toLocaleDateString()}</span>
+            </div>
+            <p class="saved-letter-preview">${letter.content.substring(
+              0,
+              150
+            )}...</p>
+            <div class="saved-letter-actions">
+              <button class="btn btn-sm btn-outline-red load-letter" data-index="${i}">
+                <i class="fa-solid fa-folder-open me-1"></i>Load
+              </button>
+              <button class="btn btn-sm btn-outline-danger delete-letter" data-index="${i}">
+                <i class="fa-solid fa-trash me-1"></i>Delete
+              </button>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+
+        list.querySelectorAll(".load-letter").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            coverLetterText.value =
+              savedLetters[parseInt(btn.dataset.index)].content;
+          });
+        });
+
+        list.querySelectorAll(".delete-letter").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            savedLetters.splice(parseInt(btn.dataset.index), 1);
+            localStorage.setItem(
+              "jp_saved_cover_letters",
+              JSON.stringify(savedLetters)
+            );
+            renderSavedLetters();
+          });
+        });
+      }
+
+      document.getElementById("clearEditor").addEventListener("click", () => {
+        coverLetterText.value = "";
+        templatesGrid
+          .querySelectorAll(".template-card")
+          .forEach((c) => c.classList.remove("active"));
+      });
+
+      document.getElementById("copyLetter").addEventListener("click", () => {
+        navigator.clipboard.writeText(coverLetterText.value);
+        alert("Cover letter copied to clipboard!");
+      });
+
+      document.getElementById("saveLetter").addEventListener("click", () => {
+        const content = coverLetterText.value.trim();
+        if (!content) {
+          alert("Please write a cover letter first");
+          return;
+        }
+        const title = prompt(
+          "Give this cover letter a name:",
+          "My Cover Letter"
+        );
+        if (!title) return;
+
+        savedLetters.unshift({
+          title,
+          content,
+          savedAt: new Date().toISOString()
+        });
+        localStorage.setItem(
+          "jp_saved_cover_letters",
+          JSON.stringify(savedLetters)
+        );
+        renderSavedLetters();
+      });
+
+      renderTemplates();
+      renderSavedLetters();
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut();
+        window.location.href = "/signin.html";
+      });
+
+      const sidebar = document.getElementById("dashboardSidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const openBtn = document.getElementById("openSidebar");
+      const closeBtn = document.getElementById("closeSidebar");
+
+      function openSidebar() {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      openBtn?.addEventListener("click", openSidebar);
+      closeBtn?.addEventListener("click", closeSidebar);
+      overlay?.addEventListener("click", closeSidebar);
+    </script>
+  </body>
+</html>

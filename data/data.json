@@ -1,0 +1,699 @@
+{
+  "categories": [
+    "IT & Software",
+    "Design & Creative",
+    "Marketing & Sales",
+    "Finance",
+    "Education",
+    "Engineering",
+    "Healthcare",
+    "Customer Support",
+    "Administration"
+  ],
+
+  "jobTypes": ["Full-time", "Part-time", "Remote", "Internship", "Contract"],
+
+  "companies": [
+    {
+      "id": 1,
+      "name": "Gjirafa",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/gjirafa.svg",
+      "website": "https://gjirafa.com"
+    },
+    {
+      "id": 2,
+      "name": "Cacttus",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/cacttus.png",
+      "website": "https://cacttus.education"
+    },
+    {
+      "id": 3,
+      "name": "Asseco SEE",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/asseco.svg",
+      "website": "https://see.asseco.com"
+    },
+    {
+      "id": 4,
+      "name": "Kutia",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/kutia.png",
+      "website": "https://kutia.net"
+    },
+    {
+      "id": 5,
+      "name": "Telkos",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/telkos.png",
+      "website": "https://telkos.net"
+    },
+    {
+      "id": 6,
+      "name": "Tive Inc",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/tive.svg",
+      "website": "https://tive.io"
+    },
+    {
+      "id": 7,
+      "name": "StarLabs",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/starlabs.png",
+      "website": "https://starlabs.dev"
+    },
+    {
+      "id": 8,
+      "name": "Solveo",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/solveo.png",
+      "website": "https://solveo.co"
+    },
+    {
+      "id": 9,
+      "name": "BKT Kosovo",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/bkt.svg",
+      "website": "https://bkt-ks.com"
+    },
+    {
+      "id": 10,
+      "name": "ProCredit Bank",
+      "location": "Prishtina, Kosovo",
+      "logo": "images/companies/procredit.svg",
+      "website": "https://procreditbank-kos.com"
+    }
+  ],
+
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Frontend Developer",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1200€ - 1800€",
+      "experience": "2+ years",
+      "description": "Build responsive web interfaces using React.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 2,
+      "title": "Backend Developer",
+      "companyId": 2,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1500€ - 2200€",
+      "experience": "3+ years",
+      "description": "Develop APIs with Node.js and databases.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 3,
+      "title": "Full Stack Developer",
+      "companyId": 3,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1600€ - 2400€",
+      "experience": "3+ years",
+      "description": "Work across frontend and backend systems.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 4,
+      "title": "Mobile App Developer",
+      "companyId": 7,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1400€ - 2000€",
+      "experience": "2+ years",
+      "description": "Build mobile apps using React Native.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 5,
+      "title": "QA Engineer",
+      "companyId": 6,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1000€ - 1500€",
+      "experience": "1+ year",
+      "description": "Test applications and ensure quality.",
+      "postedDate": "2026-01-05"
+    },
+
+    {
+      "id": 6,
+      "title": "UI/UX Designer",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "Design & Creative",
+      "type": "Full-time",
+      "salary": "1000€ - 1600€",
+      "experience": "2+ years",
+      "description": "Design user experiences and interfaces.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 7,
+      "title": "Graphic Designer",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Design & Creative",
+      "type": "Part-time",
+      "salary": "700€ - 1000€",
+      "experience": "1+ year",
+      "description": "Create marketing visuals and branding.",
+      "postedDate": "2026-01-01"
+    },
+
+    {
+      "id": 8,
+      "title": "Digital Marketing Specialist",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Full-time",
+      "salary": "900€ - 1400€",
+      "experience": "2+ years",
+      "description": "Manage digital marketing campaigns.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 9,
+      "title": "Sales Executive",
+      "companyId": 4,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Full-time",
+      "salary": "800€ + commission",
+      "experience": "1+ year",
+      "description": "Drive sales and customer acquisition.",
+      "postedDate": "2026-01-04"
+    },
+
+    {
+      "id": 10,
+      "title": "Accountant",
+      "companyId": 9,
+      "location": "Prishtina",
+      "category": "Finance",
+      "type": "Full-time",
+      "salary": "1000€ - 1500€",
+      "experience": "2+ years",
+      "description": "Handle financial records and reporting.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 11,
+      "title": "Financial Analyst",
+      "companyId": 10,
+      "location": "Prishtina",
+      "category": "Finance",
+      "type": "Full-time",
+      "salary": "1200€ - 1800€",
+      "experience": "3+ years",
+      "description": "Analyze financial data and trends.",
+      "postedDate": "2026-01-02"
+    },
+
+    {
+      "id": 12,
+      "title": "English Teacher",
+      "companyId": 2,
+      "location": "Prishtina",
+      "category": "Education",
+      "type": "Full-time",
+      "salary": "800€ - 1200€",
+      "experience": "1+ year",
+      "description": "Teach English language courses.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 13,
+      "title": "Programming Instructor",
+      "companyId": 2,
+      "location": "Prishtina",
+      "category": "Education",
+      "type": "Part-time",
+      "salary": "20€/hour",
+      "experience": "2+ years",
+      "description": "Teach JavaScript and web development.",
+      "postedDate": "2026-01-04"
+    },
+
+    {
+      "id": 14,
+      "title": "Network Engineer",
+      "companyId": 5,
+      "location": "Prishtina",
+      "category": "Engineering",
+      "type": "Full-time",
+      "salary": "1300€ - 1900€",
+      "experience": "3+ years",
+      "description": "Maintain network infrastructure.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 15,
+      "title": "Systems Engineer",
+      "companyId": 4,
+      "location": "Prishtina",
+      "category": "Engineering",
+      "type": "Full-time",
+      "salary": "1400€ - 2100€",
+      "experience": "3+ years",
+      "description": "Manage enterprise systems.",
+      "postedDate": "2026-01-01"
+    },
+
+    {
+      "id": 16,
+      "title": "Nurse",
+      "companyId": 10,
+      "location": "Prishtina",
+      "category": "Healthcare",
+      "type": "Full-time",
+      "salary": "900€ - 1200€",
+      "experience": "1+ year",
+      "description": "Provide patient care and support.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 17,
+      "title": "Medical Assistant",
+      "companyId": 9,
+      "location": "Prishtina",
+      "category": "Healthcare",
+      "type": "Full-time",
+      "salary": "800€ - 1100€",
+      "experience": "1+ year",
+      "description": "Assist doctors and patients.",
+      "postedDate": "2026-01-03"
+    },
+
+    {
+      "id": 18,
+      "title": "Customer Support Agent",
+      "companyId": 4,
+      "location": "Prishtina",
+      "category": "Customer Support",
+      "type": "Full-time",
+      "salary": "700€ - 900€",
+      "experience": "0-1 year",
+      "description": "Support customers via phone and email.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 19,
+      "title": "Call Center Operator",
+      "companyId": 5,
+      "location": "Prishtina",
+      "category": "Customer Support",
+      "type": "Full-time",
+      "salary": "650€ - 850€",
+      "experience": "0-1 year",
+      "description": "Handle customer calls and issues.",
+      "postedDate": "2026-01-02"
+    },
+
+    {
+      "id": 20,
+      "title": "Office Administrator",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Administration",
+      "type": "Full-time",
+      "salary": "700€ - 1000€",
+      "experience": "1+ year",
+      "description": "Manage office operations and documentation.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 21,
+      "title": "Junior Frontend Developer",
+      "companyId": 7,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "900€ - 1200€",
+      "experience": "0-1 year",
+      "description": "Assist in building web interfaces using HTML, CSS, and JavaScript.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 22,
+      "title": "DevOps Engineer",
+      "companyId": 6,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1800€ - 2600€",
+      "experience": "4+ years",
+      "description": "Manage CI/CD pipelines and cloud infrastructure.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 23,
+      "title": "IT Support Specialist",
+      "companyId": 5,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "800€ - 1100€",
+      "experience": "1+ year",
+      "description": "Provide technical support for internal systems.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 24,
+      "title": "Product Designer",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Design & Creative",
+      "type": "Full-time",
+      "salary": "1100€ - 1700€",
+      "experience": "3+ years",
+      "description": "Design digital products from concept to launch.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 25,
+      "title": "Video Content Creator",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "Design & Creative",
+      "type": "Part-time",
+      "salary": "600€ - 900€",
+      "experience": "1+ year",
+      "description": "Create promotional and social media video content.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 26,
+      "title": "SEO Specialist",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Full-time",
+      "salary": "900€ - 1400€",
+      "experience": "2+ years",
+      "description": "Optimize websites for search engines and traffic growth.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 27,
+      "title": "Social Media Manager",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Full-time",
+      "salary": "800€ - 1300€",
+      "experience": "2+ years",
+      "description": "Manage and grow social media channels.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 28,
+      "title": "Business Development Manager",
+      "companyId": 4,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Full-time",
+      "salary": "1200€ + bonus",
+      "experience": "3+ years",
+      "description": "Develop partnerships and business opportunities.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 29,
+      "title": "Junior Accountant",
+      "companyId": 9,
+      "location": "Prishtina",
+      "category": "Finance",
+      "type": "Full-time",
+      "salary": "800€ - 1100€",
+      "experience": "0-1 year",
+      "description": "Assist with bookkeeping and financial records.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 30,
+      "title": "Payroll Specialist",
+      "companyId": 10,
+      "location": "Prishtina",
+      "category": "Finance",
+      "type": "Full-time",
+      "salary": "1000€ - 1500€",
+      "experience": "2+ years",
+      "description": "Manage payroll processing and compliance.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 31,
+      "title": "Math Teacher",
+      "companyId": 2,
+      "location": "Prishtina",
+      "category": "Education",
+      "type": "Full-time",
+      "salary": "850€ - 1200€",
+      "experience": "1+ year",
+      "description": "Teach mathematics to high school students.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 32,
+      "title": "IT Trainer",
+      "companyId": 2,
+      "location": "Prishtina",
+      "category": "Education",
+      "type": "Contract",
+      "salary": "25€/hour",
+      "experience": "3+ years",
+      "description": "Deliver professional IT training sessions.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 33,
+      "title": "Electrical Engineer",
+      "companyId": 5,
+      "location": "Prishtina",
+      "category": "Engineering",
+      "type": "Full-time",
+      "salary": "1200€ - 1800€",
+      "experience": "2+ years",
+      "description": "Design and maintain electrical systems.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 34,
+      "title": "Mechanical Engineer",
+      "companyId": 4,
+      "location": "Prishtina",
+      "category": "Engineering",
+      "type": "Full-time",
+      "salary": "1300€ - 1900€",
+      "experience": "3+ years",
+      "description": "Maintain and improve mechanical infrastructure.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 35,
+      "title": "General Practitioner",
+      "companyId": 10,
+      "location": "Prishtina",
+      "category": "Healthcare",
+      "type": "Full-time",
+      "salary": "2000€ - 3000€",
+      "experience": "4+ years",
+      "description": "Provide medical care and consultations.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 36,
+      "title": "Pharmacy Assistant",
+      "companyId": 9,
+      "location": "Prishtina",
+      "category": "Healthcare",
+      "type": "Full-time",
+      "salary": "750€ - 1000€",
+      "experience": "1+ year",
+      "description": "Assist in pharmacy operations and customer service.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 37,
+      "title": "Technical Support Engineer",
+      "companyId": 6,
+      "location": "Prishtina",
+      "category": "Customer Support",
+      "type": "Full-time",
+      "salary": "900€ - 1300€",
+      "experience": "2+ years",
+      "description": "Provide advanced technical support to clients.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 38,
+      "title": "Customer Success Manager",
+      "companyId": 7,
+      "location": "Prishtina",
+      "category": "Customer Support",
+      "type": "Full-time",
+      "salary": "1100€ - 1600€",
+      "experience": "3+ years",
+      "description": "Ensure long-term customer satisfaction and retention.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 39,
+      "title": "HR Assistant",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Administration",
+      "type": "Full-time",
+      "salary": "800€ - 1100€",
+      "experience": "1+ year",
+      "description": "Support HR operations and recruitment.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 40,
+      "title": "Office Manager",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "Administration",
+      "type": "Full-time",
+      "salary": "1000€ - 1400€",
+      "experience": "2+ years",
+      "description": "Oversee daily office operations.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 41,
+      "title": "Data Analyst",
+      "companyId": 3,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1400€ - 2000€",
+      "experience": "2+ years",
+      "description": "Analyze data and generate business insights.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 42,
+      "title": "Cybersecurity Analyst",
+      "companyId": 3,
+      "location": "Prishtina",
+      "category": "IT & Software",
+      "type": "Full-time",
+      "salary": "1700€ - 2500€",
+      "experience": "4+ years",
+      "description": "Ensure security of systems and data.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 43,
+      "title": "Content Writer",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Remote",
+      "salary": "700€ - 1100€",
+      "experience": "1+ year",
+      "description": "Write SEO-friendly articles and marketing content.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 44,
+      "title": "Brand Manager",
+      "companyId": 1,
+      "location": "Prishtina",
+      "category": "Marketing & Sales",
+      "type": "Full-time",
+      "salary": "1400€ - 2000€",
+      "experience": "3+ years",
+      "description": "Manage brand strategy and positioning.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 45,
+      "title": "Finance Officer",
+      "companyId": 10,
+      "location": "Prishtina",
+      "category": "Finance",
+      "type": "Full-time",
+      "salary": "1300€ - 1800€",
+      "experience": "3+ years",
+      "description": "Oversee financial planning and controls.",
+      "postedDate": "2026-01-05"
+    },
+    {
+      "id": 46,
+      "title": "Economics Lecturer",
+      "companyId": 2,
+      "location": "Prishtina",
+      "category": "Education",
+      "type": "Contract",
+      "salary": "30€/hour",
+      "experience": "5+ years",
+      "description": "Deliver economics lectures and exams.",
+      "postedDate": "2026-01-01"
+    },
+    {
+      "id": 47,
+      "title": "Civil Engineer",
+      "companyId": 5,
+      "location": "Prishtina",
+      "category": "Engineering",
+      "type": "Full-time",
+      "salary": "1400€ - 2000€",
+      "experience": "3+ years",
+      "description": "Supervise construction projects.",
+      "postedDate": "2026-01-02"
+    },
+    {
+      "id": 48,
+      "title": "Laboratory Technician",
+      "companyId": 9,
+      "location": "Prishtina",
+      "category": "Healthcare",
+      "type": "Full-time",
+      "salary": "900€ - 1200€",
+      "experience": "2+ years",
+      "description": "Perform laboratory tests and analyses.",
+      "postedDate": "2026-01-03"
+    },
+    {
+      "id": 49,
+      "title": "Help Desk Operator",
+      "companyId": 4,
+      "location": "Prishtina",
+      "category": "Customer Support",
+      "type": "Part-time",
+      "salary": "600€ - 800€",
+      "experience": "0-1 year",
+      "description": "Handle basic IT support requests.",
+      "postedDate": "2026-01-04"
+    },
+    {
+      "id": 50,
+      "title": "Administrative Assistant",
+      "companyId": 8,
+      "location": "Prishtina",
+      "category": "Administration",
+      "type": "Full-time",
+      "salary": "700€ - 1000€",
+      "experience": "1+ year",
+      "description": "Provide administrative and clerical support.",
+      "postedDate": "2026-01-05"
+    }
+  ]
+}

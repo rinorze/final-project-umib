@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sign In - JobPortal</title>
+    <title>Sign Up - JobPortal</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -21,9 +21,10 @@
   <body>
     <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="/index.html">
-          <img src="/images/job-logo.png" alt="Job Portal Logo" />
-        </a>
+        <a class="navbar-brand fw-bold" href="/index.html"
+          ><img src="/images/job-logo.png" alt="Job Portal Logo"
+        /></a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -34,6 +35,7 @@
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
           <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-3">
             <li class="nav-item">
@@ -52,7 +54,7 @@
               <a class="nav-link" href="/contact.html">Contact</a>
             </li>
             <li id="navAuth">
-              <a href="/signup.html" class="btn btn-md btn-signup">Sign Up</a>
+              <a href="/signin.html" class="btn btn-md btn-signup">Sign In</a>
             </li>
           </ul>
         </div>
@@ -61,18 +63,30 @@
 
     <main class="main">
       <section class="home-jobs" style="padding: 60px 0">
-        <div class="container" style="max-width: 520px">
+        <div class="container" style="max-width: 560px">
           <div class="card border-0 shadow-sm">
             <div class="card-body p-4 p-md-5">
               <span class="badge badge-accent mb-2 px-3 py-2 rounded-pill"
                 >Account</span
               >
-              <h2 class="mb-2" style="font-weight: 700">Welcome back</h2>
-              <p class="text-muted mb-4">Sign in to access your dashboard.</p>
+              <h2 class="mb-2" style="font-weight: 700">Create your account</h2>
+              <p class="text-muted mb-4">Sign up to start applying for jobs.</p>
 
               <div id="formAlert" class="alert d-none" role="alert"></div>
 
-              <form id="signinForm" novalidate>
+              <form id="signupForm" novalidate>
+                <div class="mb-3">
+                  <label for="fullName" class="form-label">Full name</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    class="form-control"
+                    placeholder="John Doe"
+                    autocomplete="name"
+                    required />
+                </div>
+
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
@@ -84,6 +98,7 @@
                     autocomplete="email"
                     required />
                 </div>
+
                 <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
                   <div class="password-input-group">
@@ -92,32 +107,90 @@
                       name="password"
                       type="password"
                       class="form-control"
-                      placeholder="••••••••"
-                      autocomplete="current-password"
+                      placeholder="At least 6 characters"
+                      autocomplete="new-password"
                       required />
                     <button
                       type="button"
                       class="password-toggle"
-                      id="passwordToggle">
+                      data-target="password">
                       <i class="fa-solid fa-eye"></i>
                     </button>
                   </div>
+                  <div class="password-strength mt-2">
+                    <div class="password-strength-bar">
+                      <div
+                        class="password-strength-fill"
+                        id="passwordStrength"></div>
+                    </div>
+                    <small
+                      class="password-strength-text"
+                      id="passwordStrengthText"
+                      >Use 6+ characters</small
+                    >
+                  </div>
                 </div>
+
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label"
+                    >Confirm password</label
+                  >
+                  <div class="password-input-group">
+                    <input
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      type="password"
+                      class="form-control"
+                      placeholder="Repeat password"
+                      autocomplete="new-password"
+                      required />
+                    <button
+                      type="button"
+                      class="password-toggle"
+                      data-target="confirmPassword">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                  <small class="text-muted" id="passwordMatch"></small>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">I am a...</label>
+                  <div class="role-selector">
+                    <label class="role-option">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="jobseeker"
+                        checked />
+                      <div class="role-option-content">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="role-title">Job Seeker</span>
+                        <span class="role-desc"
+                          >Looking for job opportunities</span
+                        >
+                      </div>
+                    </label>
+                    <label class="role-option">
+                      <input type="radio" name="role" value="employer" />
+                      <div class="role-option-content">
+                        <i class="fa-solid fa-building"></i>
+                        <span class="role-title">Employer</span>
+                        <span class="role-desc"
+                          >Hiring talent for my company</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
                 <button
                   id="submitBtn"
                   type="submit"
                   class="btn btn-signup w-100">
-                  Sign In
+                  Sign Up
                 </button>
               </form>
-
-              <div class="text-end mt-2">
-                <a
-                  href="/forgot-password.html"
-                  style="color: #666; font-size: 14px"
-                  >Forgot password?</a
-                >
-              </div>
 
               <div class="divider-text my-4"><span>or continue with</span></div>
 
@@ -125,7 +198,7 @@
                 <button
                   type="button"
                   class="btn btn-social btn-google"
-                  id="googleLogin">
+                  id="googleSignup">
                   <svg width="18" height="18" viewBox="0 0 24 24">
                     <path
                       fill="#4285F4"
@@ -145,9 +218,9 @@
               </div>
 
               <p class="mt-4 mb-0 text-center">
-                Don't have an account?
-                <a href="/signup.html" style="color: #b71c1c; font-weight: 600"
-                  >Sign Up</a
+                Already have an account?
+                <a href="/signin.html" style="color: #b71c1c; font-weight: 600"
+                  >Sign In</a
                 >
               </p>
             </div>
@@ -162,17 +235,20 @@
       crossorigin="anonymous"></script>
 
     <script type="module">
-      import { signIn, redirectIfAuthed, googleSignIn } from "/js/auth.js";
+      import { signUp, redirectIfAuthed, googleSignIn } from "/js/auth.js";
 
       const params = new URLSearchParams(window.location.search);
       const next = params.get("next");
       redirectIfAuthed({ to: next || "/dashboard/index.html" });
 
-      const form = document.getElementById("signinForm");
+      const form = document.getElementById("signupForm");
       const alertBox = document.getElementById("formAlert");
       const submitBtn = document.getElementById("submitBtn");
       const passwordInput = document.getElementById("password");
-      const toggleBtn = document.getElementById("passwordToggle");
+      const confirmInput = document.getElementById("confirmPassword");
+      const strengthFill = document.getElementById("passwordStrength");
+      const strengthText = document.getElementById("passwordStrengthText");
+      const matchText = document.getElementById("passwordMatch");
 
       function showAlert(type, message) {
         alertBox.classList.remove("d-none", "alert-danger", "alert-success");
@@ -182,28 +258,107 @@
         alertBox.textContent = message;
       }
 
-      toggleBtn.addEventListener("click", () => {
-        const icon = toggleBtn.querySelector("i");
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          icon.classList.replace("fa-eye", "fa-eye-slash");
+      document.querySelectorAll(".password-toggle").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-target");
+          const input = document.getElementById(targetId);
+          const icon = btn.querySelector("i");
+
+          if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+      });
+
+      function checkPasswordStrength(password) {
+        let strength = 0;
+        if (password.length >= 6) strength++;
+        if (password.length >= 8) strength++;
+        if (/[A-Z]/.test(password)) strength++;
+        if (/[0-9]/.test(password)) strength++;
+        if (/[^A-Za-z0-9]/.test(password)) strength++;
+        return Math.min(strength, 3);
+      }
+
+      passwordInput.addEventListener("input", () => {
+        const password = passwordInput.value;
+        const strength = checkPasswordStrength(password);
+
+        strengthFill.classList.remove("weak", "medium", "strong");
+
+        if (password.length === 0) {
+          strengthText.textContent = "Use 6+ characters";
+        } else if (strength <= 1) {
+          strengthFill.classList.add("weak");
+          strengthText.textContent = "Weak password";
+        } else if (strength === 2) {
+          strengthFill.classList.add("medium");
+          strengthText.textContent = "Medium strength";
         } else {
-          passwordInput.type = "password";
-          icon.classList.replace("fa-eye-slash", "fa-eye");
+          strengthFill.classList.add("strong");
+          strengthText.textContent = "Strong password";
+        }
+
+        if (confirmInput.value) {
+          checkPasswordMatch();
         }
       });
+
+      function checkPasswordMatch() {
+        const password = passwordInput.value;
+        const confirm = confirmInput.value;
+
+        if (!confirm) {
+          matchText.textContent = "";
+          confirmInput.classList.remove("is-valid", "is-invalid");
+          return;
+        }
+
+        if (password === confirm) {
+          matchText.textContent = "✓ Passwords match";
+          matchText.style.color = "#22c55e";
+          confirmInput.classList.remove("is-invalid");
+          confirmInput.classList.add("is-valid");
+        } else {
+          matchText.textContent = "✗ Passwords don't match";
+          matchText.style.color = "#ef4444";
+          confirmInput.classList.remove("is-valid");
+          confirmInput.classList.add("is-invalid");
+        }
+      }
+
+      confirmInput.addEventListener("input", checkPasswordMatch);
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         submitBtn.disabled = true;
+
+        const fullName = document.getElementById("fullName").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-        const res = signIn({ email, password });
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const role = document.querySelector('input[name="role"]:checked').value;
+
+        if (password !== confirmPassword) {
+          showAlert("error", "Passwords do not match.");
+          submitBtn.disabled = false;
+          return;
+        }
+
+        const res = signUp({ fullName, email, password, role });
         if (!res.ok) {
           showAlert("error", res.message);
           submitBtn.disabled = false;
           return;
         }
+
         window.location.href = next || "/dashboard/index.html";
       });
 
@@ -219,7 +374,7 @@
           googleTokenClient = google.accounts.oauth2.initTokenClient({
             client_id: GOOGLE_CLIENT_ID,
             scope: "email profile",
-            callback: handleGoogleTokenResponse,
+            callback: handleGoogleTokenResponse
           });
         };
       }
@@ -234,9 +389,7 @@
           const response = await fetch(
             "https://www.googleapis.com/oauth2/v3/userinfo",
             {
-              headers: {
-                Authorization: `Bearer ${tokenResponse.access_token}`,
-              },
+              headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
             }
           );
           const userInfo = await response.json();
@@ -245,11 +398,11 @@
             email: userInfo.email,
             fullName: userInfo.name,
             picture: userInfo.picture,
-            googleId: userInfo.sub,
+            googleId: userInfo.sub
           });
 
           if (res.ok) {
-            showAlert("success", "Signed in with Google!");
+            showAlert("success", "Signed up with Google!");
             setTimeout(() => {
               window.location.href = next || "/dashboard/index.html";
             }, 500);
@@ -261,7 +414,7 @@
         }
       }
 
-      document.getElementById("googleLogin").addEventListener("click", () => {
+      document.getElementById("googleSignup").addEventListener("click", () => {
         if (!isGoogleConfigured || !googleTokenClient) {
           showAlert(
             "error",

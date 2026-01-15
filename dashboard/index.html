@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard - JobPortal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/dashboard.css" />
+  </head>
+  <body class="dashboard-body">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <a href="/index.html" class="dashboard-brand">
+            <img src="/images/job-logo.png" alt="Job Portal Logo" />
+          </a>
+          <button class="mobile-toggle d-lg-none" id="closeSidebar">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="dashboard-nav">
+          <a class="dashboard-link active" href="/dashboard/index.html">
+            <i class="fa-solid fa-house"></i> Dashboard
+          </a>
+          <a class="dashboard-link" href="/dashboard/saved.html">
+            <i class="fa-solid fa-bookmark"></i> Saved Jobs
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
+            <i class="fa-solid fa-paper-plane"></i> Applied
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
+            <i class="fa-solid fa-plus"></i> Post Job
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applications.html"
+            id="nav-applications">
+            <i class="fa-solid fa-users"></i> Applications
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/documents.html"
+            id="nav-documents">
+            <i class="fa-solid fa-folder-open"></i> Documents
+          </a>
+          <a class="dashboard-link" href="/dashboard/analytics.html">
+            <i class="fa-solid fa-chart-line"></i> Analytics
+          </a>
+          <a class="dashboard-link" href="/dashboard/profile.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a class="dashboard-link" href="/dashboard/settings.html">
+            <i class="fa-solid fa-gear"></i> Settings
+          </a>
+        </nav>
+
+        <div class="dashboard-actions">
+          <button id="logoutBtn" class="btn btn-signup w-100">Logout</button>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="container-fluid" style="max-width: 1100px">
+          <div class="dashboard-top">
+            <div class="d-flex align-items-center gap-3">
+              <button class="mobile-toggle" id="openSidebar">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div>
+                <h1 class="dashboard-title" id="welcomeTitle">Welcome back</h1>
+                <p class="dashboard-subtitle">
+                  Here is what is happening with your job search
+                </p>
+              </div>
+            </div>
+            <div class="dashboard-top-actions">
+              <a class="btn btn-signup" href="/dashboard/add-job.html">
+                <i class="fa-solid fa-plus me-2"></i>Post Job
+              </a>
+              <div
+                class="dashboard-avatar"
+                href="/dashboard/profile.html"
+                id="avatarInitial"></div>
+            </div>
+          </div>
+
+          <div class="dashboard-stats-grid">
+            <div class="dashboard-stat">
+              <div class="dashboard-stat-icon blue">
+                <i class="fa-solid fa-paper-plane"></i>
+              </div>
+              <div class="dashboard-stat-label">Applications</div>
+              <div class="dashboard-stat-value" id="appliedCount">0</div>
+            </div>
+            <div class="dashboard-stat">
+              <div class="dashboard-stat-icon green">
+                <i class="fa-solid fa-bookmark"></i>
+              </div>
+              <div class="dashboard-stat-label">Saved Jobs</div>
+              <div class="dashboard-stat-value" id="savedCount">0</div>
+            </div>
+            <div class="dashboard-stat">
+              <div class="dashboard-stat-icon purple">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <div class="dashboard-stat-label">Profile Views</div>
+              <div class="dashboard-stat-value" id="viewsCount">0</div>
+            </div>
+            <div class="dashboard-stat">
+              <div class="dashboard-stat-icon orange">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <div class="dashboard-stat-label">Interviews</div>
+              <div class="dashboard-stat-value" id="interviewsCount">0</div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="dashboard-card">
+                <div class="dashboard-card-header">
+                  <h3 class="dashboard-card-title">Application Activity</h3>
+                  <a
+                    href="/dashboard/applied.html"
+                    class="dashboard-card-action"
+                    >View all</a
+                  >
+                </div>
+                <div class="dashboard-chart">
+                  <div class="dashboard-bars" id="applicationsBars"></div>
+                  <div class="dashboard-x" id="applicationsMonths"></div>
+                </div>
+              </div>
+
+              <div class="dashboard-card mt-4">
+                <div class="dashboard-card-header">
+                  <h3 class="dashboard-card-title">Recent Activity</h3>
+                </div>
+                <div class="dashboard-activity" id="recentActivity">
+                  <div class="text-muted p-3" style="font-size: 14px">
+                    Loading activity...
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="dashboard-card">
+                <div class="dashboard-card-header">
+                  <h3 class="dashboard-card-title">Recent Jobs</h3>
+                  <a href="/jobs.html" class="dashboard-card-action"
+                    >Browse all</a
+                  >
+                </div>
+                <div class="dashboard-recent" id="recentJobs"></div>
+              </div>
+
+              <div class="dashboard-card mt-4">
+                <div class="dashboard-card-header">
+                  <h3 class="dashboard-card-title">Quick Actions</h3>
+                </div>
+                <div class="dashboard-quick-actions">
+                  <a
+                    class="dashboard-quick-action"
+                    href="/dashboard/resume-builder.html">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Build Resume</span>
+                  </a>
+                  <a class="dashboard-quick-action" href="/jobs.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Find Jobs</span>
+                  </a>
+                  <a
+                    class="dashboard-quick-action"
+                    href="/dashboard/profile.html">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <span>Edit Profile</span>
+                  </a>
+                  <a
+                    class="dashboard-quick-action"
+                    href="/dashboard/settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
+
+    <script type="module">
+      import {
+        getCurrentUser,
+        getSavedJobs,
+        getAppliedJobs,
+        getCustomJobs,
+        getProfilePhotoUrl,
+        requireAuth,
+        signOut,
+        setupRoleBasedSidebar,
+        isAuthenticated,
+      } from "/js/auth.js";
+
+      requireAuth({ redirectTo: "/signin.html" });
+      setupRoleBasedSidebar();
+
+      const user = getCurrentUser();
+      const welcomeTitle = document.getElementById("welcomeTitle");
+      const name = user?.fullName ? String(user.fullName).trim() : "";
+      const first = name ? name.split(/\s+/)[0] : "";
+      welcomeTitle.textContent = first
+        ? `Welcome back, ${first}`
+        : "Welcome back";
+
+      const photoUrl = getProfilePhotoUrl();
+      const avatarEl = document.getElementById("avatarInitial");
+
+      const initialLetter = name ? name.charAt(0).toUpperCase() : "U";
+
+      function renderAvatarInitial() {
+        if (!avatarEl) return;
+        avatarEl.innerHTML = "";
+        const initialsSpan = document.createElement("span");
+        initialsSpan.className = "nav-avatar-initials";
+        initialsSpan.textContent = initialLetter;
+        avatarEl.appendChild(initialsSpan);
+      }
+
+      if (avatarEl) avatarEl.innerHTML = "";
+
+      if (photoUrl) {
+        const img = document.createElement("img");
+        img.src = photoUrl;
+        img.alt = user?.fullName || "Profile";
+        img.className = "nav-avatar-img rounded-circle";
+        img.addEventListener("error", renderAvatarInitial, { once: true });
+        avatarEl.appendChild(img);
+      } else {
+        renderAvatarInitial();
+      }
+
+      const applied = getAppliedJobs().length;
+      const saved = getSavedJobs().length;
+      document.getElementById("appliedCount").textContent = String(applied);
+      document.getElementById("savedCount").textContent = String(saved);
+      document.getElementById("viewsCount").textContent = String(
+        Math.max(0, Math.round(applied * 2.5))
+      );
+      document.getElementById("interviewsCount").textContent = String(
+        Math.max(0, Math.round(applied / 5))
+      );
+
+      function renderChart() {
+        const appliedJobs = getAppliedJobs();
+        const now = new Date();
+        const months = [];
+        const monthNames = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+
+        for (let i = 5; i >= 0; i--) {
+          const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+          months.push({
+            month: d.getMonth(),
+            year: d.getFullYear(),
+            label: monthNames[d.getMonth()],
+            count: 0,
+          });
+        }
+
+        appliedJobs.forEach((a) => {
+          const appliedDate = new Date(a.appliedAt);
+          const monthData = months.find(
+            (m) =>
+              m.month === appliedDate.getMonth() &&
+              m.year === appliedDate.getFullYear()
+          );
+          if (monthData) {
+            monthData.count++;
+          }
+        });
+
+        const values = months.map((m) => m.count);
+        const max = Math.max(...values, 1);
+
+        const barsHost = document.getElementById("applicationsBars");
+        const monthsHost = document.getElementById("applicationsMonths");
+
+        barsHost.innerHTML = values
+          .map((v) => {
+            const h = Math.max(8, Math.round((v / max) * 160));
+            return `<div class="dashboard-bar" style="height:${h}px" title="${v} applications"></div>`;
+          })
+          .join("");
+        monthsHost.innerHTML = months
+          .map((m) => `<div class="dashboard-month">${m.label}</div>`)
+          .join("");
+      }
+
+      renderChart();
+
+      async function renderRecentJobs() {
+        const host = document.getElementById("recentJobs");
+        try {
+          const res = await fetch("/data/data.json");
+          const data = await res.json();
+          const jobs = [...(data.jobs || []), ...getCustomJobs()]
+            .slice(-5)
+            .reverse();
+          const byCompany = new Map(
+            (data.companies || []).map((c) => [c.id, c])
+          );
+
+          host.innerHTML = jobs
+            .map((j) => {
+              const c = byCompany.get(j.companyId);
+              return `
+              <a class="dashboard-recent-item" href="/job.html?id=${encodeURIComponent(
+                j.id
+              )}">
+                <div class="dashboard-recent-icon">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="dashboard-recent-info">
+                  <div class="dashboard-recent-title">${j.title}</div>
+                  <div class="dashboard-recent-company">${c?.name || ""}</div>
+                </div>
+              </a>
+            `;
+            })
+            .join("");
+
+          if (!jobs.length) {
+            host.innerHTML = `<div class="text-muted p-3" style="font-size: 14px">No recent jobs found.</div>`;
+          }
+        } catch (e) {
+          host.innerHTML = `<div class="text-muted p-3" style="font-size: 14px">Failed to load jobs.</div>`;
+        }
+      }
+
+      async function renderRecentActivity() {
+        const host = document.getElementById("recentActivity");
+        try {
+          const res = await fetch("/data/data.json");
+          const data = await res.json();
+          const allJobs = [...(data.jobs || []), ...getCustomJobs()];
+          const byJobId = new Map(allJobs.map((j) => [String(j.id), j]));
+          const byCompany = new Map(
+            (data.companies || []).map((c) => [c.id, c])
+          );
+
+          const appliedJobs = getAppliedJobs();
+          const savedJobIds = getSavedJobs();
+
+          const activities = [];
+
+          appliedJobs.forEach((a) => {
+            const job = byJobId.get(String(a.jobId));
+            if (job) {
+              const company = byCompany.get(job.companyId);
+              activities.push({
+                type: "applied",
+                job,
+                company,
+                timestamp: new Date(a.appliedAt).getTime(),
+              });
+            }
+          });
+
+          savedJobIds.forEach((id, idx) => {
+            const job = byJobId.get(String(id));
+            if (job) {
+              const company = byCompany.get(job.companyId);
+              activities.push({
+                type: "saved",
+                job,
+                company,
+                timestamp: Date.now() - idx * 3600000,
+              });
+            }
+          });
+
+          activities.sort((a, b) => b.timestamp - a.timestamp);
+          const recent = activities.slice(0, 5);
+
+          if (!recent.length) {
+            host.innerHTML = `<div class="text-muted p-3" style="font-size: 14px">No recent activity. Start by applying or saving jobs!</div>`;
+            return;
+          }
+
+          host.innerHTML = recent
+            .map((act) => {
+              const timeAgo = getTimeAgo(act.timestamp);
+              const dotColor =
+                act.type === "applied" ? "var(--red)" : "#3b82f6";
+              const actionText =
+                act.type === "applied"
+                  ? `You applied to <strong>${act.job.title}</strong>${
+                      act.company ? ` at ${act.company.name}` : ""
+                    }`
+                  : `You saved <strong>${act.job.title}</strong>${
+                      act.company ? ` at ${act.company.name}` : ""
+                    }`;
+
+              return `
+              <div class="dashboard-activity-item">
+                <div class="dashboard-activity-dot" style="background: ${dotColor}"></div>
+                <div class="dashboard-activity-content">
+                  <div class="dashboard-activity-text">${actionText}</div>
+                  <div class="dashboard-activity-time">${timeAgo}</div>
+                </div>
+              </div>
+            `;
+            })
+            .join("");
+        } catch (e) {
+          host.innerHTML = `<div class="text-muted p-3" style="font-size: 14px">Failed to load activity.</div>`;
+        }
+      }
+
+      function getTimeAgo(timestamp) {
+        const now = Date.now();
+        const diff = now - timestamp;
+        const minutes = Math.floor(diff / 60000);
+        const hours = Math.floor(diff / 3600000);
+        const days = Math.floor(diff / 86400000);
+
+        if (minutes < 1) return "Just now";
+        if (minutes < 60)
+          return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+        if (hours < 24) return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+        if (days < 7) return `${days} day${days > 1 ? "s" : ""} ago`;
+        return new Date(timestamp).toLocaleDateString();
+      }
+
+      renderRecentJobs();
+      renderRecentActivity();
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut();
+        window.location.href = "/signin.html";
+      });
+
+      const sidebar = document.getElementById("dashboardSidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const openBtn = document.getElementById("openSidebar");
+      const closeBtn = document.getElementById("closeSidebar");
+
+      function openSidebar() {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      openBtn?.addEventListener("click", openSidebar);
+      closeBtn?.addEventListener("click", closeSidebar);
+      overlay?.addEventListener("click", closeSidebar);
+    </script>
+  </body>
+</html>

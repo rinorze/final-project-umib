@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>JobPortal</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,7 +16,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/home.css" />
+    <link rel="stylesheet" href="/style/jobs.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -26,19 +28,22 @@
           ><img src="/images/job-logo.png" alt="Job Portal Logo"
         /></a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-          aria-controls="mainNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="toggle-avatar-dropdown">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <li id="navAuth" style="list-style: none"></li>
+        </div>
 
         <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
+          <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-3">
             <li class="nav-item">
               <a class="nav-link" style="color: #b71c1c" href="/index.html"
                 >Home</a
@@ -51,26 +56,544 @@
               <a class="nav-link" href="/companies.html">Companies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pricing.html">Pricing</a>
+              <a class="nav-link" href="/about.html">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/contact.html">Contact</a>
             </li>
           </ul>
-
-          <div class="d-flex gap-2">
-            <a href="/login.html" class="btn btn-md btn-login">Login</a>
-            <a href="/signup.html" class="btn btn-md btn-signup">Sign Up</a>
-          </div>
         </div>
       </div>
     </nav>
 
     <!-- Main -->
-    <main class="main-content"></main>
+    <main class="main">
+      <div class="hero-section">
+        <div class="main-content">
+          <span class="badge badge-accent mb-2 px-3 py-2 rounded-pill">
+            <i class="bi bi-stars me-1"></i> #1 Job Platform in Kosovo</span
+          >
+          <h1>
+            Land Your <span style="color: #b71c1c">Dream Job</span> Faster
+          </h1>
+          <p>
+            Discover thousands of opportunities from top companies. Connect with
+            employers and apply in just a few clicks. Your next career move
+            starts here.
+          </p>
+          <div class="hero-btn">
+            <a href="/jobs.html" class="btn btn-primary btn-md me-3"
+              >Browse Jobs</a
+            >
+          </div>
+        </div>
+        <div class="img-content">
+          <img src="/images/hero-img.png" alt="Hero Image" />
+        </div>
+      </div>
+
+      <div class="trusted-by">
+        <h1>Trusted by leading companies</h1>
+        <div class="company-logos">
+          <img
+            class="company-logo"
+            src="/images/companies/cacttus.png"
+            alt="Cacttus Logo" />
+          <img
+            class="company-logo"
+            src="/images/companies/gjirafa.svg"
+            alt="Gjirafa Logo" />
+          <img
+            class="company-logo"
+            src="/images/companies/procredit.svg"
+            alt="ProCredit Bank Logo" />
+          <img
+            class="company-logo"
+            src="/images/companies/solveo.png"
+            alt="Solveo Logo" />
+          <img
+            class="company-logo"
+            src="/images/companies/bkt.svg"
+            alt="BKT Kosovo Logo" />
+          <img
+            class="company-logo"
+            src="/images/companies/starlabs.png"
+            alt="StarLabs Logo" />
+        </div>
+      </div>
+
+      <!-- Home Jobs Section -->
+      <section class="home-jobs">
+        <div class="container">
+          <div class="jobs-header text-center mb-5">
+            <span class="badge badge-accent mb-2 px-3 py-2 rounded-pill"
+              >Featured</span
+            >
+            <h2>Latest Job Opportunities</h2>
+            <p>Discover jobs from trusted companies</p>
+          </div>
+
+          <div class="row g-4" id="homeJobs">
+            <!-- Jobs loaded from JSON -->
+          </div>
+
+          <div class="text-center mt-5">
+            <a href="/jobs.html" class="btn view-all">View All Jobs</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-steps">
+        <div class="container" style="max-width: 1100px">
+          <div class="jobs-header text-center mb-5">
+            <span class="badge badge-accent mb-2 px-3 py-2 rounded-pill"
+              >How it works</span
+            >
+            <h2>How JobPortal works</h2>
+            <p>
+              A simple, guided process to help you find the right role faster.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="home-step-card h-100">
+                <div class="home-step-badge">
+                  <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <h5 class="home-step-title">Create your account</h5>
+                <p class="home-step-text">
+                  Sign up and start saving jobs, applying, and tracking
+                  progress.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="home-step-card h-100">
+                <div class="home-step-badge">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h5 class="home-step-title">Find the right role</h5>
+                <p class="home-step-text">
+                  Browse jobs by category and type, then save your favorites.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="home-step-card h-100">
+                <div class="home-step-badge">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <h5 class="home-step-title">Apply & track</h5>
+                <p class="home-step-text">
+                  Apply in a few clicks and manage applications from your
+                  dashboard.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resume Builder Section -->
+      <section class="home-resume-builder">
+        <div class="container" style="max-width: 1100px">
+          <div class="resume-builder-card">
+            <div class="resume-builder-content">
+              <span class="badge badge-accent mb-3 px-3 py-2 rounded-pill">
+                <i class="fa-solid fa-file-lines me-1"></i> Free Tool
+              </span>
+              <h2>Build Your Professional Resume</h2>
+              <p>
+                Create a standout resume in minutes with our easy-to-use
+                builder. No design skills needed—just fill in your details and
+                download a polished PDF ready to impress employers.
+              </p>
+              <div class="resume-builder-features">
+                <span class="resume-builder-feature">
+                  <i class="fa-solid fa-check"></i> Easy to use
+                </span>
+                <span class="resume-builder-feature">
+                  <i class="fa-solid fa-check"></i> Live preview
+                </span>
+                <span class="resume-builder-feature">
+                  <i class="fa-solid fa-check"></i> PDF download
+                </span>
+                <span class="resume-builder-feature">
+                  <i class="fa-solid fa-check"></i> Auto-save
+                </span>
+              </div>
+              <a
+                href="/dashboard/resume-builder.html"
+                class="btn btn-signup btn-md">
+                Build Your Resume
+              </a>
+            </div>
+            <div class="resume-builder-preview">
+              <div class="resume-mock-header">
+                <div class="resume-mock-name">John Doe</div>
+                <div class="resume-mock-title">Software Developer</div>
+              </div>
+              <div class="resume-mock-section">
+                <div class="resume-mock-section-title">Experience</div>
+                <div class="resume-mock-line"></div>
+                <div class="resume-mock-line medium"></div>
+                <div class="resume-mock-line short"></div>
+              </div>
+              <div class="resume-mock-section">
+                <div class="resume-mock-section-title">Education</div>
+                <div class="resume-mock-line"></div>
+                <div class="resume-mock-line medium"></div>
+              </div>
+              <div class="resume-mock-section">
+                <div class="resume-mock-section-title">Skills</div>
+                <div class="resume-mock-line short"></div>
+                <div class="resume-mock-line medium"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-categories">
+        <div class="container" style="max-width: 1100px">
+          <div class="home-categories-header text-center mb-5">
+            <h2>Popular Job Categories</h2>
+            <p>
+              Browse jobs by category and find the perfect role that matches
+              your expertise.
+            </p>
+          </div>
+
+          <div class="row g-4" id="homeCategories"></div>
+
+          <div class="text-center mt-5">
+            <a class="btn btn-signup px-4" href="/jobs.html"
+              >Browse All Categories</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="home-benefits">
+        <div class="container" style="max-width: 1100px">
+          <div class="jobs-header text-center mb-5">
+            <span class="badge badge-accent mb-2 px-3 py-2 rounded-pill"
+              >Why choose us</span
+            >
+            <h2>Why job seekers choose JobPortal</h2>
+            <p>
+              Everything you need to search smarter, apply faster, and stay
+              organized.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="home-benefit-card h-100">
+                <div class="home-benefit-head">
+                  <div class="home-benefit-icon">
+                    <i class="fa-solid fa-shield"></i>
+                  </div>
+                  <h5 class="home-benefit-title">Trusted listings</h5>
+                </div>
+                <p class="home-benefit-text">
+                  Clear job details from reputable companies so you can apply
+                  with confidence.
+                </p>
+                <ul class="home-benefit-list">
+                  <li>Verified companies</li>
+                  <li>Clear requirements</li>
+                  <li>Realistic expectations</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="home-benefit-card h-100">
+                <div class="home-benefit-head">
+                  <div class="home-benefit-icon">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </div>
+                  <h5 class="home-benefit-title">Save & track</h5>
+                </div>
+                <p class="home-benefit-text">
+                  Bookmark roles and keep your saved and applied jobs organized.
+                </p>
+                <ul class="home-benefit-list">
+                  <li>Saved jobs</li>
+                  <li>Applied list</li>
+                  <li>Stay organized</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="home-benefit-card h-100">
+                <div class="home-benefit-head">
+                  <div class="home-benefit-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                  </div>
+                  <h5 class="home-benefit-title">Fast applications</h5>
+                </div>
+                <p class="home-benefit-text">
+                  Apply in a few clicks and spend more time preparing for
+                  interviews.
+                </p>
+                <ul class="home-benefit-list">
+                  <li>Less friction</li>
+                  <li>Faster decisions</li>
+                  <li>More opportunities</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="home-benefit-card h-100">
+                <div class="home-benefit-head">
+                  <div class="home-benefit-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                  </div>
+                  <h5 class="home-benefit-title">Modern job pages</h5>
+                </div>
+                <p class="home-benefit-text">
+                  See role requirements, salary, and job type at a glance.
+                </p>
+                <ul class="home-benefit-list">
+                  <li>Clear details</li>
+                  <li>Better readability</li>
+                  <li>Mobile-friendly</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="home-benefit-card h-100">
+                <div class="home-benefit-head">
+                  <div class="home-benefit-icon">
+                    <i class="fa-solid fa-building"></i>
+                  </div>
+                  <h5 class="home-benefit-title">Company-focused search</h5>
+                </div>
+                <p class="home-benefit-text">
+                  Explore opportunities from companies you recognize and trust.
+                </p>
+                <ul class="home-benefit-list">
+                  <li>Browse companies</li>
+                  <li>Discover culture</li>
+                  <li>Find the right fit</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="home-benefit-card h-100">
+                <div class="home-benefit-head">
+                  <div class="home-benefit-icon">
+                    <i class="fa-solid fa-headset"></i>
+                  </div>
+                  <h5 class="home-benefit-title">Helpful support</h5>
+                </div>
+                <p class="home-benefit-text">
+                  Need help? Reach out from the Contact page and we’ll respond
+                  soon.
+                </p>
+                <ul class="home-benefit-list">
+                  <li>Quick replies</li>
+                  <li>Friendly guidance</li>
+                  <li>Clear answers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="faq">
+        <div class="faq-content">
+          <h1>Frequently Asked Questions</h1>
+          <p>Find answers to common questions about using JobPortal.</p>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header first-accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne">
+                How do I create an account?
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Creating an account is simple! Click the "Sign Up" button, fill
+                in your details, verify your email, and start building your
+                profile. You can also sign up using your Google or LinkedIn
+                account.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo">
+                Is JobPortal free for job seekers?
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Yes! JobPortal is completely free for job seekers. You can
+                create a profile, browse jobs, and apply to as many positions as
+                you want without any charges.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree">
+                How long does a job posting stay active?
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Job postings stay active based on your subscription plan.
+                Starter plans include 30 days visibility, Pro plans get 60 days,
+                and Enterprise plans get 90 days of visibility.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour">
+                Can I edit my job application after submitting?
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Once submitted, applications cannot be edited. However, you can
+                withdraw your application and resubmit with updated information
+                within 24 hours of the original submission.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive">
+                How can employers verify their company?
+              </button>
+            </h2>
+            <div
+              id="collapseFive"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Employers can verify their company by submitting business
+                registration documents and completing our verification process.
+                Verified companies receive a badge that increases trust with job
+                seekers.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="home-cta">
+        <div class="container" style="max-width: 1100px">
+          <div class="home-cta-wrapper">
+            <div class="row align-items-center g-5">
+              <div class="col-lg-6">
+                <span class="badge badge-accent mb-3 px-3 py-2 rounded-pill">
+                  <i class="fa-solid fa-rocket me-1"></i> Get Started
+                </span>
+                <h2 class="home-cta-heading">Ready to Find Your Dream Job?</h2>
+                <p class="home-cta-desc">
+                  Join thousands of job seekers who have found their perfect
+                  role through JobPortal. Create your free account today and
+                  start applying.
+                </p>
+                <div class="home-cta-buttons">
+                  <a href="/signup.html" class="btn btn-signup btn-md"
+                    >Create Free Account</a
+                  >
+                  <a href="/jobs.html" class="btn btn-outline-red btn-md"
+                    >Browse Jobs</a
+                  >
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="home-cta-cards">
+                  <div class="home-cta-card">
+                    <div class="home-cta-card-icon">
+                      <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="home-cta-card-content">
+                      <h5>50+ Active Jobs</h5>
+                      <p>Browse opportunities from top Kosovo companies</p>
+                    </div>
+                  </div>
+                  <div class="home-cta-card">
+                    <div class="home-cta-card-icon">
+                      <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div class="home-cta-card-content">
+                      <h5>10+ Companies</h5>
+                      <p>Trusted employers actively hiring</p>
+                    </div>
+                  </div>
+                  <div class="home-cta-card">
+                    <div class="home-cta-card-icon">
+                      <i class="fa-solid fa-file-lines"></i>
+                    </div>
+                    <div class="home-cta-card-content">
+                      <h5>Free Resume Builder</h5>
+                      <p>Create professional resumes in minutes</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="custom-footer mt-5">
+    <footer class="custom-footer">
       <div class="container py-5">
         <div class="row text-center text-md-start">
           <div class="col-md-6 mb-4">
@@ -106,7 +629,6 @@
               <li><a href="/index.html">Home</a></li>
               <li><a href="/jobs.html">Jobs</a></li>
               <li><a href="/companies.html">Companies</a></li>
-              <li><a href="/pricing.html">Pricing</a></li>
             </ul>
           </div>
 
@@ -114,7 +636,6 @@
             <h5 class="footer-title mb-3">Company</h5>
             <ul class="list-unstyled footer-links">
               <li><a href="/about.html">About Us</a></li>
-              <li><a href="/blog.html">Blog</a></li>
               <li><a href="/careers.html">Careers</a></li>
               <li><a href="/contact.html">Contact</a></li>
             </ul>
@@ -145,6 +666,7 @@
       src="https://kit.fontawesome.com/9f730657c2.js"
       crossorigin="anonymous"></script>
 
-    <script src="/js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/nav-auth.js"></script>
   </body>
 </html>

@@ -1,0 +1,329 @@
+.settings-header {
+  background: linear-gradient(135deg, #b71c1c 0%, #880e0e 100%);
+  border-radius: 16px;
+  padding: 24px;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.role-badge.admin {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+}
+
+.role-badge.employer {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.role-badge.jobseeker {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+.settings-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.settings-tab {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  color: #666;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.settings-tab:hover {
+  background: #eee;
+}
+
+.settings-tab.active {
+  background: var(--red);
+  color: white;
+}
+
+.settings-tab i {
+  margin-right: 8px;
+}
+
+.settings-panel {
+  display: none;
+}
+
+.settings-panel.active {
+  display: block;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.settings-card-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-card-title i {
+  color: var(--red);
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings-row:first-child {
+  padding-top: 0;
+}
+
+.settings-row-info h6 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.settings-row-info p {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0;
+}
+
+.notification-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.notification-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification-item-info i {
+  font-size: 1.2rem;
+  color: var(--red);
+  width: 24px;
+}
+
+.notification-item h6 {
+  font-weight: 600;
+  margin-bottom: 2px;
+  font-size: 0.95rem;
+}
+
+.notification-item p {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-stat {
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.admin-stat-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.users-table th {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.users-table th:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+.users-table th:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.users-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.users-table tr:last-child td {
+  border-bottom: none;
+}
+
+.users-table tr:hover td {
+  background: #fafafa;
+}
+
+.user-role-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.user-role-badge.admin {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.user-role-badge.employer {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.user-role-badge.jobseeker {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.user-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.user-actions button {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+.danger-zone {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.danger-zone .settings-card-title {
+  color: #dc2626;
+}
+
+.danger-zone .settings-card-title i {
+  color: #dc2626;
+}
+
+.form-switch .form-check-input {
+  width: 48px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.account-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.account-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.account-details h5 {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.account-details p {
+  color: #666;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  color: #ddd;
+}

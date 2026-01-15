@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/dashboard.css" />
+    <link rel="stylesheet" href="/style/settings.css" />
+  </head>
+  <body class="dashboard-body">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <a href="/index.html" class="dashboard-brand">
+            <img src="/images/job-logo.png" alt="Job Portal Logo" />
+          </a>
+          <button class="mobile-toggle d-lg-none" id="closeSidebar">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+
+        <nav class="dashboard-nav">
+          <a class="dashboard-link" href="/dashboard/index.html">
+            <i class="fa-solid fa-house"></i> Dashboard
+          </a>
+          <a class="dashboard-link" href="/dashboard/saved.html">
+            <i class="fa-solid fa-bookmark"></i> Saved Jobs
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
+            <i class="fa-solid fa-paper-plane"></i> Applied
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
+            <i class="fa-solid fa-plus"></i> Post Job
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/applications.html"
+            id="nav-applications">
+            <i class="fa-solid fa-users"></i> Applications
+          </a>
+          <a
+            class="dashboard-link"
+            href="/dashboard/documents.html"
+            id="nav-documents">
+            <i class="fa-solid fa-folder-open"></i> Documents
+          </a>
+          <a class="dashboard-link" href="/dashboard/analytics.html">
+            <i class="fa-solid fa-chart-line"></i> Analytics
+          </a>
+          <a class="dashboard-link" href="/dashboard/profile.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a class="dashboard-link active" href="/dashboard/settings.html">
+            <i class="fa-solid fa-gear"></i> Settings
+          </a>
+        </nav>
+
+        <div class="dashboard-actions">
+          <button id="logoutBtn" class="btn btn-md btn-signup w-100">
+            Logout
+          </button>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <div class="container-fluid" style="max-width: 1100px">
+          <div class="dashboard-top mb-4">
+            <div class="d-flex align-items-center gap-3">
+              <button class="mobile-toggle" id="openSidebar">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div>
+                <h1 class="dashboard-title">
+                  <i class="fa-solid fa-gear me-2"></i>Settings
+                </h1>
+                <p class="dashboard-subtitle">
+                  Manage your account, preferences, and privacy settings
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-header">
+            <div class="role-badge" id="userRoleBadge">
+              <i class="fa-solid fa-shield"></i>
+              <span>Loading...</span>
+            </div>
+          </div>
+
+          <div id="settingsAlert" class="alert d-none" role="alert"></div>
+
+          <div class="settings-tabs">
+            <button class="settings-tab active" data-tab="general">
+              <i class="fa-solid fa-sliders"></i>General
+            </button>
+            <button class="settings-tab" data-tab="account">
+              <i class="fa-solid fa-user-gear"></i>Account
+            </button>
+            <button class="settings-tab" data-tab="privacy">
+              <i class="fa-solid fa-shield-halved"></i>Privacy
+            </button>
+            <button class="settings-tab d-none" data-tab="admin" id="adminTab">
+              <i class="fa-solid fa-crown"></i>Admin
+            </button>
+          </div>
+
+          <div class="settings-panel active" id="panel-general">
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-sliders"></i>Display Preferences
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Compact View</h6>
+                  <p>Show more content with reduced spacing</p>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="compactView" />
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-language"></i>Language & Region
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Language</h6>
+                  <p>Select your preferred language</p>
+                </div>
+                <select class="form-select" style="width: 200px" id="language">
+                  <option value="en" selected>English</option>
+                  <option value="sq">Shqip (Albanian)</option>
+                  <option value="de">Deutsch (German)</option>
+                </select>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Currency</h6>
+                  <p>Display salaries in your preferred currency</p>
+                </div>
+                <select class="form-select" style="width: 200px" id="currency">
+                  <option value="EUR" selected>EUR (€)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="GBP">GBP (£)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-panel" id="panel-account">
+            <div class="account-info">
+              <div class="account-avatar" id="accountAvatar">?</div>
+              <div class="account-details">
+                <h5 id="accountName">Loading...</h5>
+                <p id="accountEmail">Loading...</p>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-key"></i>Security
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Change Password</h6>
+                  <p>Update your account password</p>
+                </div>
+                <button
+                  class="btn btn-outline-red btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#passwordModal">
+                  Change Password
+                </button>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Two-Factor Authentication</h6>
+                  <p>Add an extra layer of security</p>
+                </div>
+                <button class="btn btn-outline-secondary btn-sm" disabled>
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-download"></i>Your Data
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Download Your Data</h6>
+                  <p>Get a copy of all your JobPortal data</p>
+                </div>
+                <button class="btn btn-outline-red btn-sm" id="downloadDataBtn">
+                  <i class="fa-solid fa-download me-1"></i>Download
+                </button>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Account Created</h6>
+                  <p id="accountCreated">Loading...</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card danger-zone">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-triangle-exclamation"></i>Danger Zone
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Clear All Data</h6>
+                  <p>Remove all saved jobs, applications, and preferences</p>
+                </div>
+                <button class="btn btn-outline-danger btn-sm" id="clearDataBtn">
+                  Clear Data
+                </button>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Delete Account</h6>
+                  <p>Permanently delete your account and all data</p>
+                </div>
+                <button class="btn btn-danger btn-sm" id="deleteAccountBtn">
+                  Delete Account
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-panel" id="panel-privacy">
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-eye"></i>Profile Visibility
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Public Profile</h6>
+                  <p>Allow employers to find and view your profile</p>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="profileVisible"
+                    checked />
+                </div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Show Email to Employers</h6>
+                  <p>Display your email on applications</p>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="showEmail"
+                    checked />
+                </div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Show Phone Number</h6>
+                  <p>Display your phone on applications</p>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="showPhone" />
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-user-secret"></i>Activity Privacy
+              </h5>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Hide from Current Employer</h6>
+                  <p>Block your current company from seeing your profile</p>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="hideFromEmployer" />
+                </div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <h6>Anonymous Mode</h6>
+                  <p>Hide your name on job applications until accepted</p>
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="anonymousMode" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-panel" id="panel-admin">
+            <div class="admin-stats" id="adminStats"></div>
+
+            <div class="settings-card">
+              <h5 class="settings-card-title">
+                <i class="fa-solid fa-users"></i>User Management
+              </h5>
+              <div class="table-responsive">
+                <table class="users-table">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Joined</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="usersTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-end mt-4">
+            <button class="btn btn-signup" id="saveSettingsBtn">
+              <i class="fa-solid fa-check me-2"></i>Save Changes
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal fade" id="passwordModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 16px">
+          <div class="modal-header" style="border-bottom: 1px solid #eee">
+            <h5 class="modal-title">
+              <i class="fa-solid fa-key me-2" style="color: var(--red)"></i
+              >Change Password
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body" style="padding: 24px">
+            <form id="passwordForm">
+              <div class="mb-3">
+                <label class="form-label">Current Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="currentPassword"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="newPassword"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Confirm New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  required />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="border-top: 1px solid #eee">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-signup" id="updatePasswordBtn">
+              Update Password
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="editUserModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 16px">
+          <div class="modal-header" style="border-bottom: 1px solid #eee">
+            <h5 class="modal-title">
+              <i class="fa-solid fa-user-pen me-2" style="color: var(--red)"></i
+              >Edit User
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body" style="padding: 24px">
+            <form id="editUserForm">
+              <input type="hidden" id="editUserId" />
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editUserName"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Role</label>
+                <select class="form-select" id="editUserRole">
+                  <option value="jobseeker">Job Seeker</option>
+                  <option value="employer">Employer</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <small class="text-muted mt-1 d-block">
+                  <i class="fa-solid fa-shield-halved me-1"></i>
+                  Admins have full access to all features and user management.
+                </small>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="border-top: 1px solid #eee">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-signup" id="saveUserBtn">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
+
+    <script type="module">
+      import {
+        requireAuth,
+        signOut,
+        getCurrentUser,
+        getUsers,
+        getSavedJobs,
+        getAppliedJobs,
+        getUserRole,
+        isAdmin,
+        isEmployer,
+        USER_ROLES,
+        getAllUsers,
+        deleteUser,
+        updateUser,
+        setUserRole,
+        getSystemStats,
+        getProfile,
+        getUserSettings,
+        saveUserSettings,
+        setupRoleBasedSidebar
+      } from "/js/auth.js";
+
+      requireAuth({ redirectTo: "/signin.html" });
+      setupRoleBasedSidebar();
+
+      const user = getCurrentUser();
+      const userRole = getUserRole(user);
+      const alertEl = document.getElementById("settingsAlert");
+
+      function showAlert(message, type = "success") {
+        alertEl.className = `alert alert-${type}`;
+        alertEl.innerHTML = message;
+        alertEl.classList.remove("d-none");
+        setTimeout(() => alertEl.classList.add("d-none"), 4000);
+      }
+
+      function setupUserInfo() {
+        const name = user?.fullName || "User";
+        const email = user?.email || "";
+        const initial = name.charAt(0).toUpperCase();
+
+        document.getElementById("accountAvatar").textContent = initial;
+        document.getElementById("accountName").textContent = name;
+        document.getElementById("accountEmail").textContent = email;
+
+        if (user?.createdAt) {
+          document.getElementById("accountCreated").textContent = new Date(
+            user.createdAt
+          ).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          });
+        }
+
+        const roleBadge = document.getElementById("userRoleBadge");
+        const roleIcons = {
+          admin: "fa-crown",
+          employer: "fa-building",
+          jobseeker: "fa-user"
+        };
+        const roleLabels = {
+          admin: "Administrator",
+          employer: "Employer",
+          jobseeker: "Job Seeker"
+        };
+
+        roleBadge.className = `role-badge ${userRole}`;
+        roleBadge.innerHTML = `
+          <i class="fa-solid ${roleIcons[userRole]}"></i>
+          <span>${roleLabels[userRole]}</span>
+        `;
+
+        if (isAdmin(user)) {
+          document.getElementById("adminTab").classList.remove("d-none");
+        }
+      }
+
+      setupUserInfo();
+
+      const tabs = document.querySelectorAll(".settings-tab");
+      const panels = document.querySelectorAll(".settings-panel");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const targetId = tab.dataset.tab;
+
+          tabs.forEach((t) => t.classList.remove("active"));
+          panels.forEach((p) => p.classList.remove("active"));
+
+          tab.classList.add("active");
+          document.getElementById(`panel-${targetId}`).classList.add("active");
+
+          if (targetId === "admin" && isAdmin(user)) {
+            loadAdminData();
+          }
+        });
+      });
+
+      function loadSettings() {
+        const settings = getUserSettings();
+
+        document.getElementById("compactView").checked =
+          settings.compactView === true;
+        document.getElementById("language").value = settings.language || "en";
+        document.getElementById("currency").value = settings.currency || "EUR";
+        document.getElementById("profileVisible").checked =
+          settings.profileVisible !== false;
+        document.getElementById("showEmail").checked =
+          settings.showEmail !== false;
+        document.getElementById("showPhone").checked =
+          settings.showPhone === true;
+        document.getElementById("hideFromEmployer").checked =
+          settings.hideFromEmployer === true;
+        document.getElementById("anonymousMode").checked =
+          settings.anonymousMode === true;
+      }
+
+      function saveSettings() {
+        const settings = {
+          compactView: document.getElementById("compactView").checked,
+          language: document.getElementById("language").value,
+          currency: document.getElementById("currency").value,
+          profileVisible: document.getElementById("profileVisible").checked,
+          showEmail: document.getElementById("showEmail").checked,
+          showPhone: document.getElementById("showPhone").checked,
+          hideFromEmployer: document.getElementById("hideFromEmployer").checked,
+          anonymousMode: document.getElementById("anonymousMode").checked
+        };
+        saveUserSettings(settings);
+      }
+
+      loadSettings();
+
+      document
+        .getElementById("saveSettingsBtn")
+        .addEventListener("click", () => {
+          saveSettings();
+          showAlert(
+            '<i class="fa-solid fa-check-circle me-2"></i>Settings saved successfully!',
+            "success"
+          );
+        });
+
+      document
+        .getElementById("downloadDataBtn")
+        .addEventListener("click", () => {
+          const userData = {
+            profile: { ...user, password: undefined },
+            savedJobs: getSavedJobs(),
+            appliedJobs: getAppliedJobs(),
+            profileData: getProfile(),
+            settings: getUserSettings(),
+            exportDate: new Date().toISOString()
+          };
+
+          const blob = new Blob([JSON.stringify(userData, null, 2)], {
+            type: "application/json"
+          });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `jobportal-data-${new Date()
+            .toISOString()
+            .slice(0, 10)}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+
+          showAlert(
+            '<i class="fa-solid fa-download me-2"></i>Your data has been downloaded!',
+            "success"
+          );
+        });
+
+      document.getElementById("clearDataBtn").addEventListener("click", () => {
+        if (
+          confirm(
+            "Are you sure you want to clear all saved jobs, applications, and preferences? This cannot be undone."
+          )
+        ) {
+          localStorage.removeItem(`jp_saved_${user.id}`);
+          localStorage.removeItem(`jp_applied_${user.id}`);
+          localStorage.removeItem(`jp_settings_${user.id}`);
+          localStorage.removeItem(`jp_profile_${user.id}`);
+          showAlert(
+            '<i class="fa-solid fa-check-circle me-2"></i>All data has been cleared!',
+            "success"
+          );
+        }
+      });
+
+      document
+        .getElementById("updatePasswordBtn")
+        .addEventListener("click", () => {
+          const currentPass = document.getElementById("currentPassword").value;
+          const newPass = document.getElementById("newPassword").value;
+          const confirmPass = document.getElementById("confirmPassword").value;
+
+          if (!currentPass || !newPass || !confirmPass) {
+            alert("Please fill all fields!");
+            return;
+          }
+
+          if (currentPass !== user.password) {
+            alert("Current password is incorrect!");
+            return;
+          }
+
+          if (newPass.length < 6) {
+            alert("New password must be at least 6 characters!");
+            return;
+          }
+
+          if (newPass !== confirmPass) {
+            alert("Passwords do not match!");
+            return;
+          }
+
+          const users = getUsers();
+          const idx = users.findIndex((u) => u.id === user.id);
+          if (idx !== -1) {
+            users[idx].password = newPass;
+            localStorage.setItem("jp_users", JSON.stringify(users));
+          }
+
+          bootstrap.Modal.getInstance(
+            document.getElementById("passwordModal")
+          ).hide();
+          showAlert(
+            '<i class="fa-solid fa-check-circle me-2"></i>Password updated successfully!',
+            "success"
+          );
+          document.getElementById("passwordForm").reset();
+        });
+
+      document
+        .getElementById("deleteAccountBtn")
+        .addEventListener("click", () => {
+          if (isAdmin(user)) {
+            alert("Admin account cannot be deleted!");
+            return;
+          }
+
+          if (
+            confirm(
+              "Are you sure you want to delete your account? This action cannot be undone."
+            )
+          ) {
+            const users = getUsers();
+            const filtered = users.filter((u) => u.id !== user.id);
+            localStorage.setItem("jp_users", JSON.stringify(filtered));
+
+            localStorage.removeItem("jp_session");
+            localStorage.removeItem(`jp_saved_${user.id}`);
+            localStorage.removeItem(`jp_applied_${user.id}`);
+            localStorage.removeItem(`jp_settings_${user.id}`);
+            localStorage.removeItem(`jp_profile_${user.id}`);
+
+            window.location.href = "/index.html";
+          }
+        });
+
+      function loadAdminData() {
+        const stats = getSystemStats();
+        if (!stats) return;
+
+        document.getElementById("adminStats").innerHTML = `
+          <div class="admin-stat">
+            <div class="admin-stat-value">${stats.totalUsers}</div>
+            <div class="admin-stat-label">Total Users</div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-value">${stats.roleStats.employer}</div>
+            <div class="admin-stat-label">Employers</div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-value">${stats.roleStats.jobseeker}</div>
+            <div class="admin-stat-label">Job Seekers</div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-value">${stats.totalJobs}</div>
+            <div class="admin-stat-label">Posted Jobs</div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-value">${stats.totalReviews}</div>
+            <div class="admin-stat-label">Reviews</div>
+          </div>
+        `;
+
+        const users = getAllUsers();
+        const tbody = document.getElementById("usersTableBody");
+
+        if (!users.length) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5">
+                <div class="empty-state">
+                  <i class="fa-solid fa-users"></i>
+                  <p>No users found</p>
+                </div>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = users
+          .map((u) => {
+            const joinDate = u.createdAt
+              ? new Date(u.createdAt).toLocaleDateString()
+              : "N/A";
+            return `
+            <tr>
+              <td>
+                <strong>${u.fullName}</strong>
+                ${
+                  u.isAdmin
+                    ? '<i class="fa-solid fa-crown text-warning ms-1" title="Admin"></i>'
+                    : ""
+                }
+              </td>
+              <td>${u.email}</td>
+              <td>
+                <span class="user-role-badge ${u.role}">${u.role}</span>
+              </td>
+              <td>${joinDate}</td>
+              <td>
+                <div class="user-actions">
+                  ${
+                    !u.isAdmin
+                      ? `
+                    <button class="btn btn-outline-secondary btn-sm" onclick="editUser('${u.id}', '${u.fullName}', '${u.role}')">
+                      <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteUser('${u.id}', '${u.fullName}')">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  `
+                      : `
+                    <span class="text-muted small">Protected</span>
+                  `
+                  }
+                </div>
+              </td>
+            </tr>
+          `;
+          })
+          .join("");
+      }
+
+      window.editUser = function (id, name, role) {
+        document.getElementById("editUserId").value = id;
+        document.getElementById("editUserName").value = name;
+        document.getElementById("editUserRole").value = role;
+        new bootstrap.Modal(document.getElementById("editUserModal")).show();
+      };
+
+      window.confirmDeleteUser = function (id, name) {
+        if (
+          confirm(
+            `Are you sure you want to delete user "${name}"? This cannot be undone.`
+          )
+        ) {
+          const result = deleteUser(id);
+          if (result.ok) {
+            showAlert(
+              `<i class="fa-solid fa-check-circle me-2"></i>User "${name}" deleted successfully!`,
+              "success"
+            );
+            loadAdminData();
+          } else {
+            showAlert(
+              `<i class="fa-solid fa-exclamation-circle me-2"></i>${result.message}`,
+              "danger"
+            );
+          }
+        }
+      };
+
+      document.getElementById("saveUserBtn").addEventListener("click", () => {
+        const userId = document.getElementById("editUserId").value;
+        const fullName = document.getElementById("editUserName").value;
+        const role = document.getElementById("editUserRole").value;
+
+        const result = updateUser(userId, { fullName, role });
+        if (result.ok) {
+          bootstrap.Modal.getInstance(
+            document.getElementById("editUserModal")
+          ).hide();
+          showAlert(
+            '<i class="fa-solid fa-check-circle me-2"></i>User updated successfully!',
+            "success"
+          );
+          loadAdminData();
+        } else {
+          alert(result.message);
+        }
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut();
+        window.location.href = "/signin.html";
+      });
+
+      const sidebar = document.getElementById("dashboardSidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const openBtn = document.getElementById("openSidebar");
+      const closeBtn = document.getElementById("closeSidebar");
+
+      function openSidebar() {
+        sidebar.classList.add("open");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      openBtn?.addEventListener("click", openSidebar);
+      closeBtn?.addEventListener("click", closeSidebar);
+      overlay?.addEventListener("click", closeSidebar);
+    </script>
+  </body>
+</html>

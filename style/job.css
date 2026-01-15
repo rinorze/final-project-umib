@@ -1,0 +1,125 @@
+.company-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  margin-left: 12px;
+}
+
+.company-rating i {
+  color: #f59e0b;
+}
+
+.company-rating .rating-value {
+  font-weight: 600;
+}
+
+.company-rating .rating-count {
+  color: #888;
+}
+
+.interview-tips {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.interview-tips h5 {
+  color: #92400e;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.interview-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.interview-tips li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #78350f;
+}
+
+.interview-tips li:last-child {
+  margin-bottom: 0;
+}
+
+.interview-tips li i {
+  color: #f59e0b;
+  margin-top: 3px;
+}
+
+.apply-profile-modal .modal-content {
+  border-radius: 16px;
+  border: none;
+}
+
+.apply-profile-modal .modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 20px 24px;
+}
+
+.apply-profile-modal .modal-body {
+  padding: 24px;
+}
+
+.apply-profile-modal .modal-footer {
+  border-top: 1px solid #eee;
+  padding: 16px 24px;
+}
+
+.profile-preview {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.profile-preview-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-preview-item:last-child {
+  border-bottom: none;
+}
+
+.profile-preview-item i {
+  width: 20px;
+  color: #b71c1c;
+}
+
+.profile-preview-item .label {
+  color: #666;
+  width: 100px;
+}
+
+.profile-preview-item .value {
+  font-weight: 500;
+  flex: 1;
+}
+
+.profile-missing {
+  color: #ef4444;
+  font-style: italic;
+}
+
+.apply-success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.apply-success i {
+  font-size: 4rem;
+  color: #22c55e;
+  margin-bottom: 16px;
+}
