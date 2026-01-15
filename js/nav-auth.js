@@ -2,12 +2,46 @@ import {
   getCurrentUser,
   isAuthenticated,
   signOut,
-  getProfilePhotoUrl
+  getProfilePhotoUrl,
 } from "/js/auth.js";
 
 function ensureNavHost() {
   const host = document.getElementById("navAuth");
   return host || null;
+}
+
+function ensureNavAuthPlacement() {
+  const host = ensureNavHost();
+  if (!host) return;
+
+  const navbar = host.closest(".navbar");
+  if (!navbar) return;
+
+  const container = navbar.querySelector(":scope > .container");
+  if (!container) return;
+
+  const toggler = container.querySelector(".navbar-toggler");
+  if (!toggler) return;
+
+  let wrapper = container.querySelector(".toggle-avatar-dropdown");
+
+  if (!wrapper) {
+    wrapper = document.createElement("div");
+    wrapper.className = "toggle-avatar-dropdown";
+    toggler.parentNode?.insertBefore(wrapper, toggler);
+  }
+
+  const shouldMoveToggler = toggler.parentElement !== wrapper;
+  const shouldMoveHost = host.parentElement !== wrapper;
+
+  if (shouldMoveToggler) {
+    wrapper.appendChild(toggler);
+  }
+
+  if (shouldMoveHost) {
+    host.style.listStyle = "none";
+    wrapper.appendChild(host);
+  }
 }
 
 function getUserInitials(user) {
@@ -126,5 +160,6 @@ export function renderNavAuth() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  ensureNavAuthPlacement();
   renderNavAuth();
 });
