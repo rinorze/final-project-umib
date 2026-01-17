@@ -29,11 +29,11 @@ body {
   margin: 0;
 }
 
-.main {
+.rz-main {
   flex: 1 0 auto;
 }
 
-.custom-navbar {
+.rz-custom-navbar {
   background-color: var(--white);
   padding: 1rem 0;
 }
@@ -295,20 +295,20 @@ body {
   color: #999;
 }
 
-.custom-footer {
+.rz-custom-footer {
   background-color: var(--gray);
   color: var(--text);
   font-size: 14px;
   flex-shrink: 0;
 }
 
-.custom-footer a {
+.rz-custom-footer a {
   color: var(--text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.custom-footer a:hover {
+.rz-custom-footer a:hover {
   color: var(--red);
 }
 
@@ -365,8 +365,8 @@ body {
   font-size: 16px;
 }
 
-.custom-footer .row,
-.custom-footer .d-flex {
+.rz-custom-footer .row,
+.rz-custom-footer .d-flex {
   justify-content: flex-start !important;
   text-align: left !important;
 }

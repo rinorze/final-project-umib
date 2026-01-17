@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -19,7 +19,7 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+    <nav class="navbar navbar-expand-lg rz-custom-navbar fixed-top">
       <div class="container">
         <a class="navbar-brand fw-bold" href="/index.html"
           ><img src="/images/job-logo.png" alt="Job Portal Logo"
@@ -61,8 +61,8 @@
       </div>
     </nav>
 
-    <main class="main">
-      <section class="home-jobs" style="padding: 60px 0">
+    <main class="rz-main">
+      <section class="rz-home-jobs" style="padding: 60px 0">
         <div class="container" style="max-width: 560px">
           <div class="card border-0 shadow-sm">
             <div class="card-body p-4 p-md-5">
@@ -253,7 +253,7 @@
       function showAlert(type, message) {
         alertBox.classList.remove("d-none", "alert-danger", "alert-success");
         alertBox.classList.add(
-          type === "success" ? "alert-success" : "alert-danger"
+          type === "success" ? "alert-success" : "alert-danger",
         );
         alertBox.textContent = message;
       }
@@ -374,7 +374,7 @@
           googleTokenClient = google.accounts.oauth2.initTokenClient({
             client_id: GOOGLE_CLIENT_ID,
             scope: "email profile",
-            callback: handleGoogleTokenResponse
+            callback: handleGoogleTokenResponse,
           });
         };
       }
@@ -389,8 +389,10 @@
           const response = await fetch(
             "https://www.googleapis.com/oauth2/v3/userinfo",
             {
-              headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
-            }
+              headers: {
+                Authorization: `Bearer ${tokenResponse.access_token}`,
+              },
+            },
           );
           const userInfo = await response.json();
 
@@ -398,7 +400,7 @@
             email: userInfo.email,
             fullName: userInfo.name,
             picture: userInfo.picture,
-            googleId: userInfo.sub
+            googleId: userInfo.sub,
           });
 
           if (res.ok) {
@@ -418,7 +420,7 @@
         if (!isGoogleConfigured || !googleTokenClient) {
           showAlert(
             "error",
-            "Google Sign-In not configured. Please refresh and try again."
+            "Google Sign-In not configured. Please refresh and try again.",
           );
           return;
         }

@@ -1,4 +1,4 @@
-.hero-section {
+.rz-hero-section {
   background: url("/images/hero-bg.png");
   background-position: center;
   background-size: cover;
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-.hero-section .main-content {
+.rz-hero-section .rz-main-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -26,18 +26,18 @@
 }
 
 @media (min-width: 1400px) {
-  .hero-section .main-content {
+  .rz-hero-section .rz-main-content {
     margin-left: calc((100% - 1320px) / 2);
   }
 }
 
 @media (max-width: 1199px) {
-  .hero-section .main-content {
+  .rz-hero-section .rz-main-content {
     margin-left: calc((100% - 960px) / 2);
   }
 }
 
-.main-content h1 {
+.rz-main-content h1 {
   font-size: 56px;
   font-weight: 700;
   color: var(--black);
@@ -45,7 +45,7 @@
   line-height: 1.15;
 }
 
-.main-content p {
+.rz-main-content p {
   font-size: 18px;
   color: var(--text);
   max-width: 500px;
@@ -53,7 +53,7 @@
   line-height: 1.7;
 }
 
-.main-content .btn {
+.rz-main-content .btn {
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
   font-size: 18px;
@@ -62,30 +62,30 @@
   transition: all 0.2s ease;
 }
 
-.main-content .btn-primary {
+.rz-main-content .btn-primary {
   background-color: var(--red);
   color: var(--white);
   border: 1px solid var(--red);
 }
 
-.main-content .btn-primary:hover {
+.rz-main-content .btn-primary:hover {
   background-color: var(--red-hover);
   border-color: var(--red-hover);
 }
 
-.main-content .btn-secondary {
+.rz-main-content .btn-secondary {
   background-color: transparent;
   color: var(--text);
   border: 1px solid var(--text);
 }
 
-.main-content .btn-secondary:hover {
+.rz-main-content .btn-secondary:hover {
   background-color: var(--black-hover);
   border-color: var(--black-hover);
   color: var(--white);
 }
 
-.img-content {
+.rz-img-content {
   position: absolute;
   right: -150px;
   top: 50%;
@@ -94,27 +94,27 @@
   max-width: 850px;
 }
 
-.img-content img {
+.rz-img-content img {
   width: 100%;
   height: auto;
   object-fit: contain;
 }
 
 @media (min-width: 1400px) {
-  .img-content {
+  .rz-img-content {
     right: -50px;
     width: 55%;
   }
 }
 
 @media (min-width: 1600px) {
-  .img-content {
+  .rz-img-content {
     right: 50px;
     width: 50%;
   }
 }
 
-.trusted-by {
+.rz-trusted-by {
   margin: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -123,13 +123,13 @@
   gap: 2rem;
 }
 
-.trusted-by h1 {
+.rz-trusted-by h1 {
   font-size: 24px;
   font-weight: 500;
   color: var(--black);
 }
 
-.trusted-by .company-logos {
+.rz-trusted-by .rz-company-logos {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,7 +137,7 @@
   flex-wrap: wrap;
 }
 
-.trusted-by .company-logos .company-logo {
+.rz-trusted-by .rz-company-logos .company-logo {
   height: 34px;
   width: auto;
   opacity: 1;
@@ -145,37 +145,37 @@
   border-radius: 0px !important;
 }
 
-.home-jobs {
+.rz-home-jobs {
   background-color: #ffffff;
   padding: 120px 0;
 }
 
-.home-steps,
-.home-benefits,
-.home-cta {
+.rz-home-steps,
+.rz-home-benefits,
+.rz-home-cta {
   padding: 90px 0;
 }
 
-.home-steps {
+.rz-home-steps {
   background: #ffffff;
 }
 
-.home-benefits {
+.rz-home-benefits {
   background: var(--gray);
 }
 
-.home-categories {
+.rz-home-categories {
   background: #ffffff;
   padding: 90px 0;
 }
 
-.home-categories-header h2 {
+.rz-home-categories-header h2 {
   font-size: 36px;
   font-weight: 600;
   color: var(--black);
 }
 
-.home-categories-header p {
+.rz-home-categories-header p {
   color: #666;
   font-size: 18px;
   margin-bottom: 0;
@@ -190,7 +190,9 @@
   text-decoration: none;
   color: inherit;
   height: 100%;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .category-card:hover {
@@ -240,49 +242,51 @@
   padding: 4px 10px;
 }
 
-.home-categories .btn-outline-dark {
+.rz-home-categories .btn-outline-dark {
   border-radius: 10px;
   padding: 10px 18px;
 }
 
-.home-benefits .home-benefit-card {
+.rz-home-benefits .rz-home-benefit-card {
   border: 1px solid #e9e9e9;
   box-shadow: none;
-  transition: transform 0.15s ease, border-color 0.15s ease,
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
     background 0.15s ease;
 }
 
-.home-benefits .home-benefit-card:hover {
+.rz-home-benefits .rz-home-benefit-card:hover {
   transform: translateY(-4px);
   border-color: rgba(183, 28, 28, 0.28);
   background: #ffffff;
 }
 
-.home-benefit-head {
+.rz-home-benefit-head {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.home-benefits .home-benefit-icon {
+.rz-home-benefits .rz-home-benefit-icon {
   width: 44px;
   height: 44px;
   border-radius: 16px;
   margin-bottom: 0;
 }
 
-.home-benefits .home-benefit-title {
+.rz-home-benefits .rz-home-benefit-title {
   margin: 0;
   font-weight: 900;
   letter-spacing: -0.01em;
 }
 
-.home-benefits .home-benefit-text {
+.rz-home-benefits .rz-home-benefit-text {
   margin-top: 0;
 }
 
-.home-benefits .home-benefit-list {
+.rz-home-benefits .rz-home-benefit-list {
   list-style: none;
   padding-left: 0;
   margin: 14px 0 0 0;
@@ -291,7 +295,7 @@
   gap: 8px;
 }
 
-.home-benefits .home-benefit-list li {
+.rz-home-benefits .rz-home-benefit-list li {
   margin: 0;
   display: flex;
   align-items: flex-start;
@@ -299,7 +303,7 @@
   color: #444;
 }
 
-.home-benefits .home-benefit-list li::before {
+.rz-home-benefits .rz-home-benefit-list li::before {
   content: "";
   width: 10px;
   height: 10px;
@@ -310,8 +314,8 @@
   border: 1px solid rgba(183, 28, 28, 0.35);
 }
 
-.home-step-card,
-.home-benefit-card {
+.rz-home-step-card,
+.rz-home-benefit-card {
   background: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 18px;
@@ -319,13 +323,13 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
 }
 
-.home-steps .home-step-card {
+.rz-home-steps .rz-home-step-card {
   box-shadow: none;
   border: none;
   text-align: center;
 }
 
-.home-steps .home-step-badge {
+.rz-home-steps .rz-home-step-badge {
   width: 100px;
   height: 100px;
   border-radius: 50px;
@@ -338,11 +342,11 @@
   margin: 0 auto 14px auto;
 }
 
-.home-steps .home-step-badge i {
+.rz-home-steps .rz-home-step-badge i {
   font-size: 28px;
 }
 
-.home-steps .home-step-title {
+.rz-home-steps .rz-home-step-title {
   margin-bottom: 10px;
 }
 
@@ -394,22 +398,22 @@
   margin: 6px 0;
 }
 
-.home-step-title,
-.home-benefit-title {
+.rz-home-step-title,
+.rz-home-benefit-title {
   font-weight: 900;
   color: var(--black);
   margin-bottom: 10px;
 }
 
-.home-step-text,
-.home-benefit-text {
+.rz-home-step-text,
+.rz-home-benefit-text {
   color: #444;
   font-size: 17px;
   line-height: 1.65;
   margin: 0;
 }
 
-.home-benefit-icon {
+.rz-home-benefit-icon {
   width: 46px;
   height: 46px;
   border-radius: 16px;
@@ -422,7 +426,7 @@
   color: var(--red);
 }
 
-.home-benefit-icon i {
+.rz-home-benefit-icon i {
   font-size: 18px;
 }
 
@@ -576,19 +580,19 @@
   margin: 6px 0;
 }
 
-.home-cta {
+.rz-home-cta {
   padding: 100px 0;
   background: rgba(183, 28, 28, 0.08);
 }
 
-.home-cta-wrapper {
+.rz-home-cta-wrapper {
   border-radius: 24px;
   padding: 60px;
   position: relative;
   overflow: hidden;
 }
 
-.home-cta-heading {
+.rz-home-cta-heading {
   font-size: 42px;
   font-weight: 700;
   color: var(--black);
@@ -597,7 +601,7 @@
   position: relative;
 }
 
-.home-cta-desc {
+.rz-home-cta-desc {
   font-size: 18px;
   color: #666666;
   line-height: 1.7;
@@ -605,14 +609,14 @@
   position: relative;
 }
 
-.home-cta-buttons {
+.rz-home-cta-buttons {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
   position: relative;
 }
 
-.home-cta-buttons .btn-signup {
+.rz-home-cta-buttons .btn-signup {
   background: var(--red);
   color: #ffffff;
   border: none;
@@ -620,32 +624,32 @@
   font-weight: 600;
 }
 
-.home-cta-buttons .btn-signup:hover {
+.rz-home-cta-buttons .btn-signup:hover {
   background: var(--red-hover);
   color: #ffffff;
 }
 
-.home-cta-buttons .btn-outline-red {
+.rz-home-cta-buttons .btn-outline-red {
   background: transparent;
   color: var(--black);
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 14px 28px;
 }
 
-.home-cta-buttons .btn-outline-red:hover {
+.rz-home-cta-buttons .btn-outline-red:hover {
   background: rgba(0, 0, 0, 0.05);
   border-color: rgba(0, 0, 0, 0.3);
   color: var(--black);
 }
 
-.home-cta-cards {
+.rz-home-cta-cards {
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
 }
 
-.home-cta-card {
+.rz-home-cta-card {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -656,11 +660,11 @@
   transition: all 0.2s ease;
 }
 
-.home-cta-card:hover {
+.rz-home-cta-card:hover {
   border-color: rgba(183, 28, 28, 0.3);
 }
 
-.home-cta-card-icon {
+.rz-home-cta-card-icon {
   width: 50px;
   height: 50px;
   background: rgba(183, 28, 28, 0.1);
@@ -671,25 +675,25 @@
   flex-shrink: 0;
 }
 
-.home-cta-card-icon i {
+.rz-home-cta-card-icon i {
   font-size: 20px;
   color: var(--red);
 }
 
-.home-cta-card-content h5 {
+.rz-home-cta-card-content h5 {
   font-weight: 600;
   color: var(--black);
   margin: 0 0 4px 0;
   font-size: 15px;
 }
 
-.home-cta-card-content p {
+.rz-home-cta-card-content p {
   color: #666666;
   font-size: 13px;
   margin: 0;
 }
 
-.faq {
+.rz-faq {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -698,7 +702,7 @@
   margin: 100px auto 50px auto;
 }
 
-.faq .accordion {
+.rz-faq .accordion {
   width: 70%;
   margin-bottom: 4rem;
 }
@@ -760,11 +764,11 @@
   transition: height 0.25s ease;
 }
 
-.home-resume-builder {
+.rz-home-resume-builder {
   padding: 90px 0;
 }
 
-.resume-builder-card {
+.rz-resume-builder-card {
   background: #ffffff;
   border-radius: 22px;
   padding: 40px;
@@ -773,32 +777,32 @@
   gap: 50px;
 }
 
-.resume-builder-content {
+.rz-resume-builder-content {
   flex: 1;
 }
 
-.resume-builder-content h2 {
+.rz-resume-builder-content h2 {
   font-size: 36px;
   font-weight: 800;
   color: var(--black);
   margin-bottom: 16px;
 }
 
-.resume-builder-content p {
+.rz-resume-builder-content p {
   font-size: 18px;
   color: #555;
   line-height: 1.7;
   margin-bottom: 24px;
 }
 
-.resume-builder-features {
+.rz-resume-builder-features {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 28px;
 }
 
-.resume-builder-feature {
+.rz-resume-builder-feature {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -810,11 +814,11 @@
   font-weight: 600;
 }
 
-.resume-builder-feature i {
+.rz-resume-builder-feature i {
   font-size: 12px;
 }
 
-.resume-builder-preview {
+.rz-resume-builder-preview {
   flex: 0 0 280px;
   background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%);
   border: 1px solid #e8e8e8;
@@ -823,7 +827,7 @@
   position: relative;
 }
 
-.resume-builder-preview::before {
+.rz-resume-builder-preview::before {
   content: "Preview";
   position: absolute;
   top: -10px;
@@ -836,29 +840,29 @@
   border-radius: 4px;
 }
 
-.resume-mock-header {
+.rz-resume-mock-header {
   text-align: center;
   border-bottom: 2px solid #eee;
   padding-bottom: 12px;
   margin-bottom: 12px;
 }
 
-.resume-mock-name {
+.rz-resume-mock-name {
   font-size: 16px;
   font-weight: 800;
   color: var(--black);
 }
 
-.resume-mock-title {
+.rz-resume-mock-title {
   font-size: 12px;
   color: var(--red);
 }
 
-.resume-mock-section {
+.rz-resume-mock-section {
   margin-bottom: 10px;
 }
 
-.resume-mock-section-title {
+.rz-resume-mock-section-title {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -866,18 +870,18 @@
   margin-bottom: 6px;
 }
 
-.resume-mock-line {
+.rz-resume-mock-line {
   height: 8px;
   background: #f0f0f0;
   border-radius: 4px;
   margin-bottom: 6px;
 }
 
-.resume-mock-line.short {
+.rz-resume-mock-line.short {
   width: 60%;
 }
 
-.resume-mock-line.medium {
+.rz-resume-mock-line.medium {
   width: 80%;
 }
 
@@ -886,7 +890,7 @@
     position: static;
   }
 
-  .hero-section {
+  .rz-hero-section {
     flex-direction: column;
     padding: 40px 30px;
     min-height: auto;
@@ -894,7 +898,7 @@
     overflow: visible;
   }
 
-  .hero-section .main-content {
+  .rz-hero-section .rz-main-content {
     align-items: center;
     text-align: center;
     max-width: 100%;
@@ -902,72 +906,72 @@
     padding-left: 0;
   }
 
-  .main-content h1 {
+  .rz-main-content h1 {
     font-size: 36px;
     text-align: center;
   }
 
-  .main-content p {
+  .rz-main-content p {
     text-align: center;
     max-width: 100%;
   }
 
-  .img-content {
+  .rz-img-content {
     position: static;
     transform: none;
     width: 100%;
     max-width: 100%;
   }
 
-  .img-content img {
+  .rz-img-content img {
     max-height: 400px;
     width: 100%;
     object-fit: contain;
   }
 
-  .trusted-by {
+  .rz-trusted-by {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .trusted-by .company-logos {
+  .rz-trusted-by .rz-company-logos {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .home-cta-wrapper {
+  .rz-home-cta-wrapper {
     padding: 36px;
   }
 
-  .home-cta-heading {
+  .rz-home-cta-heading {
     font-size: 32px;
   }
 
-  .home-cta-cards {
+  .rz-home-cta-cards {
     margin-top: 30px;
   }
 
-  .resume-builder-card {
+  .rz-resume-builder-card {
     flex-direction: column;
     padding: 30px;
   }
 
-  .resume-builder-preview {
+  .rz-resume-builder-preview {
     flex: none;
     width: 100%;
     max-width: 300px;
   }
 
-  .resume-builder-content h2 {
+  .rz-resume-builder-content h2 {
     font-size: 28px;
   }
 
-  .faq-content {
+  .rz-faq-content {
     text-align: center;
   }
 
-  .faq .accordion {
+  .rz-faq .accordion {
     width: 90%;
   }
 }
@@ -978,19 +982,19 @@
     flex-basis: 56px;
   }
 
-  .home-cta-wrapper {
+  .rz-home-cta-wrapper {
     padding: 28px;
   }
 
-  .home-cta-heading {
+  .rz-home-cta-heading {
     font-size: 28px;
   }
 
-  .home-cta-buttons {
+  .rz-home-cta-buttons {
     flex-direction: column;
   }
 
-  .home-cta-buttons .btn {
+  .rz-home-cta-buttons .btn {
     width: 100%;
   }
 }
