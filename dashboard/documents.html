@@ -307,6 +307,11 @@
                   <button class="btn btn-signup btn-sm" id="copyLetter">
                     <i class="fa-solid fa-copy me-1"></i> Copy
                   </button>
+                  <button
+                    class="btn btn-outline-red btn-sm"
+                    id="downloadLetter">
+                    <i class="fa-solid fa-download me-1"></i> Download PDF
+                  </button>
                 </div>
               </div>
               <div class="editor-body">
@@ -387,6 +392,7 @@
     <script
       src="https://kit.fontawesome.com/9f730657c2.js"
       crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <script type="module">
@@ -824,19 +830,23 @@
 
       function renderTemplates() {
         templatesGrid.innerHTML = templates
-          .map(
-            (t, i) => `
+          .map((t, i) => {
+            const icon = t.icon || "fa-envelope";
+            const name = t.name || "Template";
+            const description =
+              t.description || "Click to load this cover letter template.";
+            return `
           <div class="col-md-6 col-lg-4">
             <div class="template-card" data-index="${i}">
               <div class="template-icon">
-                <i class="fa-solid ${t.icon}"></i>
+                <i class="fa-solid ${icon}"></i>
               </div>
-              <h5 class="template-title">${t.name}</h5>
-              <p class="template-desc">${t.description}</p>
+              <h5 class="template-title">${name}</h5>
+              <p class="template-desc">${description}</p>
             </div>
           </div>
-        `,
-          )
+        `;
+          })
           .join("");
 
         templatesGrid.querySelectorAll(".template-card").forEach((card) => {
@@ -845,8 +855,9 @@
               .querySelectorAll(".template-card")
               .forEach((c) => c.classList.remove("active"));
             card.classList.add("active");
+            const selected = templates[parseInt(card.dataset.index)];
             coverLetterText.value =
-              templates[parseInt(card.dataset.index)].content;
+              selected?.content ?? selected?.template ?? "";
           });
         });
       }
@@ -917,9 +928,81 @@
       });
 
       document.getElementById("copyLetter").addEventListener("click", () => {
-        navigator.clipboard.writeText(coverLetterText.value);
-        alert("Cover letter copied to clipboard!");
+        const btn = document.getElementById("copyLetter");
+        const original = btn.innerHTML;
+
+        navigator.clipboard
+          .writeText(coverLetterText.value)
+          .then(() => {
+            btn.innerHTML = '<i class="fa-solid fa-check me-1"></i> Copied';
+            btn.disabled = true;
+            setTimeout(() => {
+              btn.innerHTML = original;
+              btn.disabled = false;
+            }, 1200);
+          })
+          .catch(() => {
+            btn.innerHTML =
+              '<i class="fa-solid fa-triangle-exclamation me-1"></i> Failed';
+            btn.disabled = true;
+            setTimeout(() => {
+              btn.innerHTML = original;
+              btn.disabled = false;
+            }, 1400);
+          });
       });
+
+      document
+        .getElementById("downloadLetter")
+        .addEventListener("click", () => {
+          const content = coverLetterText.value.trim();
+          if (!content) return;
+
+          const jsPDFCtor = window.jspdf?.jsPDF || window.jsPDF;
+          if (!jsPDFCtor) {
+            alert(
+              "PDF generator failed to load. Please refresh and try again.",
+            );
+            return;
+          }
+
+          const doc = new jsPDFCtor({
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          });
+          const pageWidth = doc.internal.pageSize.getWidth();
+          const pageHeight = doc.internal.pageSize.getHeight();
+
+          const marginX = 15;
+          const marginTop = 18;
+          const marginBottom = 18;
+
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+
+          const maxWidth = pageWidth - marginX * 2;
+          const lines = doc.splitTextToSize(content, maxWidth);
+
+          const lineHeight = 6;
+          const linesPerPage = Math.floor(
+            (pageHeight - marginTop - marginBottom) / lineHeight,
+          );
+          const totalPages = Math.max(
+            1,
+            Math.ceil(lines.length / linesPerPage),
+          );
+
+          for (let p = 0; p < totalPages; p++) {
+            if (p > 0) doc.addPage();
+            const start = p * linesPerPage;
+            const end = start + linesPerPage;
+            const pageLines = lines.slice(start, end);
+            doc.text(pageLines, marginX, marginTop);
+          }
+
+          doc.save(`${resumeData.fullName || "cover-letter"}.pdf`);
+        });
 
       document.getElementById("saveLetter").addEventListener("click", () => {
         const content = coverLetterText.value.trim();
