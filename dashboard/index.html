@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/style/base.css" />
     <link rel="stylesheet" href="/style/dashboard.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-index" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -269,10 +269,10 @@
       document.getElementById("appliedCount").textContent = String(applied);
       document.getElementById("savedCount").textContent = String(saved);
       document.getElementById("viewsCount").textContent = String(
-        Math.max(0, Math.round(applied * 2.5))
+        Math.max(0, Math.round(applied * 2.5)),
       );
       document.getElementById("interviewsCount").textContent = String(
-        Math.max(0, Math.round(applied / 5))
+        Math.max(0, Math.round(applied / 5)),
       );
 
       function renderChart() {
@@ -309,7 +309,7 @@
           const monthData = months.find(
             (m) =>
               m.month === appliedDate.getMonth() &&
-              m.year === appliedDate.getFullYear()
+              m.year === appliedDate.getFullYear(),
           );
           if (monthData) {
             monthData.count++;
@@ -344,7 +344,7 @@
             .slice(-5)
             .reverse();
           const byCompany = new Map(
-            (data.companies || []).map((c) => [c.id, c])
+            (data.companies || []).map((c) => [c.id, c]),
           );
 
           host.innerHTML = jobs
@@ -352,7 +352,7 @@
               const c = byCompany.get(j.companyId);
               return `
               <a class="dashboard-recent-item" href="/job.html?id=${encodeURIComponent(
-                j.id
+                j.id,
               )}">
                 <div class="dashboard-recent-icon">
                   <i class="fa-solid fa-briefcase"></i>
@@ -382,7 +382,7 @@
           const allJobs = [...(data.jobs || []), ...getCustomJobs()];
           const byJobId = new Map(allJobs.map((j) => [String(j.id), j]));
           const byCompany = new Map(
-            (data.companies || []).map((c) => [c.id, c])
+            (data.companies || []).map((c) => [c.id, c]),
           );
 
           const appliedJobs = getAppliedJobs();

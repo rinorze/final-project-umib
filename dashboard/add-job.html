@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/style/base.css" />
     <link rel="stylesheet" href="/style/dashboard.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-add-job" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -188,7 +188,7 @@
         getCurrentUser,
         isEmployer,
         isAdmin,
-        setupRoleBasedSidebar
+        setupRoleBasedSidebar,
       } from "/js/auth.js";
 
       requireAuth();
@@ -209,7 +209,7 @@
       function showAlert(type, message) {
         alertBox.classList.remove("d-none", "alert-danger", "alert-success");
         alertBox.classList.add(
-          type === "success" ? "alert-success" : "alert-danger"
+          type === "success" ? "alert-success" : "alert-danger",
         );
         alertBox.textContent = message;
       }
@@ -256,7 +256,7 @@
           type,
           salary,
           experience,
-          description
+          description,
         });
 
         if (!res.ok) {
@@ -267,7 +267,7 @@
         showAlert("success", "Job created successfully.");
         setTimeout(() => {
           window.location.href = `/job.html?id=${encodeURIComponent(
-            res.job.id
+            res.job.id,
           )}`;
         }, 500);
       });

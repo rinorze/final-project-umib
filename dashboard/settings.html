@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/style/dashboard.css" />
     <link rel="stylesheet" href="/style/settings.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-settings" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -495,7 +495,7 @@
         getProfile,
         getUserSettings,
         saveUserSettings,
-        setupRoleBasedSidebar
+        setupRoleBasedSidebar,
       } from "/js/auth.js";
 
       requireAuth({ redirectTo: "/signin.html" });
@@ -523,11 +523,11 @@
 
         if (user?.createdAt) {
           document.getElementById("accountCreated").textContent = new Date(
-            user.createdAt
+            user.createdAt,
           ).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
-            day: "numeric"
+            day: "numeric",
           });
         }
 
@@ -535,12 +535,12 @@
         const roleIcons = {
           admin: "fa-crown",
           employer: "fa-building",
-          jobseeker: "fa-user"
+          jobseeker: "fa-user",
         };
         const roleLabels = {
           admin: "Administrator",
           employer: "Employer",
-          jobseeker: "Job Seeker"
+          jobseeker: "Job Seeker",
         };
 
         roleBadge.className = `role-badge ${userRole}`;
@@ -603,7 +603,7 @@
           showEmail: document.getElementById("showEmail").checked,
           showPhone: document.getElementById("showPhone").checked,
           hideFromEmployer: document.getElementById("hideFromEmployer").checked,
-          anonymousMode: document.getElementById("anonymousMode").checked
+          anonymousMode: document.getElementById("anonymousMode").checked,
         };
         saveUserSettings(settings);
       }
@@ -616,7 +616,7 @@
           saveSettings();
           showAlert(
             '<i class="fa-solid fa-check-circle me-2"></i>Settings saved successfully!',
-            "success"
+            "success",
           );
         });
 
@@ -629,11 +629,11 @@
             appliedJobs: getAppliedJobs(),
             profileData: getProfile(),
             settings: getUserSettings(),
-            exportDate: new Date().toISOString()
+            exportDate: new Date().toISOString(),
           };
 
           const blob = new Blob([JSON.stringify(userData, null, 2)], {
-            type: "application/json"
+            type: "application/json",
           });
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
@@ -646,14 +646,14 @@
 
           showAlert(
             '<i class="fa-solid fa-download me-2"></i>Your data has been downloaded!',
-            "success"
+            "success",
           );
         });
 
       document.getElementById("clearDataBtn").addEventListener("click", () => {
         if (
           confirm(
-            "Are you sure you want to clear all saved jobs, applications, and preferences? This cannot be undone."
+            "Are you sure you want to clear all saved jobs, applications, and preferences? This cannot be undone.",
           )
         ) {
           localStorage.removeItem(`jp_saved_${user.id}`);
@@ -662,7 +662,7 @@
           localStorage.removeItem(`jp_profile_${user.id}`);
           showAlert(
             '<i class="fa-solid fa-check-circle me-2"></i>All data has been cleared!',
-            "success"
+            "success",
           );
         }
       });
@@ -702,11 +702,11 @@
           }
 
           bootstrap.Modal.getInstance(
-            document.getElementById("passwordModal")
+            document.getElementById("passwordModal"),
           ).hide();
           showAlert(
             '<i class="fa-solid fa-check-circle me-2"></i>Password updated successfully!',
-            "success"
+            "success",
           );
           document.getElementById("passwordForm").reset();
         });
@@ -721,7 +721,7 @@
 
           if (
             confirm(
-              "Are you sure you want to delete your account? This action cannot be undone."
+              "Are you sure you want to delete your account? This action cannot be undone.",
             )
           ) {
             const users = getUsers();
@@ -836,20 +836,20 @@
       window.confirmDeleteUser = function (id, name) {
         if (
           confirm(
-            `Are you sure you want to delete user "${name}"? This cannot be undone.`
+            `Are you sure you want to delete user "${name}"? This cannot be undone.`,
           )
         ) {
           const result = deleteUser(id);
           if (result.ok) {
             showAlert(
               `<i class="fa-solid fa-check-circle me-2"></i>User "${name}" deleted successfully!`,
-              "success"
+              "success",
             );
             loadAdminData();
           } else {
             showAlert(
               `<i class="fa-solid fa-exclamation-circle me-2"></i>${result.message}`,
-              "danger"
+              "danger",
             );
           }
         }
@@ -863,11 +863,11 @@
         const result = updateUser(userId, { fullName, role });
         if (result.ok) {
           bootstrap.Modal.getInstance(
-            document.getElementById("editUserModal")
+            document.getElementById("editUserModal"),
           ).hide();
           showAlert(
             '<i class="fa-solid fa-check-circle me-2"></i>User updated successfully!',
-            "success"
+            "success",
           );
           loadAdminData();
         } else {

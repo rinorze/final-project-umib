@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/style/dashboard.css" />
     <link rel="stylesheet" href="/style/profile.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-profile" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -442,7 +442,7 @@
         setupRoleBasedSidebar,
         getUserRole,
         USER_ROLES,
-        getCustomJobs
+        getCustomJobs,
       } from "/js/auth.js";
 
       requireAuth({ redirectTo: "/signin.html" });
@@ -468,7 +468,7 @@
       function showAlert(type, message) {
         alertBox.classList.remove("d-none", "alert-danger", "alert-success");
         alertBox.classList.add(
-          type === "success" ? "alert-success" : "alert-danger"
+          type === "success" ? "alert-success" : "alert-danger",
         );
         alertBox.innerHTML = message;
         setTimeout(() => alertBox.classList.add("d-none"), 4000);
@@ -485,7 +485,7 @@
             { key: "bio", weight: 20 },
             { key: "linkedin", weight: 10 },
             { key: "portfolio", weight: 10 },
-            { key: "photoUrl", weight: 10 }
+            { key: "photoUrl", weight: 10 },
           ];
         } else {
           fields = [
@@ -501,7 +501,7 @@
             { key: "photoUrl", weight: 8 },
             { key: "resumeFile", weight: 8 },
             { key: "workExperience", weight: 8, isArray: true },
-            { key: "education", weight: 8, isArray: true }
+            { key: "education", weight: 8, isArray: true },
           ];
         }
 
@@ -524,9 +524,8 @@
 
       function updateCompletenessUI(profile) {
         const percent = calculateCompleteness(profile);
-        document.getElementById(
-          "completenessPercent"
-        ).textContent = `${percent}%`;
+        document.getElementById("completenessPercent").textContent =
+          `${percent}%`;
         document.getElementById("completenessFill").style.width = `${percent}%`;
 
         let hint;
@@ -636,7 +635,7 @@
           const resumeData = {
             name: file.name,
             data: event.target.result,
-            uploadedAt: new Date().toISOString()
+            uploadedAt: new Date().toISOString(),
           };
           setResume(resumeData);
           displayResume(resumeData);
@@ -666,7 +665,7 @@
         if (resume?.data) {
           const win = window.open();
           win.document.write(
-            `<iframe src="${resume.data}" style="width:100%;height:100%;border:none;"></iframe>`
+            `<iframe src="${resume.data}" style="width:100%;height:100%;border:none;"></iframe>`,
           );
         }
       });
@@ -701,11 +700,11 @@
               <div>
                 <h5 class="experience-title">${exp.title}</h5>
                 <p class="experience-company">${exp.company} ${
-              exp.location ? "• " + exp.location : ""
-            }</p>
+                  exp.location ? "• " + exp.location : ""
+                }</p>
                 <p class="experience-dates">${exp.startDate} - ${
-              exp.current ? "Present" : exp.endDate || ""
-            }</p>
+                  exp.current ? "Present" : exp.endDate || ""
+                }</p>
               </div>
               <button class="btn btn-sm btn-outline-red remove-experience" data-id="${
                 exp.id
@@ -719,7 +718,7 @@
                 : ""
             }
           </div>
-        `
+        `,
           )
           .join("");
 
@@ -736,7 +735,7 @@
         .getElementById("addExperienceBtn")
         .addEventListener("click", () => {
           const modal = new bootstrap.Modal(
-            document.getElementById("experienceModal")
+            document.getElementById("experienceModal"),
           );
           document.getElementById("experienceForm").reset();
           modal.show();
@@ -753,7 +752,7 @@
             startDate: document.getElementById("expStartDate").value,
             endDate: document.getElementById("expEndDate").value,
             current: document.getElementById("expCurrent").checked,
-            description: document.getElementById("expDescription").value.trim()
+            description: document.getElementById("expDescription").value.trim(),
           };
 
           if (!exp.title || !exp.company) {
@@ -765,7 +764,7 @@
           renderWorkExperience();
           updateCompletenessUI(getProfile());
           bootstrap.Modal.getInstance(
-            document.getElementById("experienceModal")
+            document.getElementById("experienceModal"),
           ).hide();
           showAlert("success", "Work experience added!");
         });
@@ -789,12 +788,12 @@
             <div class="education-header">
               <div>
                 <h5 class="education-title">${edu.degree} ${
-              edu.field ? "in " + edu.field : ""
-            }</h5>
+                  edu.field ? "in " + edu.field : ""
+                }</h5>
                 <p class="education-school">${edu.school}</p>
                 <p class="education-dates">${edu.startYear} - ${
-              edu.current ? "Present" : edu.endYear || ""
-            }</p>
+                  edu.current ? "Present" : edu.endYear || ""
+                }</p>
               </div>
               <button class="btn btn-sm btn-outline-red remove-education" data-id="${
                 edu.id
@@ -808,7 +807,7 @@
                 : ""
             }
           </div>
-        `
+        `,
           )
           .join("");
 
@@ -825,7 +824,7 @@
         .getElementById("addEducationBtn")
         .addEventListener("click", () => {
           const modal = new bootstrap.Modal(
-            document.getElementById("educationModal")
+            document.getElementById("educationModal"),
           );
           document.getElementById("educationForm").reset();
           modal.show();
@@ -841,7 +840,7 @@
             startYear: document.getElementById("eduStartYear").value,
             endYear: document.getElementById("eduEndYear").value,
             current: document.getElementById("eduCurrent").checked,
-            description: document.getElementById("eduDescription").value.trim()
+            description: document.getElementById("eduDescription").value.trim(),
           };
 
           if (!edu.degree || !edu.school) {
@@ -853,7 +852,7 @@
           renderEducation();
           updateCompletenessUI(getProfile());
           bootstrap.Modal.getInstance(
-            document.getElementById("educationModal")
+            document.getElementById("educationModal"),
           ).hide();
           showAlert("success", "Education added!");
         });
@@ -874,7 +873,7 @@
 
         if (isEmployer) {
           const postedJobs = getCustomJobs().filter(
-            (j) => j.postedBy === user?.id
+            (j) => j.postedBy === user?.id,
           );
           document.getElementById("statApplied").textContent =
             postedJobs.length;
@@ -915,7 +914,7 @@
             ${skill}
             <button type="button" class="profile-skill-remove" data-skill="${skill}">&times;</button>
           </span>
-        `
+        `,
           )
           .join("");
 
@@ -924,7 +923,7 @@
             const skillToRemove = btn.getAttribute("data-skill");
             const profile = getProfile();
             profile.skills = (profile.skills || []).filter(
-              (s) => s !== skillToRemove
+              (s) => s !== skillToRemove,
             );
             saveProfile(profile);
             renderSkills(profile.skills);
@@ -998,7 +997,7 @@
 
           showAlert(
             "success",
-            '<i class="fa-solid fa-check-circle me-2"></i>Profile saved successfully!'
+            '<i class="fa-solid fa-check-circle me-2"></i>Profile saved successfully!',
           );
         });
 

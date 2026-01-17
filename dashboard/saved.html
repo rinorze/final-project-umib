@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/style/dashboard.css" />
     <link rel="stylesheet" href="/style/jobs.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-saved" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -38,16 +38,28 @@
           <a class="dashboard-link active" href="/dashboard/saved.html">
             <i class="fa-solid fa-bookmark"></i> Saved Jobs
           </a>
-          <a class="dashboard-link" href="/dashboard/applied.html" id="nav-applied">
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
             <i class="fa-solid fa-paper-plane"></i> Applied
           </a>
-          <a class="dashboard-link" href="/dashboard/add-job.html" id="nav-post-job">
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
             <i class="fa-solid fa-plus"></i> Post Job
           </a>
-          <a class="dashboard-link" href="/dashboard/applications.html" id="nav-applications">
+          <a
+            class="dashboard-link"
+            href="/dashboard/applications.html"
+            id="nav-applications">
             <i class="fa-solid fa-users"></i> Applications
           </a>
-          <a class="dashboard-link" href="/dashboard/documents.html" id="nav-documents">
+          <a
+            class="dashboard-link"
+            href="/dashboard/documents.html"
+            id="nav-documents">
             <i class="fa-solid fa-folder-open"></i> Documents
           </a>
           <a class="dashboard-link" href="/dashboard/analytics.html">
@@ -101,7 +113,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/9f730657c2.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
 
     <script type="module">
       import {
@@ -110,8 +124,9 @@
         getSavedJobs,
         clearSavedJobs,
         toggleSavedJob,
-        getCustomJobs
-      , setupRoleBasedSidebar} from "/js/auth.js";
+        getCustomJobs,
+        setupRoleBasedSidebar,
+      } from "/js/auth.js";
 
       requireAuth({ redirectTo: "/signin.html" });
       setupRoleBasedSidebar();
@@ -148,7 +163,7 @@
           .filter(Boolean)
           .map((job) => {
             const company = (data.companies || []).find(
-              (c) => c.id === job.companyId
+              (c) => c.id === job.companyId,
             );
             return `
               <div class="col-lg-4 col-md-6">

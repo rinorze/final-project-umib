@@ -1,18 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Analytics - Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="/style/base.css" />
     <link rel="stylesheet" href="/style/dashboard.css" />
     <link rel="stylesheet" href="/style/analytics.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-analytics" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -32,16 +38,28 @@
           <a class="dashboard-link" href="/dashboard/saved.html">
             <i class="fa-solid fa-bookmark"></i> Saved Jobs
           </a>
-          <a class="dashboard-link" href="/dashboard/applied.html" id="nav-applied">
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
             <i class="fa-solid fa-paper-plane"></i> Applied
           </a>
-          <a class="dashboard-link" href="/dashboard/add-job.html" id="nav-post-job">
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
             <i class="fa-solid fa-plus"></i> Post Job
           </a>
-          <a class="dashboard-link" href="/dashboard/applications.html" id="nav-applications">
+          <a
+            class="dashboard-link"
+            href="/dashboard/applications.html"
+            id="nav-applications">
             <i class="fa-solid fa-users"></i> Applications
           </a>
-          <a class="dashboard-link" href="/dashboard/documents.html" id="nav-documents">
+          <a
+            class="dashboard-link"
+            href="/dashboard/documents.html"
+            id="nav-documents">
             <i class="fa-solid fa-folder-open"></i> Documents
           </a>
           <a class="dashboard-link active" href="/dashboard/analytics.html">
@@ -69,7 +87,9 @@
               </button>
               <div>
                 <h1 class="dashboard-title">Analytics</h1>
-                <p class="dashboard-subtitle">Track your job postings performance</p>
+                <p class="dashboard-subtitle">
+                  Track your job postings performance
+                </p>
               </div>
             </div>
           </div>
@@ -77,7 +97,9 @@
           <div class="row g-4 mb-4">
             <div class="col-md-3 col-6">
               <div class="analytics-stat-card">
-                <div class="analytics-stat-icon" style="background: rgba(76, 175, 80, 0.1); color: #4caf50;">
+                <div
+                  class="analytics-stat-icon"
+                  style="background: rgba(76, 175, 80, 0.1); color: #4caf50">
                   <i class="fa-solid fa-eye"></i>
                 </div>
                 <div class="analytics-stat-value" id="totalViews">0</div>
@@ -86,7 +108,9 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="analytics-stat-card">
-                <div class="analytics-stat-icon" style="background: rgba(33, 150, 243, 0.1); color: #2196f3;">
+                <div
+                  class="analytics-stat-icon"
+                  style="background: rgba(33, 150, 243, 0.1); color: #2196f3">
                   <i class="fa-solid fa-paper-plane"></i>
                 </div>
                 <div class="analytics-stat-value" id="totalApplications">0</div>
@@ -95,7 +119,9 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="analytics-stat-card">
-                <div class="analytics-stat-icon" style="background: rgba(255, 152, 0, 0.1); color: #ff9800;">
+                <div
+                  class="analytics-stat-icon"
+                  style="background: rgba(255, 152, 0, 0.1); color: #ff9800">
                   <i class="fa-solid fa-percent"></i>
                 </div>
                 <div class="analytics-stat-value" id="avgConversion">0%</div>
@@ -104,7 +130,9 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="analytics-stat-card">
-                <div class="analytics-stat-icon" style="background: rgba(183, 28, 28, 0.1); color: var(--red);">
+                <div
+                  class="analytics-stat-icon"
+                  style="background: rgba(183, 28, 28, 0.1); color: var(--red)">
                   <i class="fa-solid fa-briefcase"></i>
                 </div>
                 <div class="analytics-stat-value" id="activeJobs">0</div>
@@ -115,8 +143,13 @@
 
           <div class="analytics-section">
             <div class="analytics-section-header">
-              <h3><i class="fa-solid fa-coins me-2"></i>Salary Insights by Category</h3>
-              <p class="text-muted mb-0">Market salary ranges in Kosovo (EUR/month)</p>
+              <h3>
+                <i class="fa-solid fa-coins me-2"></i>Salary Insights by
+                Category
+              </h3>
+              <p class="text-muted mb-0">
+                Market salary ranges in Kosovo (EUR/month)
+              </p>
             </div>
             <div class="analytics-section-body">
               <div class="row g-3" id="salaryInsights"></div>
@@ -126,11 +159,15 @@
           <div class="analytics-section">
             <div class="analytics-section-header">
               <h3><i class="fa-solid fa-table me-2"></i>Job Performance</h3>
-              <p class="text-muted mb-0">Detailed analytics for your posted jobs</p>
+              <p class="text-muted mb-0">
+                Detailed analytics for your posted jobs
+              </p>
             </div>
             <div class="analytics-section-body">
               <div id="jobPerformanceEmpty" class="text-center py-5 text-muted">
-                <i class="fa-solid fa-chart-bar mb-3" style="font-size: 3rem; opacity: 0.3;"></i>
+                <i
+                  class="fa-solid fa-chart-bar mb-3"
+                  style="font-size: 3rem; opacity: 0.3"></i>
                 <h5>No jobs posted yet</h5>
                 <p>Post a job to start tracking its performance</p>
                 <a href="/dashboard/add-job.html" class="btn btn-signup">
@@ -156,12 +193,21 @@
 
           <div class="analytics-section">
             <div class="analytics-section-header">
-              <h3><i class="fa-solid fa-clock-rotate-left me-2"></i>Application History</h3>
-              <p class="text-muted mb-0">Your recent job applications and their status</p>
+              <h3>
+                <i class="fa-solid fa-clock-rotate-left me-2"></i>Application
+                History
+              </h3>
+              <p class="text-muted mb-0">
+                Your recent job applications and their status
+              </p>
             </div>
             <div class="analytics-section-body">
-              <div id="applicationHistoryEmpty" class="text-center py-5 text-muted">
-                <i class="fa-solid fa-paper-plane mb-3" style="font-size: 3rem; opacity: 0.3;"></i>
+              <div
+                id="applicationHistoryEmpty"
+                class="text-center py-5 text-muted">
+                <i
+                  class="fa-solid fa-paper-plane mb-3"
+                  style="font-size: 3rem; opacity: 0.3"></i>
                 <h5>No applications yet</h5>
                 <p>Start applying to jobs to track your progress</p>
                 <a href="/jobs.html" class="btn btn-signup">
@@ -176,13 +222,21 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/9f730657c2.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
 
     <script type="module">
-      import { 
-        requireAuth, signOut, getAppliedJobs, getCustomJobs,
-        getAllJobsAnalytics, getJobAnalytics, getSalaryInsights
-      , setupRoleBasedSidebar} from "/js/auth.js";
+      import {
+        requireAuth,
+        signOut,
+        getAppliedJobs,
+        getCustomJobs,
+        getAllJobsAnalytics,
+        getJobAnalytics,
+        getSalaryInsights,
+        setupRoleBasedSidebar,
+      } from "/js/auth.js";
 
       requireAuth({ redirectTo: "/signin.html" });
       setupRoleBasedSidebar();
@@ -202,24 +256,30 @@
 
         let totalViews = 0;
         let totalApps = 0;
-        
-        Object.values(analytics).forEach(a => {
+
+        Object.values(analytics).forEach((a) => {
           totalViews += a.views || 0;
           totalApps += a.applications || 0;
         });
 
-        const avgConversion = totalViews > 0 ? Math.round((totalApps / totalViews) * 100) : 0;
+        const avgConversion =
+          totalViews > 0 ? Math.round((totalApps / totalViews) * 100) : 0;
 
-        document.getElementById("totalViews").textContent = totalViews.toLocaleString();
-        document.getElementById("totalApplications").textContent = totalApps.toLocaleString();
-        document.getElementById("avgConversion").textContent = avgConversion + "%";
+        document.getElementById("totalViews").textContent =
+          totalViews.toLocaleString();
+        document.getElementById("totalApplications").textContent =
+          totalApps.toLocaleString();
+        document.getElementById("avgConversion").textContent =
+          avgConversion + "%";
         document.getElementById("activeJobs").textContent = customJobs.length;
 
         const salaryData = getSalaryInsights();
         const salaryContainer = document.getElementById("salaryInsights");
-        salaryContainer.innerHTML = Object.entries(salaryData).map(([category, data]) => {
-          const percentile = ((data.avg - data.min) / (data.max - data.min)) * 100;
-          return `
+        salaryContainer.innerHTML = Object.entries(salaryData)
+          .map(([category, data]) => {
+            const percentile =
+              ((data.avg - data.min) / (data.max - data.min)) * 100;
+            return `
             <div class="col-md-4 col-sm-6">
               <div class="salary-card">
                 <div class="salary-card-title">${category}</div>
@@ -234,16 +294,22 @@
               </div>
             </div>
           `;
-        }).join("");
+          })
+          .join("");
 
         if (customJobs.length > 0) {
-          document.getElementById("jobPerformanceEmpty").classList.add("d-none");
-          document.getElementById("jobPerformanceTable").classList.remove("d-none");
+          document
+            .getElementById("jobPerformanceEmpty")
+            .classList.add("d-none");
+          document
+            .getElementById("jobPerformanceTable")
+            .classList.remove("d-none");
 
           const tbody = document.getElementById("jobPerformanceBody");
-          tbody.innerHTML = customJobs.map(job => {
-            const jobAnalytics = getJobAnalytics(job.id);
-            return `
+          tbody.innerHTML = customJobs
+            .map((job) => {
+              const jobAnalytics = getJobAnalytics(job.id);
+              return `
               <tr>
                 <td>
                   <strong>${job.title}</strong>
@@ -252,38 +318,43 @@
                 <td>${jobAnalytics.views}</td>
                 <td>${jobAnalytics.applications}</td>
                 <td>
-                  <span class="badge ${jobAnalytics.conversionRate > 10 ? 'bg-success' : jobAnalytics.conversionRate > 5 ? 'bg-warning' : 'bg-secondary'}">
+                  <span class="badge ${jobAnalytics.conversionRate > 10 ? "bg-success" : jobAnalytics.conversionRate > 5 ? "bg-warning" : "bg-secondary"}">
                     ${jobAnalytics.conversionRate}%
                   </span>
                 </td>
                 <td>${new Date(job.postedDate).toLocaleDateString()}</td>
               </tr>
             `;
-          }).join("");
+            })
+            .join("");
         }
 
         if (applied.length > 0) {
-          document.getElementById("applicationHistoryEmpty").classList.add("d-none");
+          document
+            .getElementById("applicationHistoryEmpty")
+            .classList.add("d-none");
           const historyList = document.getElementById("applicationHistoryList");
           historyList.classList.remove("d-none");
 
-          const jobsById = new Map(allJobs.map(j => [String(j.id), j]));
-          const companiesById = new Map(data.companies.map(c => [c.id, c]));
+          const jobsById = new Map(allJobs.map((j) => [String(j.id), j]));
+          const companiesById = new Map(data.companies.map((c) => [c.id, c]));
 
-          historyList.innerHTML = applied.slice(0, 10).map(app => {
-            const job = jobsById.get(String(app.jobId));
-            if (!job) return "";
-            const company = companiesById.get(job.companyId);
-            const status = app.status || "pending";
-            const statusLabels = {
-              pending: "Pending",
-              reviewed: "Under Review",
-              interview: "Interview",
-              rejected: "Rejected",
-              accepted: "Accepted"
-            };
+          historyList.innerHTML = applied
+            .slice(0, 10)
+            .map((app) => {
+              const job = jobsById.get(String(app.jobId));
+              if (!job) return "";
+              const company = companiesById.get(job.companyId);
+              const status = app.status || "pending";
+              const statusLabels = {
+                pending: "Pending",
+                reviewed: "Under Review",
+                interview: "Interview",
+                rejected: "Rejected",
+                accepted: "Accepted",
+              };
 
-            return `
+              return `
               <div class="application-history-item">
                 <div class="history-company-logo">
                   ${company?.logo ? `<img src="/${company.logo}" alt="${company?.name}">` : '<i class="fa-solid fa-building"></i>'}
@@ -298,7 +369,8 @@
                 </div>
               </div>
             `;
-          }).join("");
+            })
+            .join("");
         }
       }
 

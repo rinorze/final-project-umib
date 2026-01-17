@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/style/resume-builder.css" />
     <link rel="stylesheet" href="/style/documents.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-documents" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -397,7 +397,7 @@
         setupRoleBasedSidebar,
         getUserRole,
         USER_ROLES,
-        getCoverLetterTemplates
+        getCoverLetterTemplates,
       } from "/js/auth.js";
 
       requireAuth({ redirectTo: "/signin.html" });
@@ -448,7 +448,7 @@
         experience: [],
         education: [],
         skills: [],
-        languages: []
+        languages: [],
       };
 
       const saved = localStorage.getItem("resumeData");
@@ -517,8 +517,8 @@
                 <div class="resume-preview-item-header">
                   <strong>${exp.title}</strong>
                   <span>${exp.startDate} - ${
-                  exp.current ? "Present" : exp.endDate
-                }</span>
+                    exp.current ? "Present" : exp.endDate
+                  }</span>
                 </div>
                 <div class="resume-preview-item-subtitle">${exp.company}${
                   exp.location ? " • " + exp.location : ""
@@ -529,7 +529,7 @@
                     : ""
                 }
               </div>
-            `
+            `,
               )
               .join("");
         } else {
@@ -547,14 +547,14 @@
                 <div class="resume-preview-item-header">
                   <strong>${edu.degree}</strong>
                   <span>${edu.startDate} - ${
-                  edu.current ? "Present" : edu.endDate
-                }</span>
+                    edu.current ? "Present" : edu.endDate
+                  }</span>
                 </div>
                 <div class="resume-preview-item-subtitle">${edu.school}${
                   edu.location ? " • " + edu.location : ""
                 }</div>
               </div>
-            `
+            `,
               )
               .join("");
         } else {
@@ -566,7 +566,7 @@
           skillsSection.style.display = "block";
           document.getElementById("previewSkills").innerHTML = resumeData.skills
             .map(
-              (skill) => `<span class="resume-preview-skill">${skill}</span>`
+              (skill) => `<span class="resume-preview-skill">${skill}</span>`,
             )
             .join("");
         } else {
@@ -580,7 +580,7 @@
             resumeData.languages
               .map(
                 (lang) =>
-                  `<span class="resume-preview-lang">${lang.name} - ${lang.level}</span>`
+                  `<span class="resume-preview-lang">${lang.name} - ${lang.level}</span>`,
               )
               .join("");
         } else {
@@ -608,7 +608,7 @@
                 </button>
               </div>
             </div>
-          `
+          `,
             )
             .join("") || '<p class="text-muted">No experience added yet</p>';
 
@@ -639,7 +639,7 @@
                 </button>
               </div>
             </div>
-          `
+          `,
             )
             .join("") || '<p class="text-muted">No education added yet</p>';
 
@@ -662,7 +662,7 @@
                 <i class="fa-solid fa-times" style="font-size: 10px;"></i>
               </button>
             </span>
-          `
+          `,
           )
           .join("");
 
@@ -686,7 +686,7 @@
                 <i class="fa-solid fa-trash"></i>
               </button>
             </div>
-          `
+          `,
             )
             .join("") || '<p class="text-muted">No languages added yet</p>';
 
@@ -706,7 +706,7 @@
         phoneInput,
         locationInput,
         linkedinInput,
-        summaryInput
+        summaryInput,
       ].forEach((input) => {
         input.addEventListener("input", () => {
           resumeData[input.id] = input.value;
@@ -739,7 +739,7 @@
           endDate: endDate || "",
           current: endDate?.toLowerCase() === "present",
           location: "",
-          description: ""
+          description: "",
         });
         renderExperience();
         updatePreview();
@@ -759,7 +759,7 @@
           startDate,
           endDate: endDate || "",
           current: endDate?.toLowerCase() === "present",
-          location: ""
+          location: "",
         });
         renderEducation();
         updatePreview();
@@ -769,7 +769,7 @@
         const name = prompt("Language:");
         if (!name) return;
         const level = prompt(
-          "Level (e.g., Native, Fluent, Intermediate, Basic):"
+          "Level (e.g., Native, Fluent, Intermediate, Basic):",
         );
         if (!level) return;
 
@@ -796,7 +796,7 @@
           filename: `${resumeData.fullName || "resume"}.pdf`,
           image: { type: "jpeg", quality: 0.98 },
           html2canvas: { scale: 2 },
-          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         };
 
         html2pdf().set(opt).from(element).save();
@@ -819,7 +819,7 @@
       const templatesGrid = document.getElementById("templatesGrid");
       const coverLetterText = document.getElementById("coverLetterText");
       let savedLetters = JSON.parse(
-        localStorage.getItem("jp_saved_cover_letters") || "[]"
+        localStorage.getItem("jp_saved_cover_letters") || "[]",
       );
 
       function renderTemplates() {
@@ -835,7 +835,7 @@
               <p class="template-desc">${t.description}</p>
             </div>
           </div>
-        `
+        `,
           )
           .join("");
 
@@ -870,12 +870,12 @@
             <div class="saved-letter-header">
               <span class="saved-letter-title">${letter.title}</span>
               <span class="saved-letter-date">${new Date(
-                letter.savedAt
+                letter.savedAt,
               ).toLocaleDateString()}</span>
             </div>
             <p class="saved-letter-preview">${letter.content.substring(
               0,
-              150
+              150,
             )}...</p>
             <div class="saved-letter-actions">
               <button class="btn btn-sm btn-outline-red load-letter" data-index="${i}">
@@ -886,7 +886,7 @@
               </button>
             </div>
           </div>
-        `
+        `,
           )
           .join("");
 
@@ -902,7 +902,7 @@
             savedLetters.splice(parseInt(btn.dataset.index), 1);
             localStorage.setItem(
               "jp_saved_cover_letters",
-              JSON.stringify(savedLetters)
+              JSON.stringify(savedLetters),
             );
             renderSavedLetters();
           });
@@ -929,18 +929,18 @@
         }
         const title = prompt(
           "Give this cover letter a name:",
-          "My Cover Letter"
+          "My Cover Letter",
         );
         if (!title) return;
 
         savedLetters.unshift({
           title,
           content,
-          savedAt: new Date().toISOString()
+          savedAt: new Date().toISOString(),
         });
         localStorage.setItem(
           "jp_saved_cover_letters",
-          JSON.stringify(savedLetters)
+          JSON.stringify(savedLetters),
         );
         renderSavedLetters();
       });

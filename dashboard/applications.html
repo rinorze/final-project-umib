@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/style/dashboard.css" />
     <link rel="stylesheet" href="/style/applications.css" />
   </head>
-  <body class="dashboard-body">
+  <body id="rz-body-dashboard-applications" class="dashboard-body">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="dashboard-layout">
       <aside class="dashboard-sidebar" id="dashboardSidebar">
@@ -38,16 +38,28 @@
           <a class="dashboard-link" href="/dashboard/saved.html">
             <i class="fa-solid fa-bookmark"></i> Saved Jobs
           </a>
-          <a class="dashboard-link" href="/dashboard/applied.html" id="nav-applied">
+          <a
+            class="dashboard-link"
+            href="/dashboard/applied.html"
+            id="nav-applied">
             <i class="fa-solid fa-paper-plane"></i> Applied
           </a>
-          <a class="dashboard-link" href="/dashboard/add-job.html" id="nav-post-job">
+          <a
+            class="dashboard-link"
+            href="/dashboard/add-job.html"
+            id="nav-post-job">
             <i class="fa-solid fa-plus"></i> Post Job
           </a>
-          <a class="dashboard-link active" href="/dashboard/applications.html" id="nav-applications">
+          <a
+            class="dashboard-link active"
+            href="/dashboard/applications.html"
+            id="nav-applications">
             <i class="fa-solid fa-users"></i> Applications
           </a>
-          <a class="dashboard-link" href="/dashboard/documents.html" id="nav-documents">
+          <a
+            class="dashboard-link"
+            href="/dashboard/documents.html"
+            id="nav-documents">
             <i class="fa-solid fa-folder-open"></i> Documents
           </a>
           <a class="dashboard-link" href="/dashboard/analytics.html">
@@ -62,7 +74,9 @@
         </nav>
 
         <div class="dashboard-actions">
-          <button id="logoutBtn" class="btn btn-md btn-signup w-100">Logout</button>
+          <button id="logoutBtn" class="btn btn-md btn-signup w-100">
+            Logout
+          </button>
         </div>
       </aside>
 
@@ -75,14 +89,22 @@
               </button>
               <div>
                 <h1 class="dashboard-title">Applications</h1>
-                <p class="dashboard-subtitle">Manage job applications from candidates</p>
+                <p class="dashboard-subtitle">
+                  Manage job applications from candidates
+                </p>
               </div>
             </div>
             <div class="dashboard-top-actions flex-wrap">
-              <select id="filterJob" class="form-select form-select-sm" style="width: auto; min-width: 140px;">
+              <select
+                id="filterJob"
+                class="form-select form-select-sm"
+                style="width: auto; min-width: 140px">
                 <option value="">All Jobs</option>
               </select>
-              <select id="filterStatus" class="form-select form-select-sm" style="width: auto; min-width: 120px;">
+              <select
+                id="filterStatus"
+                class="form-select form-select-sm"
+                style="width: auto; min-width: 120px">
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
                 <option value="reviewed">Reviewed</option>
@@ -99,7 +121,9 @@
             </div>
             <h5>No applications yet</h5>
             <p>When candidates apply to your jobs, they'll appear here.</p>
-            <a href="/dashboard/add-job.html" class="btn btn-signup">Post a Job</a>
+            <a href="/dashboard/add-job.html" class="btn btn-signup"
+              >Post a Job</a
+            >
           </div>
 
           <div id="applicationsList" class="row g-4 d-none"></div>
@@ -108,7 +132,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/9f730657c2.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/9f730657c2.js"
+      crossorigin="anonymous"></script>
     <script type="module">
       import {
         requireAuth,
@@ -119,7 +145,7 @@
         setupRoleBasedSidebar,
         getApplicationsForEmployer,
         updateApplicationStatusByEmployer,
-        getCustomJobs
+        getCustomJobs,
       } from "/js/auth.js";
 
       requireAuth({ redirectTo: "/signin.html" });
@@ -152,11 +178,31 @@
 
       function getStatusBadge(status) {
         const statusConfig = {
-          pending: { label: "Pending", class: "bg-warning text-dark", icon: "fa-clock" },
-          reviewed: { label: "Reviewed", class: "bg-info text-white", icon: "fa-eye" },
-          interview: { label: "Interview", class: "bg-primary text-white", icon: "fa-calendar-check" },
-          rejected: { label: "Rejected", class: "bg-danger text-white", icon: "fa-times-circle" },
-          accepted: { label: "Accepted", class: "bg-success text-white", icon: "fa-check-circle" }
+          pending: {
+            label: "Pending",
+            class: "bg-warning text-dark",
+            icon: "fa-clock",
+          },
+          reviewed: {
+            label: "Reviewed",
+            class: "bg-info text-white",
+            icon: "fa-eye",
+          },
+          interview: {
+            label: "Interview",
+            class: "bg-primary text-white",
+            icon: "fa-calendar-check",
+          },
+          rejected: {
+            label: "Rejected",
+            class: "bg-danger text-white",
+            icon: "fa-times-circle",
+          },
+          accepted: {
+            label: "Accepted",
+            class: "bg-success text-white",
+            icon: "fa-check-circle",
+          },
         };
         const config = statusConfig[status] || statusConfig.pending;
         return `<span class="badge ${config.class}"><i class="fa-solid ${config.icon} me-1"></i>${config.label}</span>`;
@@ -165,39 +211,40 @@
       function populateJobFilter() {
         const customJobs = getCustomJobs();
         const role = getUserRole(user);
-        
+
         let jobs;
         if (role === USER_ROLES.ADMIN) {
           jobs = [...customJobs, ...staticJobs];
         } else {
-          jobs = customJobs.filter(j => j.postedBy === user.id);
+          jobs = customJobs.filter((j) => j.postedBy === user.id);
         }
-        
-        jobs.forEach(job => {
-          const option = document.createElement('option');
+
+        jobs.forEach((job) => {
+          const option = document.createElement("option");
           option.value = job.id;
           option.textContent = job.title;
           filterJob.appendChild(option);
         });
-        
+
         if (jobs.length === 0 && role !== USER_ROLES.ADMIN) {
-          emptyState.querySelector('h5').textContent = "No jobs posted yet";
-          emptyState.querySelector('p').textContent = "Post a job first, then candidates can apply to it.";
+          emptyState.querySelector("h5").textContent = "No jobs posted yet";
+          emptyState.querySelector("p").textContent =
+            "Post a job first, then candidates can apply to it.";
         }
       }
 
       function render() {
         allApplications = getApplicationsForEmployer(staticJobs);
-        
+
         let filtered = allApplications;
         const jobFilter = filterJob.value;
         const statusFilter = filterStatus.value;
-        
+
         if (jobFilter) {
-          filtered = filtered.filter(a => String(a.jobId) === jobFilter);
+          filtered = filtered.filter((a) => String(a.jobId) === jobFilter);
         }
         if (statusFilter) {
-          filtered = filtered.filter(a => a.status === statusFilter);
+          filtered = filtered.filter((a) => a.status === statusFilter);
         }
 
         if (!filtered.length) {
@@ -210,15 +257,18 @@
         emptyState.classList.add("d-none");
         list.classList.remove("d-none");
 
-        const cards = filtered.map(app => `
+        const cards = filtered
+          .map(
+            (app) => `
           <div class="col-lg-4 col-md-6">
             <div class="application-card" data-app-id="${app.id}" data-applicant-id="${app.applicant.id}" data-job-id="${app.jobId}">
               <div class="application-header">
                 <div class="d-flex align-items-center gap-3">
                   <div class="applicant-avatar">
-                    ${app.applicant.photoUrl 
-                      ? `<img src="${app.applicant.photoUrl}" alt="${app.applicant.fullName}">`
-                      : `<span>${app.applicant.fullName.charAt(0).toUpperCase()}</span>`
+                    ${
+                      app.applicant.photoUrl
+                        ? `<img src="${app.applicant.photoUrl}" alt="${app.applicant.fullName}">`
+                        : `<span>${app.applicant.fullName.charAt(0).toUpperCase()}</span>`
                     }
                   </div>
                   <div>
@@ -228,33 +278,40 @@
                 </div>
               </div>
               
-              <div class="mt-2 mb-2">${getStatusBadge(app.status || 'pending')}</div>
+              <div class="mt-2 mb-2">${getStatusBadge(app.status || "pending")}</div>
               
               <div class="application-job">
                 <i class="fa-solid fa-briefcase me-2"></i>
-                <strong>${app.job?.title || 'Unknown Job'}</strong>
+                <strong>${app.job?.title || "Unknown Job"}</strong>
               </div>
               
               <div class="application-details">
-                ${app.applicant.phone ? `<span><i class="fa-solid fa-phone me-1"></i>${app.applicant.phone}</span>` : ''}
-                ${app.applicant.location ? `<span><i class="fa-solid fa-location-dot me-1"></i>${app.applicant.location}</span>` : ''}
+                ${app.applicant.phone ? `<span><i class="fa-solid fa-phone me-1"></i>${app.applicant.phone}</span>` : ""}
+                ${app.applicant.location ? `<span><i class="fa-solid fa-location-dot me-1"></i>${app.applicant.location}</span>` : ""}
                 <span><i class="fa-solid fa-calendar me-1"></i>${new Date(app.appliedAt).toLocaleDateString()}</span>
               </div>
               
-              ${app.applicant.skills && app.applicant.skills.length > 0 ? `
+              ${
+                app.applicant.skills && app.applicant.skills.length > 0
+                  ? `
                 <div class="applicant-skills">
-                  ${app.applicant.skills.slice(0, 4).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-                  ${app.applicant.skills.length > 4 ? `<span class="skill-tag">+${app.applicant.skills.length - 4}</span>` : ''}
+                  ${app.applicant.skills
+                    .slice(0, 4)
+                    .map((skill) => `<span class="skill-tag">${skill}</span>`)
+                    .join("")}
+                  ${app.applicant.skills.length > 4 ? `<span class="skill-tag">+${app.applicant.skills.length - 4}</span>` : ""}
                 </div>
-              ` : ''}
+              `
+                  : ""
+              }
               
               <div class="application-actions">
                 <select class="form-select form-select-sm status-select" data-applicant-id="${app.applicant.id}" data-job-id="${app.jobId}">
-                  <option value="pending" ${app.status === 'pending' ? 'selected' : ''}>Pending</option>
-                  <option value="reviewed" ${app.status === 'reviewed' ? 'selected' : ''}>Reviewed</option>
-                  <option value="interview" ${app.status === 'interview' ? 'selected' : ''}>Interview</option>
-                  <option value="accepted" ${app.status === 'accepted' ? 'selected' : ''}>Accepted</option>
-                  <option value="rejected" ${app.status === 'rejected' ? 'selected' : ''}>Rejected</option>
+                  <option value="pending" ${app.status === "pending" ? "selected" : ""}>Pending</option>
+                  <option value="reviewed" ${app.status === "reviewed" ? "selected" : ""}>Reviewed</option>
+                  <option value="interview" ${app.status === "interview" ? "selected" : ""}>Interview</option>
+                  <option value="accepted" ${app.status === "accepted" ? "selected" : ""}>Accepted</option>
+                  <option value="rejected" ${app.status === "rejected" ? "selected" : ""}>Rejected</option>
                 </select>
                 <a href="mailto:${app.applicant.email}" class="btn btn-sm btn-outline-red" title="Contact">
                   <i class="fa-solid fa-envelope"></i>
@@ -262,17 +319,23 @@
               </div>
             </div>
           </div>
-        `).join("");
+        `,
+          )
+          .join("");
 
         list.innerHTML = cards;
 
-        list.querySelectorAll(".status-select").forEach(select => {
+        list.querySelectorAll(".status-select").forEach((select) => {
           select.addEventListener("change", (e) => {
             const applicantId = select.dataset.applicantId;
             const jobId = select.dataset.jobId;
             const newStatus = select.value;
-            
-            const result = updateApplicationStatusByEmployer(applicantId, jobId, newStatus);
+
+            const result = updateApplicationStatusByEmployer(
+              applicantId,
+              jobId,
+              newStatus,
+            );
             if (result.ok) {
               render();
             } else {
